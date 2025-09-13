@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     writeLog("cambiar_estado_operarios.php", "Procesando id: $id, nuevo_estado: $nuevo_estado");
+    // Puedes agregar aquí un log más detallado si lo necesitas
 
     if ($id && ($nuevo_estado === '1' || $nuevo_estado === '0')) {
         $stmt = $conexion->prepare("UPDATE operadores SET disponible = ? WHERE id = ?");
