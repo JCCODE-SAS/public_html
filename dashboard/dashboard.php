@@ -149,6 +149,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- MODALES ESPECÍFICOS DE OPERARIOS -->
     <?php
+    // AJUSTE: Incluidos igual que usuarios, así SIEMPRE están en el DOM global.
     $modales_operarios = [
         'ver_operario_modal.php'   => 'Visualización operarios',
         'crear_operario_modal.php' => 'Creación operarios',
@@ -160,6 +161,8 @@ if (!isset($_SESSION['user_id'])) {
             echo "<!-- $desc -->\n";
             include_once $p;
             echo "\n";
+        } else {
+            echo "<!-- Modal no encontrado: $archivo ($desc) -->\n";
         }
     }
     ?>

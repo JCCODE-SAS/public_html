@@ -19,15 +19,23 @@
     let cambiosPendientes = false;
     let validacionTimeout = null;
 
+    // Mostrar modal de edición de operario
+    window.mostrarModalEditarOperario = function(id) {
+        // Busca el modal por ID y lo muestra
+        const modal = document.getElementById('editarOperarioModal');
+        if (modal) {
+            modal.style.display = 'block';
+            // Si tienes campos en el modal, puedes rellenarlos aquí usando el id
+            // Por ejemplo, podrías hacer una petición AJAX para obtener los datos del operario
+            // y mostrarlos en el modal.
+        } else {
+            alert('Modal de editar operario no encontrado');
+        }
+    };
+
     // Abrir modal y cargar datos del operario
     window.abrirModalEditarOperario = function(id) {
-        // Aquí va la lógica para abrir el modal de editar operario
-        // Por ejemplo:
-        if (typeof mostrarModalEditarOperario === 'function') {
-            mostrarModalEditarOperario(id);
-        } else {
-            alert('Función mostrarModalEditarOperario no disponible');
-        }
+        window.mostrarModalEditarOperario(id);
     };
 
     // Cerrar modal con confirmación si hay cambios

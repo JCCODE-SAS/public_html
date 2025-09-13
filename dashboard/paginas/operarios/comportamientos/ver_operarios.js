@@ -13,16 +13,16 @@
     "use strict";
     let operarioVisualizando = null;
 
+    // FUNCIÓN GLOBAL PARA ABRIR EL MODAL DE VER OPERARIO
     window.abrirModalVerOperario = function(id) {
-        // Aquí va la lógica para abrir el modal de ver operario
-        // Por ejemplo:
-        if (typeof mostrarModalVerOperario === 'function') {
-            mostrarModalVerOperario(id);
+        if (typeof window.mostrarModalVerOperario === 'function') {
+            window.mostrarModalVerOperario(id);
         } else {
             alert('Función mostrarModalVerOperario no disponible');
         }
     };
 
+    // FUNCIÓN GLOBAL PARA CERRAR EL MODAL DE VER OPERARIO
     window.cerrarModalVerOperario = function() {
         const modal = document.getElementById('verOperarioModal');
         if (modal) {
@@ -32,6 +32,7 @@
         operarioVisualizando = null;
     };
 
+    // LIMPIAR EL MODAL ANTES DE MOSTRARLO
     function resetearModalVer() {
         const loading = document.getElementById('loadingVerOperario');
         const contenido = document.getElementById('contenidoVerOperario');
@@ -42,6 +43,7 @@
         operarioVisualizando = null;
     }
 
+    // CARGAR DATOS DEL OPERARIO POR AJAX
     function cargarDatosOperarioVer(operarioId) {
         fetch("/public_html/dashboard/paginas/operarios/api/obtener_operarios.php", {
             method: "POST",
@@ -65,6 +67,7 @@
         });
     }
 
+    // LLENAR EL MODAL CON DATOS DEL OPERARIO
     function mostrarDatosOperario(operario) {
         const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
         setText('operarioInitials', generarIniciales(operario.nombre));
@@ -86,10 +89,12 @@
         setText('operarioCreadoDisplay', operario.creado);
     }
 
+    // GENERAR INICIALES DEL NOMBRE
     function generarIniciales(nombre) {
         return nombre.split(' ').map(word => word.charAt(0).toUpperCase()).slice(0,2).join('');
     }
 
+    // MOSTRAR CONTENIDO DEL MODAL
     function mostrarContenido() {
         const loading = document.getElementById('loadingVerOperario');
         const contenido = document.getElementById('contenidoVerOperario');
@@ -97,6 +102,7 @@
         if (contenido) contenido.classList.remove('hidden');
     }
 
+    // MOSTRAR ERROR EN EL MODAL
     function mostrarError(mensaje) {
         const loading = document.getElementById('loadingVerOperario');
         const contenido = document.getElementById('contenidoVerOperario');
@@ -104,11 +110,25 @@
         if (loading) loading.classList.add('hidden');
         if (contenido) contenido.classList.add('hidden');
         if (errorDiv) errorDiv.classList.remove('hidden');
-        const errorMessage = document.getElementById('errorMessageOperario');
+        // Ajuste de id para error (puede ser errorMessage u errorMessageOperario)
+        const errorMessage = document.getElementById('errorMessageOperario') || document.getElementById('errorMessage');
         if (errorMessage) errorMessage.textContent = mensaje;
     }
 
-    // Event listeners
+    // FUNCIÓN GLOBAL QUE REALMENTE MUESTRA EL MODAL Y CARGA LOS DATOS
+    window.mostrarModalVerOperario = function(id) {
+        const modal = document.getElementById('verOperarioModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetearModalVer();
+            cargarDatosOperarioVer(id);
+        } else {
+            alert("No se encontró el modal de visualización de operario.");
+        }
+    };
+
+    // EVENTOS PARA CERRAR EL MODAL CON ESCAPE O CLICK FUERA DEL MODAL
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const modal = document.getElementById('verOperarioModal');
@@ -122,6 +142,7 @@
         if (e.target === modal) window.cerrarModalVerOperario();
     });
 
+    // FUNCIÓN GLOBAL PARA LLAMAR DESDE OTROS MÓDULOS
     window.verOperario = function(operarioId) {
         window.abrirModalVerOperario(operarioId);
     };
