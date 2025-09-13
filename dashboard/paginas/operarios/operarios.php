@@ -1,4 +1,8 @@
 <?php
+//===============================================================
+// OPERARIOS.PHP - Gestión de Operarios (igual a usuarios.php)
+//===============================================================
+
 require_once __DIR__ . '/../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../logs/logger.php';
 
@@ -14,7 +18,6 @@ $status_filter = isset($_GET['status']) ? $_GET['status'] : '';
 $page          = isset($_GET['page'])   ? (int)$_GET['page'] : 1;
 $page          = max(1, $page);
 
-// Registros por página configurable
 $allowed_page_sizes = [10, 25, 50, 100, 200];
 $records_per_page   = isset($_GET['per_page']) ? (int)$_GET['per_page'] : 10;
 if (!in_array($records_per_page, $allowed_page_sizes)) {
@@ -31,15 +34,16 @@ $params = [];
 $types  = '';
 
 if ($search !== '') {
-    $where_conditions[] = "(name LIKE ? OR email LIKE ?)";
+    $where_conditions[] = "(nombre LIKE ? OR usuario LIKE ? OR email LIKE ?)";
     $params[] = "%$search%";
     $params[] = "%$search%";
-    $types   .= 'ss';
+    $params[] = "%$search%";
+    $types   .= 'sss';
 }
 if ($status_filter !== '') {
-    $where_conditions[] = "status = ?";
+    $where_conditions[] = "disponible = ?";
     $params[] = $status_filter;
-    $types   .= 's';
+    $types   .= 'i';
 }
 
 $where_clause = $where_conditions ? 'WHERE ' . implode(' AND ', $where_conditions) : '';
@@ -47,7 +51,7 @@ $where_clause = $where_conditions ? 'WHERE ' . implode(' AND ', $where_condition
 //===============================================================
 // TOTAL DE REGISTROS
 //===============================================================
-$count_sql  = "SELECT COUNT(*) AS total FROM operadores $where_clause";
+$count_sql = "SELECT COUNT(*) AS total FROM operadores $where_clause";
 $count_stmt = $conexion->prepare($count_sql);
 if ($types !== '') {
     $count_stmt->bind_param($types, ...$params);
@@ -56,55 +60,28 @@ $count_stmt->execute();
 $total_records = (int)$count_stmt->get_result()->fetch_assoc()['total'];
 $total_pages   = max(1, (int)ceil($total_records / $records_per_page));
 
-// Ajustar página si excede
+// Ajuste de página si excede
 if ($page > $total_pages) {
     $page = $total_pages;
 }
 $offset = ($page - 1) * $records_per_page;
 
 //===============================================================
-// CONSULTA PRINCIPAL: tabla operadores y columnas renombradas
+// CONSULTA PRINCIPAL
 //===============================================================
-$sql = "
-  SELECT
-    id,
-    nombre     AS nombre,
-    usuario    AS usuario,
-    email,
-    disponible AS disponible,
-    creado     AS creado
-  FROM operadores
-  $where_clause
-  ORDER BY creado DESC
-  LIMIT ? OFFSET ?
-";
-
-// -------------------------------------------------------
-// Paginación: calcular offset y agregar a tipos/params
-// -------------------------------------------------------
-$offset = ($page - 1) * $records_per_page;
-$types  .= 'ii';
-$params[] = $records_per_page;
-$params[] = $offset;
-
-// -------------------------------------------------------
-// Preparar, bindear y ejecutar
-// -------------------------------------------------------
+$sql = "SELECT id, nombre, usuario, email, disponible, creado 
+        FROM operadores 
+        $where_clause 
+        ORDER BY creado DESC 
+        LIMIT ? OFFSET ?";
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param($types, ...$params);
+$main_types = $types . 'ii';
+$main_params = $params;
+$main_params[] = $records_per_page;
+$main_params[] = $offset;
+$stmt->bind_param($main_types, ...$main_params);
 $stmt->execute();
 $result = $stmt->get_result();
-
-//===============================================================
-// ROLES DISPONIBLES
-//===============================================================
-$roles = [];
-$roles_sql = "SELECT DISTINCT role FROM users ORDER BY role";
-if ($rr = $conexion->query($roles_sql)) {
-    while ($r = $rr->fetch_assoc()) {
-        $roles[] = $r['role'];
-    }
-}
 
 //===============================================================
 // ESTADÍSTICAS
@@ -128,14 +105,14 @@ foreach ($stats_queries as $k => $q) {
 function base_query(array $extra = []): string
 {
     $current = $_GET;
-    unset($current['page']); // forzar reemplazo
+    unset($current['page']);
     $merged = array_merge($current, $extra);
     return '?' . http_build_query($merged);
 }
-
 ?>
+
 <div class="users-module min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6"
-    id="usuarios-wrapper">
+    id="operarios-wrapper">
 
     <!-- HEADER -->
     <div class="glass-header rounded-3xl p-8 mb-8 text-white">
@@ -145,10 +122,10 @@ function base_query(array $extra = []): string
                     class="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
                     Gestión de Operarios
                 </h1>
-                <p class="text-blue-100 text-lg">Administra y controla los usuarios del sistema de manera eficiente</p>
+                <p class="text-blue-100 text-lg">Administra y controla los operarios del sistema de manera eficiente</p>
                 <div class="flex flex-wrap items-center mt-3 text-blue-200 text-sm gap-x-2">
                     <i class="ri-user-line"></i>
-                    <span><?= $total_records ?> usuarios</span>
+                    <span><?= $total_records ?> operarios</span>
                     <span class="text-blue-300">•</span>
                     <span>Página <?= $page ?> / <?= $total_pages ?></span>
                     <span class="text-blue-300">•</span>
@@ -211,95 +188,324 @@ function base_query(array $extra = []): string
         </div>
     </div>
 
-    <!-- FILTROS Y NUEVO OPERARIO -->
-    <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-        <form method="get" class="flex flex-wrap items-center space-x-2">
-            <input type="text" name="search" placeholder="Buscar operarios..." value="<?= htmlspecialchars($search) ?>"
-                class="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            <select name="status"
-                class="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                <option value="">Todos</option>
-                <option value="1" <?= $status_filter === '1' ? 'selected' : '' ?>>Disponible</option>
-                <option value="0" <?= $status_filter === '0' ? 'selected' : '' ?>>No disponible</option>
-            </select>
-            <select name="per_page"
-                class="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                <?php foreach ([10, 25, 50, 100] as $n): ?>
-                <option value="<?= $n ?>" <?= $records_per_page === $n ? 'selected' : '' ?>><?= $n ?></option>
-                <?php endforeach; ?>
-            </select>
-            <button type="submit"
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
-                Filtrar
-            </button>
+    <!-- FILTROS -->
+    <div class="filter-glass rounded-2xl p-6 mb-8">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                <i class="ri-filter-3-line mr-2 text-blue-600"></i>
+                Filtros de Búsqueda
+            </h2>
+            <div class="text-sm text-gray-600">
+                <?= $total_records ?> resultado<?= $total_records !== 1 ? 's' : '' ?>
+            </div>
+        </div>
+        <form id="filtroOperariosForm" method="GET" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    <i class="ri-search-line mr-1"></i>Buscar Operario
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="ri-search-line text-gray-400"></i>
+                    </div>
+                    <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
+                        placeholder="Nombre, usuario o email..."
+                        class="search-input w-full pl-10 pr-4 py-3 rounded-xl border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    <i class="ri-toggle-line mr-1"></i>Disponibilidad
+                </label>
+                <select name="status"
+                    class="filter-select w-full px-4 py-3 rounded-xl border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+                    <option value="">Todos</option>
+                    <option value="1" <?= $status_filter === '1' ? 'selected' : '' ?>>Disponible</option>
+                    <option value="0" <?= $status_filter === '0' ? 'selected' : '' ?>>No disponible</option>
+                </select>
+            </div>
+            <div class="md:col-span-1 flex justify-end">
+                <button type="submit" class="action-btn btn-clear w-full lg:w-auto group">
+                    <i class="ri-refresh-line mr-1"></i> Filtrar
+                </button>
+            </div>
         </form>
-        <button onclick="mostrarModalNuevoOperario()"
-            class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm mt-2 md:mt-0">
-            + Nuevo Operario
-        </button>
     </div>
 
-    <!-- TABLA DE OPERARIOS -->
-    <div class="overflow-x-auto bg-white shadow rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Disponible</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Creado
-                    </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Acciones</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <?php while ($row = $result->fetch_assoc()): ?>
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap"><?= $row['id'] ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap"><?= htmlspecialchars($row['nombre']) ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap"><?= htmlspecialchars($row['usuario']) ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap"><?= htmlspecialchars($row['email']) ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap"><?= $row['disponible'] ? 'Sí' : 'No' ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap"><?= date('d/m/Y H:i', strtotime($row['creado'])) ?></td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center space-x-2">
-                        <button onclick="verOperario(<?= $row['id'] ?>)"
-                            class="text-blue-600 hover:text-blue-900">Ver</button>
-                        <button onclick="editarOperario(<?= $row['id'] ?>)"
-                            class="text-green-600 hover:text-green-900">Editar</button>
-                        <button onclick="toggleDisponibilidad(<?= $row['id'] ?>, <?= $row['disponible'] ?>)"
-                            class="text-red-600 hover:text-red-900">
-                            <?= $row['disponible'] ? 'Deshabilitar' : 'Habilitar' ?>
-                        </button>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+    <!-- TABLA -->
+    <div class="table-glass rounded-2xl overflow-hidden shadow-2xl">
+        <?php if ($result->num_rows === 0): ?>
+        <div class="empty-state p-12 text-center rounded-2xl">
+            <div
+                class="w-20 h-20 bg-gradient-to-br from-yellow-400/20 to-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="ri-alert-line text-yellow-600 text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">
+                <?= ($search || $status_filter) ? 'No se encontraron operarios con esos criterios' : 'No hay operarios registrados' ?>
+            </h3>
+            <p class="text-gray-500 mb-6">
+                <?= ($search || $status_filter)
+                        ? 'Ajusta los filtros e inténtalo de nuevo.'
+                        : 'Agrega el primer operario al sistema.' ?>
+            </p>
+            <div class="flex gap-3 justify-center flex-wrap">
+                <?php if ($search || $status_filter): ?>
+                <button type="button" onclick="location.href='?'" class="action-btn btn-edit">
+                    <i class="ri-filter-off-line"></i> Limpiar filtros
+                </button>
+                <?php endif; ?>
+                <button onclick="mostrarModalNuevoOperario()" class="action-btn btn-add">
+                    <i class="ri-user-add-line"></i> Agregar Operario
+                </button>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+                <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">ID
+                        </th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Nombre</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Usuario
+                        </th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Email</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Disponible</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Fecha</th>
+                        <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 bg-white">
+                    <?php while ($o = $result->fetch_assoc()): ?>
+                    <tr data-operario-id="<?= $o['id'] ?>"
+                        class="hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-300 group">
+                        <td class="px-6 py-4 text-sm text-gray-500 font-mono">
+                            #<?= str_pad($o['id'], 4, '0', STR_PAD_LEFT) ?></td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div
+                                    class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
+                                    <?= strtoupper(substr($o['nombre'], 0, 1)) ?>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium text-gray-900"><?= htmlspecialchars($o['nombre']) ?>
+                                    </div>
+                                    <div class="text-xs text-gray-500"><?= htmlspecialchars($o['usuario']) ?></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                <i class="ri-user-line mr-1"></i>
+                                <?= htmlspecialchars($o['usuario']) ?>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-xs text-gray-500"><?= htmlspecialchars($o['email']) ?></div>
+                        </td>
+                        <td class="px-6 py-4 user-status">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                    <?= $o['disponible'] ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' ?>">
+                                <span
+                                    class="w-1.5 h-1.5 mr-1.5 rounded-full <?= $o['disponible'] ? 'bg-green-600' : 'bg-red-600' ?>"></span>
+                                <?= $o['disponible'] ? 'Disponible' : 'No disponible' ?>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-500">
+                            <div class="flex items-center">
+                                <i class="ri-calendar-2-line mr-2 text-gray-400"></i>
+                                <?= date('d/m/Y', strtotime($o['creado'])) ?>
+                            </div>
+                            <div class="text-xs text-gray-400 mt-1">
+                                <?= date('H:i', strtotime($o['creado'])) ?> hrs
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="acciones-btn-group flex items-center justify-center space-x-2">
+                                <button onclick="abrirModalVerOperario(<?= $o['id'] ?>)"
+                                    class="action-btn btn-view text-xs" title="Ver">
+                                    <i class="ri-eye-line"></i> Ver
+                                </button>
+                                <button onclick="editarOperario(<?= $o['id'] ?>)" class="action-btn btn-edit text-xs"
+                                    title="Editar">
+                                    <i class="ri-edit-line"></i> Editar
+                                </button>
+                                <button type="button" class="action-btn btn-toggle text-xs"
+                                    onclick="toggleDisponibilidad(<?= $o['id'] ?>, <?= $o['disponible'] ?>, '<?= htmlspecialchars($o['nombre']) ?>')"
+                                    title="<?= $o['disponible'] ? 'Deshabilitar' : 'Habilitar' ?>">
+                                    <i
+                                        class="<?= $o['disponible'] ? 'ri-pause-circle-line' : 'ri-play-circle-line' ?>"></i>
+                                    <?= $o['disponible'] ? 'Deshabilitar' : 'Habilitar' ?>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php endif; ?>
     </div>
 
-    <!-- PAGINACIÓN -->
-    <nav class="mt-6 flex justify-center">
-        <ul class="inline-flex -space-x-px">
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-            <li>
-                <a href="<?= base_query(['page' => $i]) ?>"
-                    class="px-3 py-2 border border-gray-300 <?= $i === $page ? 'bg-blue-600 text-white' : 'bg-white text-blue-600' ?> hover:bg-blue-100">
-                    <?= $i ?>
-                </a>
-            </li>
-            <?php endfor; ?>
-        </ul>
-    </nav>
+    <!-- PAGINACIÓN MEJORADA -->
+    <?php if ($total_pages > 1): ?>
+    <div class="mt-10 space-y-4" id="paginacion-operarios">
 
-    <?php
-    $result->free();
-    $conexion->close();
-    ?>
+        <!-- Barra superior: info + selector per_page -->
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div class="text-sm text-gray-600 flex flex-wrap items-center gap-x-2">
+                <i class="ri-file-list-line text-gray-500"></i>
+                Mostrando
+                <span class="font-semibold">
+                    <?= $total_records === 0 ? 0 : ($offset + 1) ?> -
+                    <?= min($offset + $records_per_page, $total_records) ?>
+                </span>
+                de
+                <span class="font-semibold"><?= $total_records ?></span>
+                operarios
+            </div>
+
+            <form method="GET" class="flex items-center gap-2 text-sm" id="formPerPage">
+                <?php
+                    foreach ($_GET as $k => $v) {
+                        if (in_array($k, ['per_page', 'page'])) continue;
+                        if (is_array($v)) {
+                            foreach ($v as $vv) {
+                                echo '<input type="hidden" name="' . htmlspecialchars($k) . '[]" value="' . htmlspecialchars($vv) . '">';
+                            }
+                        } else {
+                            echo '<input type="hidden" name="' . htmlspecialchars($k) . '" value="' . htmlspecialchars($v) . '">';
+                        }
+                    }
+                    ?>
+                <label class="text-gray-600">Registros:</label>
+                <select name="per_page"
+                    class="border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white per-page-select">
+                    <?php foreach ($allowed_page_sizes as $size): ?>
+                    <option value="<?= $size ?>" <?= $size === $records_per_page ? 'selected' : '' ?>><?= $size ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
+                <noscript><button class="px-3 py-2 bg-blue-600 text-white rounded-lg">Aplicar</button></noscript>
+            </form>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+            aria-label="Paginación de operarios">
+
+            <!-- Controles -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Primera -->
+                <a href="<?= base_query(['page' => 1]) ?>"
+                    class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
+                    aria-label="Primera página">«</a>
+
+                <!-- Anterior -->
+                <a href="<?= base_query(['page' => max(1, $page - 1)]) ?>"
+                    class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
+                    aria-label="Página anterior">‹</a>
+
+                <?php
+                    $window = 2;
+                    $start_page = max(1, $page - $window);
+                    $end_page   = min($total_pages, $page + $window);
+
+                    if ($start_page > 1) {
+                        echo '<a href="' . base_query(['page' => 1]) . '" class="pagination-btn">1</a>';
+                        if ($start_page > 2) {
+                            echo '<span class="px-2 text-gray-400">...</span>';
+                        }
+                    }
+
+                    for ($i = $start_page; $i <= $end_page; $i++) {
+                        $active = $i === $page ? 'pagination-active' : '';
+                        echo '<a href="' . base_query(['page' => $i]) . '" class="pagination-btn ' . $active . '"' .
+                            ($active ? ' aria-current="page"' : '') . '>' . $i . '</a>';
+                    }
+
+                    if ($end_page < $total_pages) {
+                        if ($end_page < $total_pages - 1) {
+                            echo '<span class="px-2 text-gray-400">...</span>';
+                        }
+                        echo '<a href="' . base_query(['page' => $total_pages]) . '" class="pagination-btn">' . $total_pages . '</a>';
+                    }
+                    ?>
+
+                <!-- Siguiente -->
+                <a href="<?= base_query(['page' => min($total_pages, $page + 1)]) ?>"
+                    class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
+                    aria-label="Página siguiente">›</a>
+
+                <!-- Última -->
+                <a href="<?= base_query(['page' => $total_pages]) ?>"
+                    class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
+                    aria-label="Última página">»</a>
+            </div>
+
+            <!-- Ir a página -->
+            <form method="GET" class="flex items-center gap-2 text-sm" id="formGoTo"
+                onsubmit="if (this.querySelector('[name=page]').value > <?= $total_pages ?>) { this.querySelector('[name=page]').value = <?= $total_pages ?> }">
+                <?php
+                    foreach ($_GET as $k => $v) {
+                        if ($k === 'page') continue;
+                        if (is_array($v)) {
+                            foreach ($v as $vv) {
+                                echo '<input type="hidden" name="' . htmlspecialchars($k) . '[]" value="' . htmlspecialchars($vv) . '">';
+                            }
+                        } else {
+                            echo '<input type="hidden" name="' . htmlspecialchars($k) . '" value="' . htmlspecialchars($v) . '">';
+                        }
+                    }
+                    ?>
+                <label for="go_to_page" class="text-gray-600">Ir a:</label>
+                <input type="number" min="1" max="<?= $total_pages ?>" name="page" id="go_to_page"
+                    class="w-20 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white pagination-go"
+                    value="<?= $page ?>">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                    Ir
+                </button>
+            </form>
+        </nav>
+    </div>
+    <?php endif; ?>
+
 </div>
+
+<!-- SCRIPTS -->
+<?php
+$scripts_operarios = [
+    'operarios.js',
+    'ver_operarios.js',
+    'crear_operarios.js',
+    'editar_operarios.js'
+];
+$base_operarios = '/public_html/dashboard/paginas/operarios/comportamientos/';
+foreach ($scripts_operarios as $fichero) {
+    $ruta = $_SERVER['DOCUMENT_ROOT'] . $base_operarios . $fichero;
+    if (file_exists($ruta)) {
+        echo "<script src=\"$base_operarios$fichero\"></script>\n";
+    }
+}
+?>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.inicializarOperarios === 'function') {
+        window.inicializarOperarios();
+    }
+});
+</script>
+<?php
+$result->free();
+$conexion->close();
+writeLog("operarios.php", "Módulo operarios cargado. Total=$total_records, Página=$page, PerPage=$records_per_page");
+?>

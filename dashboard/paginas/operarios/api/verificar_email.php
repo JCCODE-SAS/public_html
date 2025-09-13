@@ -17,30 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     send_json(['error' => 'Método no permitido'], 405);
 }
 
-// Aceptar JSON o form-data
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
 $src  = is_array($data) ? $data : $_POST;
 
 $email  = isset($src['email']) ? trim($src['email']) : '';
-$userId = isset($src['user_id']) ? (int)$src['user_id'] : 0;
+$operarioId = isset($src['operario_id']) ? (int)$src['operario_id'] : 0;
 
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    // El front ya valida formato; aquí devolvemos exists=false sin bloquear
     send_json(['exists' => false]);
 }
 
-if ($userId > 0) {
-    $stmt = $conexion->prepare("SELECT 1 FROM users WHERE email = ? AND id != ? LIMIT 1");
-    $stmt->bind_param('si', $email, $userId);
+if ($operarioId > 0) {
+    $stmt = $conexion->prepare("SELECT 1 FROM operadores WHERE email = ? AND id != ? LIMIT 1");
+    $stmt->bind_param('si', $email, $operarioId);
 } else {
-    $stmt = $conexion->prepare("SELECT 1 FROM users WHERE email = ? LIMIT 1");
+    $stmt = $conexion->prepare("SELECT 1 FROM operadores WHERE email = ? LIMIT 1");
     $stmt->bind_param('s', $email);
 }
-
 $stmt->execute();
 $exists = (bool)$stmt->get_result()->fetch_row();
 
-writeLog("verificar_email.php", "email=$email exists=" . ($exists ? '1' : '0') . " exclude_id=$userId");
+writeLog("verificar_email_operario.php", "email=$email exists=" . ($exists ? '1' : '0') . " exclude_id=$operarioId");
 
 send_json(['exists' => $exists]);

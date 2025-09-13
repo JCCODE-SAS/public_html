@@ -1,24 +1,12 @@
 <?php
 //===============================================================
-// CREAR_USUARIO_MODAL.PHP - Modal de Creación de Usuarios
+// CREAR_OPERARIO_MODAL.PHP - Modal de Creación de Operarios
 //===============================================================
-// 
-// PROPÓSITO:
-// Modal con posicionamiento fijo absoluto, centrado perfecto
-// y visualización completa sin interferencias de navegación.
-// 
-// DESARROLLADO POR: Diomedez98 (JCCODE-SAS)
-// FECHA ACTUALIZACIÓN: 2025-09-11 03:12:00 UTC
-// REPOSITORIO: https://github.com/Diomedez98/copflows
-// EMPRESA: JCCODE-SAS
+// Adaptado de usuarios, para tabla operadores.
 //===============================================================
 ?>
 
-<!-- =============================================================== -->
-<!-- MODAL FIJO CENTRADO - PREDOMINA SOBRE TODO -->
-<!-- =============================================================== -->
-
-<div id="crearUsuarioModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center" style="position: fixed !important; 
+<div id="crearOperarioModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center" style="position: fixed !important; 
            top: 0 !important; 
            left: 0 !important; 
            right: 0 !important; 
@@ -56,11 +44,11 @@
                             <i class="ri-user-add-line text-lg"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-bold">Crear Nuevo Usuario</h2>
-                            <p class="text-sm text-blue-100">Complete la información del usuario</p>
+                            <h2 class="text-lg font-bold">Crear Nuevo Operario</h2>
+                            <p class="text-sm text-blue-100">Complete la información del operario</p>
                         </div>
                     </div>
-                    <button onclick="cerrarModalCrearUsuario()"
+                    <button onclick="cerrarModalCrearOperario()"
                         class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
                         <i class="ri-close-line text-lg"></i>
                     </button>
@@ -70,7 +58,7 @@
             <!-- Contenido con Scroll Optimizado -->
             <div class="flex-1 overflow-y-auto p-4" style="max-height: calc(90vh - 160px) !important;">
 
-                <form id="formCrearUsuario" class="space-y-4">
+                <form id="formCrearOperario" class="space-y-4">
 
                     <!-- Información Personal -->
                     <div class="space-y-3">
@@ -81,13 +69,13 @@
 
                         <!-- Nombre Completo -->
                         <div>
-                            <label for="nombreUsuario" class="block text-sm font-medium text-gray-700 mb-1">
+                            <label for="nombreOperario" class="block text-sm font-medium text-gray-700 mb-1">
                                 Nombre Completo *
                             </label>
-                            <input type="text" id="nombreUsuario" name="nombre" placeholder="Ingrese el nombre completo"
+                            <input type="text" id="nombreOperario" name="nombre"
+                                placeholder="Ingrese el nombre completo"
                                 class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                                 required>
-
                             <div id="errorNombre"
                                 class="hidden mt-1 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
                                 <i class="ri-error-warning-line mr-1"></i>
@@ -100,30 +88,23 @@
                             </div>
                         </div>
 
-                        <!-- Email -->
+                        <!-- Usuario -->
                         <div>
-                            <label for="emailUsuario" class="block text-sm font-medium text-gray-700 mb-1">
-                                Correo Electrónico *
+                            <label for="usuarioOperario" class="block text-sm font-medium text-gray-700 mb-1">
+                                Usuario *
                             </label>
-                            <input type="email" id="emailUsuario" name="email" placeholder="usuario@ejemplo.com"
+                            <input type="text" id="usuarioOperario" name="usuario" placeholder="Ingrese el usuario"
                                 class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                                 required>
+                        </div>
 
-                            <div id="loadingEmail"
-                                class="hidden mt-1 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-600">
-                                <i class="ri-loader-4-line animate-spin mr-1"></i>
-                                <span>Verificando disponibilidad...</span>
-                            </div>
-                            <div id="errorEmail"
-                                class="hidden mt-1 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
-                                <i class="ri-error-warning-line mr-1"></i>
-                                <span></span>
-                            </div>
-                            <div id="validEmail"
-                                class="hidden mt-1 p-2 bg-green-50 border border-green-200 rounded text-xs text-green-600">
-                                <i class="ri-check-line mr-1"></i>
-                                <span>Email disponible</span>
-                            </div>
+                        <!-- Email -->
+                        <div>
+                            <label for="emailOperario" class="block text-sm font-medium text-gray-700 mb-1">
+                                Correo Electrónico
+                            </label>
+                            <input type="email" id="emailOperario" name="email" placeholder="operario@ejemplo.com"
+                                class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm">
                         </div>
                     </div>
 
@@ -136,36 +117,20 @@
 
                         <!-- Contraseña -->
                         <div>
-                            <label for="passwordUsuario" class="block text-sm font-medium text-gray-700 mb-1">
+                            <label for="passwordOperario" class="block text-sm font-medium text-gray-700 mb-1">
                                 Contraseña *
                             </label>
                             <div class="relative">
-                                <input type="password" id="passwordUsuario" name="password"
+                                <input type="password" id="passwordOperario" name="password"
                                     placeholder="Mínimo 8 caracteres"
                                     class="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                                     required>
                                 <button type="button"
-                                    onclick="togglePasswordVisibility('passwordUsuario', 'eyeIconPassword')"
+                                    onclick="togglePasswordVisibility('passwordOperario', 'eyeIconPasswordOperario')"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                                    <i id="eyeIconPassword" class="ri-eye-off-line"></i>
+                                    <i id="eyeIconPasswordOperario" class="ri-eye-off-line"></i>
                                 </button>
                             </div>
-
-                            <!-- Medidor de Fortaleza Compacto -->
-                            <div id="passwordStrength" class="mt-2">
-                                <div class="flex space-x-1">
-                                    <div id="strength1"
-                                        class="h-1 w-1/4 bg-gray-200 rounded-full transition-all duration-300"></div>
-                                    <div id="strength2"
-                                        class="h-1 w-1/4 bg-gray-200 rounded-full transition-all duration-300"></div>
-                                    <div id="strength3"
-                                        class="h-1 w-1/4 bg-gray-200 rounded-full transition-all duration-300"></div>
-                                    <div id="strength4"
-                                        class="h-1 w-1/4 bg-gray-200 rounded-full transition-all duration-300"></div>
-                                </div>
-                                <p id="strengthText" class="text-xs text-gray-500 mt-1">Ingrese una contraseña</p>
-                            </div>
-
                             <div id="errorPassword"
                                 class="hidden mt-1 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
                                 <i class="ri-error-warning-line mr-1"></i>
@@ -175,21 +140,20 @@
 
                         <!-- Confirmar Contraseña -->
                         <div>
-                            <label for="confirmarPassword" class="block text-sm font-medium text-gray-700 mb-1">
+                            <label for="confirmarPasswordOperario" class="block text-sm font-medium text-gray-700 mb-1">
                                 Confirmar Contraseña *
                             </label>
                             <div class="relative">
-                                <input type="password" id="confirmarPassword" name="confirmar_password"
+                                <input type="password" id="confirmarPasswordOperario" name="confirmar_password"
                                     placeholder="Repita la contraseña"
                                     class="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                                     required>
                                 <button type="button"
-                                    onclick="togglePasswordVisibility('confirmarPassword', 'eyeIconConfirm')"
+                                    onclick="togglePasswordVisibility('confirmarPasswordOperario', 'eyeIconConfirmOperario')"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                                    <i id="eyeIconConfirm" class="ri-eye-off-line"></i>
+                                    <i id="eyeIconConfirmOperario" class="ri-eye-off-line"></i>
                                 </button>
                             </div>
-
                             <div id="errorConfirmarPassword"
                                 class="hidden mt-1 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
                                 <i class="ri-error-warning-line mr-1"></i>
@@ -203,54 +167,20 @@
                         </div>
                     </div>
 
-                    <!-- Permisos y Estado -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-2 pb-2 border-b border-gray-200">
-                            <i class="ri-shield-user-line text-blue-600"></i>
-                            <h3 class="font-semibold text-gray-800">Permisos y Estado</h3>
-                        </div>
-
-                        <!-- Rol del Usuario -->
-                        <div>
-                            <label for="rolUsuario" class="block text-sm font-medium text-gray-700 mb-1">
-                                Rol del Usuario *
-                            </label>
-                            <select id="rolUsuario" name="rol"
-                                class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
-                                required>
-                                <option value="">Seleccione un rol</option>
-                                <option value="user">Usuario Estándar</option>
-                                <option value="admin">Administrador</option>
-                            </select>
-
-                            <div id="rolDescription"
-                                class="hidden mt-2 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
-                                <i class="ri-information-line mr-1"></i>
-                                <span id="rolDescriptionText"></span>
+                    <!-- Estado Inicial -->
+                    <div class="p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-sm font-medium text-gray-700">Estado inicial</span>
+                                <p class="text-xs text-gray-500">El operario será creado disponible</p>
                             </div>
-
-                            <div id="errorRol"
-                                class="hidden mt-1 p-2 bg-red-50 border border-red-200 rounded text-xs text-red-600">
-                                <i class="ri-error-warning-line mr-1"></i>
-                                <span></span>
-                            </div>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <span class="w-1.5 h-1.5 mr-1 bg-green-600 rounded-full"></span>
+                                Disponible
+                            </span>
                         </div>
-
-                        <!-- Estado Inicial -->
-                        <div class="p-3 bg-green-50 border border-green-200 rounded-lg">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-sm font-medium text-gray-700">Estado inicial</span>
-                                    <p class="text-xs text-gray-500">El usuario será creado activo</p>
-                                </div>
-                                <span
-                                    class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    <span class="w-1.5 h-1.5 mr-1 bg-green-600 rounded-full"></span>
-                                    Activo
-                                </span>
-                            </div>
-                            <input type="hidden" name="estado" value="activo">
-                        </div>
+                        <input type="hidden" name="disponible" value="1">
                     </div>
 
                 </form>
@@ -264,35 +194,28 @@
                 </div>
 
                 <div class="flex space-x-3">
-                    <button type="button" onclick="cerrarModalCrearUsuario()"
+                    <button type="button" onclick="cerrarModalCrearOperario()"
                         class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-sm transition-all">
                         Cancelar
                     </button>
-
-                    <button type="button" onclick="limpiarFormularioCrear()"
+                    <button type="button" onclick="limpiarFormularioCrearOperario()"
                         class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-sm transition-all">
                         Limpiar
                     </button>
-
-                    <button type="button" id="btnCrearUsuario" onclick="crearUsuario()"
+                    <button type="button" id="btnCrearOperario" onclick="crearOperario()"
                         class="px-5 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                        <i id="iconCrearUsuario" class="ri-user-add-line mr-1"></i>
-                        <span id="textCrearUsuario">Crear Usuario</span>
+                        <i id="iconCrearOperario" class="ri-user-add-line mr-1"></i>
+                        <span id="textCrearOperario">Crear Operario</span>
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 
-<!-- =============================================================== -->
-<!-- CSS CRÍTICO PARA POSICIONAMIENTO ABSOLUTO -->
-<!-- =============================================================== -->
-
 <style>
-/* POSICIONAMIENTO FIJO ABSOLUTO - PREDOMINA SOBRE TODO */
-#crearUsuarioModal {
+/* Igual al original, solo cambia el id a crearOperarioModal */
+#crearOperarioModal {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -306,22 +229,19 @@
     overflow: hidden !important;
 }
 
-/* Cuando está visible, fuerza la visualización */
-#crearUsuarioModal:not(.hidden) {
+#crearOperarioModal:not(.hidden) {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-/* Centrado perfecto y responsivo */
-#crearUsuarioModal .max-w-lg {
+#crearOperarioModal .max-w-lg {
     max-width: 32rem !important;
     width: calc(100% - 2rem) !important;
     margin: 0 auto !important;
 }
 
-/* Contenedor del modal con altura controlada */
-#crearUsuarioModal .bg-white {
+#crearOperarioModal .bg-white {
     max-height: 90vh !important;
     min-height: auto !important;
     overflow: hidden !important;
@@ -329,137 +249,106 @@
     flex-direction: column !important;
 }
 
-/* Área de scroll del contenido */
-#crearUsuarioModal .overflow-y-auto {
+#crearOperarioModal .overflow-y-auto {
     flex: 1 !important;
     overflow-y: auto !important;
     max-height: none !important;
 }
 
-/* Scrollbar personalizado */
-#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar {
+#crearOperarioModal .overflow-y-auto::-webkit-scrollbar {
     width: 6px !important;
 }
 
-#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-track {
+#crearOperarioModal .overflow-y-auto::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1) !important;
     border-radius: 3px !important;
 }
 
-#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb {
+#crearOperarioModal .overflow-y-auto::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3) !important;
     border-radius: 3px !important;
 }
 
-#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+#crearOperarioModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Responsive optimizado */
 @media (max-width: 768px) {
-    #crearUsuarioModal {
+    #crearOperarioModal {
         padding: 0.5rem !important;
     }
 
-    #crearUsuarioModal .max-w-lg {
+    #crearOperarioModal .max-w-lg {
         width: calc(100% - 1rem) !important;
     }
 }
 
 @media (max-width: 480px) {
-    #crearUsuarioModal {
+    #crearOperarioModal {
         padding: 0.25rem !important;
     }
 
-    #crearUsuarioModal .max-w-lg {
+    #crearOperarioModal .max-w-lg {
         width: calc(100% - 0.5rem) !important;
     }
 
-    #crearUsuarioModal .p-4 {
+    #crearOperarioModal .p-4 {
         padding: 0.75rem !important;
     }
 
-    #crearUsuarioModal .space-x-3 {
+    #crearOperarioModal .space-x-3 {
         gap: 0.5rem !important;
     }
 
-    #crearUsuarioModal .space-x-3>* {
+    #crearOperarioModal .space-x-3>* {
         padding: 0.5rem 0.75rem !important;
         font-size: 0.75rem !important;
     }
 }
 
-/* Prevenir zoom en móviles */
 @media (max-width: 640px) {
 
-    #crearUsuarioModal input,
-    #crearUsuarioModal select {
+    #crearOperarioModal input,
+    #crearOperarioModal select {
         font-size: 16px !important;
     }
 }
 
-/* Animaciones mejoradas */
-#crearUsuarioModal .transition-all {
+#crearOperarioModal .transition-all {
     transition: all 0.2s ease-in-out !important;
 }
 
-/* Medidor de contraseña */
-#passwordStrength .bg-red-500 {
-    background-color: #ef4444 !important;
-}
-
-#passwordStrength .bg-orange-500 {
-    background-color: #f97316 !important;
-}
-
-#passwordStrength .bg-yellow-500 {
-    background-color: #eab308 !important;
-}
-
-#passwordStrength .bg-green-500 {
-    background-color: #22c55e !important;
-}
-
-/* Focus mejorado */
-#crearUsuarioModal input:focus,
-#crearUsuarioModal select:focus {
+#crearOperarioModal input:focus,
+#crearOperarioModal select:focus {
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
 }
 
-/* Prevenir scroll del body */
-body.modal-crear-usuario-abierto {
+body.modal-crear-operario-abierto {
     overflow: hidden !important;
     height: 100vh !important;
 }
 </style>
 
-<!-- Script para gestión perfecta del modal -->
 <script>
 // Gestión del scroll del body
-function gestionarScrollModalCrearUsuario(abrir) {
+function gestionarScrollModalCrearOperario(abrir) {
     if (abrir) {
-        document.body.classList.add('modal-crear-usuario-abierto');
+        document.body.classList.add('modal-crear-operario-abierto');
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
     } else {
-        document.body.classList.remove('modal-crear-usuario-abierto');
+        document.body.classList.remove('modal-crear-operario-abierto');
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
     }
 }
 
-// Override de las funciones originales
-const mostrarModalOriginalCrear = window.mostrarModalNuevoUsuario;
-const cerrarModalOriginalCrear = window.cerrarModalCrearUsuario;
-
-window.mostrarModalNuevoUsuario = function() {
-    const modal = document.getElementById('crearUsuarioModal');
+window.mostrarModalNuevoOperario = function() {
+    const modal = document.getElementById('crearOperarioModal');
     if (modal) {
         modal.classList.remove('hidden');
-        gestionarScrollModalCrearUsuario(true);
-
-        // Forzar el foco en el modal
+        gestionarScrollModalCrearOperario(true);
         setTimeout(() => {
             const primerInput = modal.querySelector('input');
             if (primerInput) {
@@ -467,37 +356,22 @@ window.mostrarModalNuevoUsuario = function() {
             }
         }, 100);
     }
-
-    if (mostrarModalOriginalCrear && typeof mostrarModalOriginalCrear === 'function') {
-        mostrarModalOriginalCrear();
-    }
-
-    console.log('📌 Modal crear usuario mostrado con posicionamiento fijo absoluto');
 };
 
-window.cerrarModalCrearUsuario = function() {
-    const modal = document.getElementById('crearUsuarioModal');
+window.cerrarModalCrearOperario = function() {
+    const modal = document.getElementById('crearOperarioModal');
     if (modal) {
         modal.classList.add('hidden');
-        gestionarScrollModalCrearUsuario(false);
+        gestionarScrollModalCrearOperario(false);
     }
-
-    if (cerrarModalOriginalCrear && typeof cerrarModalOriginalCrear === 'function') {
-        cerrarModalOriginalCrear();
-    }
-
-    console.log('📌 Modal crear usuario cerrado');
 };
 
-// Cerrar con ESC
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        const modal = document.getElementById('crearUsuarioModal');
+        const modal = document.getElementById('crearOperarioModal');
         if (modal && !modal.classList.contains('hidden')) {
-            cerrarModalCrearUsuario();
+            cerrarModalCrearOperario();
         }
     }
 });
-
-console.log('🎯 Modal crear usuario con posicionamiento fijo absoluto configurado');
 </script>

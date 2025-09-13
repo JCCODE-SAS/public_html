@@ -1,28 +1,43 @@
 <?php
-require_once __DIR__ . '/../../../configuracion/bd.php';
+require_once __DIR__ . '/../../../../configuracion/bd.php';
+require_once __DIR__ . '/../../../../logs/logger.php';
 
-$id = 0;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $input = json_decode(file_get_contents('php://input'), true);
-    if (isset($input['id'])) {
-        $id = intval($input['id']);
+function send_json($payload = [], $code = 200)
+{
+    if (ob_get_length()) {
+        @ob_end_clean();
     }
-} else if (isset($_POST['id'])) {
-    $id = intval($_POST['id']);
-}
-
-if ($id <= 0) {
-    echo json_encode(['success' => false, 'message' => 'ID inválido']);
+    http_response_code($code);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-$stmt = $conexion->prepare("SELECT id, name, email, role, status, created_at FROM users WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$user = $stmt->get_result()->fetch_assoc();
-
-if ($user) {
-    echo json_encode(['success' => true, 'user' => $user]);
-} else {
-    echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    send_json(['error' => 'Método no permitido'], 405);
 }
+
+$raw = file_get_contents('php://input');
+$data = json_decode($raw, true);
+$src  = is_array($data) ? $data : $_POST;
+
+$usuario  = isset($src['usuario']) ? trim($src['usuario']) : '';
+$operarioId = isset($src['operario_id']) ? (int)$src['operario_id'] : 0;
+
+if ($usuario === '' || !preg_match('/^[a-zA-Z0-9_.-]+$/', $usuario)) {
+    send_json(['exists' => false]);
+}
+
+if ($operarioId > 0) {
+    $stmt = $conexion->prepare("SELECT 1 FROM operadores WHERE usuario = ? AND id != ? LIMIT 1");
+    $stmt->bind_param('si', $usuario, $operarioId);
+} else {
+    $stmt = $conexion->prepare("SELECT 1 FROM operadores WHERE usuario = ? LIMIT 1");
+    $stmt->bind_param('s', $usuario);
+}
+$stmt->execute();
+$exists = (bool)$stmt->get_result()->fetch_row();
+
+writeLog("verificar_usuario.php", "usuario=$usuario exists=" . ($exists ? '1' : '0') . " exclude_id=$operarioId");
+
+send_json(['exists' => $exists]);

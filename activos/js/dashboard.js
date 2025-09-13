@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 Iniciando dashboard...');
-  
-  // Rutas fallback si no están disponibles
+
   if (!window.rutas) {
     window.rutas = {
       usuarios: '/public_html/dashboard/paginas/usuarios/usuarios.php',
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Elementos del DOM
   const sidebar = document.getElementById('sidebar');
   const sidebarToggle = document.getElementById('sidebarToggle');
   const mobileOverlay = document.getElementById('mobileOverlay');
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isMobile = window.innerWidth <= 1024;
   let sidebarCollapsed = false;
 
-  // Toggle sidebar responsive
   function toggleSidebar() {
     if (isMobile) {
       sidebar.classList.toggle('mobile-open');
@@ -46,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ----------- CENTRALIZAR CIERRE DE SESIÓN -----------
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function() {
       const titulo = 'Cerrar sesión';
@@ -63,10 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========== CARGA DINÁMICA DE SECCIONES ==========
   function cargarSeccion(key, container) {
     console.log(`📄 Cargando sección: ${key}`);
-    
+
     const url = window.rutas[key];
     if (!url) {
       console.error(`❌ No existe ruta para: ${key}`);
@@ -77,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 🔄 Mostrar loading específico para usuarios
-    if (key === 'usuarios') {
+    // 🔄 Loading para usuarios y operarios
+    if (key === 'usuarios' || key === 'operarios') {
       container.innerHTML = `
         <div style="
           display: flex; align-items: center; justify-content: center;
@@ -95,10 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
               border-radius: 50%; animation: copflowSpin 1s linear infinite;
             "></div>
             <h3 style="margin: 0 0 8px 0; color: #374151; font-size: 18px; font-weight: 600;">
-              🧑‍💼 Cargando Gestión de Usuarios
+              ${key === 'usuarios' ? '🧑‍💼 Cargando Gestión de Usuarios' : '👷 Cargando Gestión de Operarios'}
             </h3>
             <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px;">
-              CopFlow v3.0 - Sistema de Usuarios
+              CopFlow v3.0 - Sistema de ${key.charAt(0).toUpperCase() + key.slice(1)}
             </p>
             <p style="margin: 0; color: #9ca3af; font-size: 12px;">
               Desarrollado por Diomedez98
@@ -106,8 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-      
-      // Agregar estilos de animación si no existen
       if (!document.getElementById('copflow-loading-styles')) {
         const style = document.createElement('style');
         style.id = 'copflow-loading-styles';
@@ -124,29 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(r => r.text())
       .then(html => {
         container.innerHTML = html;
-        
-        // ✨ INICIALIZACIÓN ESPECÍFICA PARA USUARIOS
-        if (key === 'usuarios') {
-          console.log('🔧 Inicializando módulo de usuarios CopFlow...');
-          
-          // Esperar un momento para que el DOM se estabilice
-          setTimeout(() => {
-            if (window.inicializarUsuarios) {
-              window.inicializarUsuarios();
-              console.log('✅ Módulo de usuarios inicializado correctamente');
-            } else {
-              console.warn('⚠️ Función inicializarUsuarios no encontrada');
-            }
-            
-            // Verificar que la función de crear usuario esté disponible
-            if (window.mostrarModalNuevoUsuario) {
-              console.log('✅ Función mostrarModalNuevoUsuario disponible');
-            } else {
-              console.warn('⚠️ Función mostrarModalNuevoUsuario no encontrada');
-            }
-          }, 200);
-        }
-        
+        setTimeout(() => {
+          if (key === 'usuarios' && typeof window.inicializarUsuarios === 'function') {
+            window.inicializarUsuarios();
+            console.log('✅ Módulo de usuarios inicializado correctamente');
+          }
+          if (key === 'operarios' && typeof window.inicializarOperarios === 'function') {
+            window.inicializarOperarios();
+            console.log('✅ Módulo de operarios inicializado correctamente');
+          }
+        }, 200);
         console.log(`✅ Sección ${key} cargada exitosamente`);
       })
       .catch(err => {
@@ -176,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Inicializar nav links
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -189,26 +168,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Solo cargar si no se ha cargado antes
       if (!container.dataset.loaded) {
         cargarSeccion(key, container);
         container.dataset.loaded = 'true';
       }
 
-      // Activar sección
       navLinks.forEach(l => l.classList.remove('active'));
       contentSections.forEach(sec => sec.classList.remove('active'));
       link.classList.add('active');
       container.classList.add('active');
 
-      // Cerrar sidebar en móvil
       if (isMobile && sidebar.classList.contains('mobile-open')) {
         toggleSidebar();
       }
     });
   });
 
-  // Cargar sección inicial (usuarios)
   setTimeout(() => {
     const activeLink = document.querySelector('.nav-link.active');
     if (activeLink) {
@@ -217,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 100);
 
-  // Responsive
   window.addEventListener('resize', () => {
     const prevMobile = isMobile;
     isMobile = window.innerWidth <= 1024;

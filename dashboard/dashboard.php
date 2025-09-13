@@ -14,52 +14,26 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-
-    <!-- ======================================= -->
-    <!-- CSS STYLES - ORDEN OPTIMIZADO -->
-    <!-- ======================================= -->
-
     <!-- Framework CSS Principal -->
     <link rel="stylesheet" href="../activos/css/output.css" />
-
-    <!-- Estilos del Dashboard -->
     <link rel="stylesheet" href="../activos/css/dashboard.css" />
-
-    <!-- ======================================= -->
-    <!-- EXTERNAL RESOURCES -->
-    <!-- ======================================= -->
-
     <!-- RemixIcon - Iconografía -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 </head>
 
 <body class="font-inter antialiased">
-
-    <!-- ======================================= -->
-    <!-- LAYOUT PRINCIPAL DE LA APLICACIÓN -->
-    <!-- ======================================= -->
-
     <div class="app-layout">
-
-        <!-- ======================================= -->
         <!-- SIDEBAR NAVIGATION -->
-        <!-- ======================================= -->
-
         <aside class="sidebar" id="sidebar">
-
-            <!-- Logo y Branding -->
             <div class="sidebar-header">
                 <div class="logo">
                     <div class="logo-icon">C</div>
                     <div class="logo-text">COPFLOW</div>
                 </div>
             </div>
-
-            <!-- Información del Usuario Autenticado -->
             <div class="user-section">
                 <div class="user-card">
                     <div class="user-avatar">
@@ -70,11 +44,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
             </div>
-
-            <!-- Navegación Principal -->
             <nav class="nav-section">
-
-                <!-- Grupo: Gestión -->
                 <div class="nav-group">
                     <h3 class="nav-group-title">Gestión</h3>
                     <ul class="nav-menu">
@@ -98,8 +68,6 @@ if (!isset($_SESSION['user_id'])) {
                         </li>
                     </ul>
                 </div>
-
-                <!-- Grupo: Configuración -->
                 <div class="nav-group">
                     <h3 class="nav-group-title">Configuración</h3>
                     <ul class="nav-menu">
@@ -118,8 +86,6 @@ if (!isset($_SESSION['user_id'])) {
                     </ul>
                 </div>
             </nav>
-
-            <!-- Footer del Sidebar -->
             <div class="sidebar-footer">
                 <button class="logout-btn" id="logoutBtn">
                     <i class="ri-logout-box-line"></i>
@@ -127,19 +93,10 @@ if (!isset($_SESSION['user_id'])) {
                 </button>
             </div>
         </aside>
-
-        <!-- ======================================= -->
-        <!-- CONTENEDOR PRINCIPAL -->
-        <!-- ======================================= -->
-
         <div class="main-wrapper">
-
-            <!-- Toggle Button para Sidebar Móvil -->
             <button class="sidebar-toggle" id="sidebarToggle">
                 <i class="ri-menu-line"></i>
             </button>
-
-            <!-- Header Principal -->
             <header class="main-header">
                 <div class="header-content">
                     <h1 class="page-title">Dashboard de Gestión COPFLOW</h1>
@@ -149,10 +106,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
             </header>
-
-            <!-- Contenido Principal Dinámico -->
             <main class="main-content">
-                <!-- Secciones que se cargan dinámicamente -->
                 <section id="usuariosSection" class="content-section active"></section>
                 <section id="operariosSection" class="content-section"></section>
                 <section id="reportesSection" class="content-section"></section>
@@ -160,14 +114,10 @@ if (!isset($_SESSION['user_id'])) {
                 <section id="configuracionSection" class="content-section"></section>
             </main>
         </div>
-
-        <!-- Overlay para Móviles -->
         <div class="mobile-overlay" id="mobileOverlay"></div>
     </div>
 
-    <!-- ======================================= -->
     <!-- MODALES BASE DEL SISTEMA -->
-    <!-- ======================================= -->
     <?php
     $modales_base = [
         'notificacion_confirmacion.php',
@@ -180,9 +130,7 @@ if (!isset($_SESSION['user_id'])) {
     }
     ?>
 
-    <!-- ======================================= -->
     <!-- MODALES ESPECÍFICOS DE USUARIOS -->
-    <!-- ======================================= -->
     <?php
     $modales_usuarios = [
         'ver_usuario_modal.php'   => 'Visualización usuarios',
@@ -199,14 +147,27 @@ if (!isset($_SESSION['user_id'])) {
     }
     ?>
 
-    <!-- ======================================= -->
+    <!-- MODALES ESPECÍFICOS DE OPERARIOS -->
+    <?php
+    $modales_operarios = [
+        'ver_operario_modal.php'   => 'Visualización operarios',
+        'crear_operario_modal.php' => 'Creación operarios',
+        'editar_operario_modal.php' => 'Edición operarios'
+    ];
+    foreach ($modales_operarios as $archivo => $desc) {
+        $p = __DIR__ . '/paginas/operarios/modales/' . $archivo;
+        if (file_exists($p)) {
+            echo "<!-- $desc -->\n";
+            include_once $p;
+            echo "\n";
+        }
+    }
+    ?>
+
     <!-- SCRIPT PRINCIPAL DEL DASHBOARD -->
-    <!-- ======================================= -->
     <script src="../activos/js/dashboard.js"></script>
 
-    <!-- ======================================= -->
     <!-- SCRIPTS DE GESTIÓN DE USUARIOS -->
-    <!-- ======================================= -->
     <?php
     $scripts = [
         'usuarios.js',
@@ -223,23 +184,29 @@ if (!isset($_SESSION['user_id'])) {
     }
     ?>
 
-    <!-- =============================================================== -->
-    <!-- SCRIPTS DE INICIALIZACIÓN Y VERIFICACIÓN -->
-    <!-- =============================================================== -->
+    <!-- SCRIPTS DE GESTIÓN DE OPERARIOS -->
+    <?php
+    $scripts_operarios = [
+        'operarios.js',
+        'ver_operarios.js',
+        'crear_operarios.js',
+        'editar_operarios.js'
+    ];
+    $base_operarios = '/public_html/dashboard/paginas/operarios/comportamientos/';
+    foreach ($scripts_operarios as $fichero) {
+        $ruta = $_SERVER['DOCUMENT_ROOT'] . $base_operarios . $fichero;
+        if (file_exists($ruta)) {
+            echo "    <script src=\"$base_operarios$fichero\"></script>\n";
+        }
+    }
+    ?>
 
     <script>
-    //===============================================================
-    // SISTEMA DE VERIFICACIÓN E INICIALIZACIÓN
-    //===============================================================
-
+    // INICIALIZACIÓN Y VERIFICACIÓN DEL DASHBOARD
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 Inicializando Dashboard COPFLOW v2.1...');
         console.log('👤 Usuario:', '<?= htmlspecialchars($_SESSION['user_name']) ?>');
         console.log('🔐 Rol:', '<?= htmlspecialchars($_SESSION['user_role'] ?? 'usuario') ?>');
-
-        // ======================================= 
-        // VERIFICACIÓN DE FUNCIONES CRÍTICAS
-        // ======================================= 
 
         const funcionesCriticas = [
             'mostrarModalNuevoUsuario',
@@ -247,7 +214,13 @@ if (!isset($_SESSION['user_id'])) {
             'crearUsuario',
             'limpiarFormularioCrear',
             'recargarTablaUsuarios',
-            'actualizarEstadisticasUsuarios'
+            'actualizarEstadisticasUsuarios',
+            'mostrarModalNuevoOperario',
+            'cerrarModalCrearOperario',
+            'crearOperario',
+            'limpiarFormularioCrearOperario',
+            'recargarTablaOperarios',
+            'actualizarEstadisticasOperarios'
         ];
 
         const funcionesFaltantes = [];
@@ -261,7 +234,6 @@ if (!isset($_SESSION['user_id'])) {
             }
         });
 
-        // Log de estado de funciones
         console.log('📋 Estado de funciones del sistema:');
         funcionesDisponibles.forEach(funcion => {
             console.log(`  ✅ ${funcion}: Disponible`);
@@ -274,40 +246,31 @@ if (!isset($_SESSION['user_id'])) {
             });
         }
 
-        // ======================================= 
-        // EVENTOS GLOBALES DEL DASHBOARD
-        // ======================================= 
-
-        // Listener para actualización automática de tabla de usuarios
         document.addEventListener('tablaUsuariosActualizada', function(e) {
             console.log('🎉 Tabla de usuarios actualizada exitosamente:', e.detail);
-
-            // Mostrar notificación temporal si está disponible
             if (typeof mostrarNotificacionTemporal === 'function') {
                 mostrarNotificacionTemporal('Lista de usuarios actualizada', 'success', 2000);
             }
         });
 
-        // Manejo de errores globales
+        document.addEventListener('tablaOperariosActualizada', function(e) {
+            console.log('🎉 Tabla de operarios actualizada exitosamente:', e.detail);
+            if (typeof mostrarNotificacionTemporal === 'function') {
+                mostrarNotificacionTemporal('Lista de operarios actualizada', 'success', 2000);
+            }
+        });
+
         window.addEventListener('error', function(e) {
             console.error('❌ Error global capturado:', e.error);
-
-            // Log adicional para debugging
             console.error('📍 Archivo:', e.filename);
             console.error('📍 Línea:', e.lineno);
             console.error('📍 Columna:', e.colno);
         });
 
-        // ======================================= 
-        // INICIALIZACIÓN FINAL
-        // ======================================= 
-
         setTimeout(() => {
             console.log('✅ Dashboard COPFLOW v2.1 inicializado correctamente');
             console.log('🔧 Funciones disponibles:', funcionesDisponibles.length + '/' +
                 funcionesCriticas.length);
-
-            // Trigger evento de dashboard listo
             document.dispatchEvent(new CustomEvent('dashboardReady', {
                 detail: {
                     version: '2.1',
@@ -321,32 +284,17 @@ if (!isset($_SESSION['user_id'])) {
         }, 100);
     });
 
-    //===============================================================
     // FUNCIÓN DE RESPALDO PARA RECARGAR SECCIÓN USUARIOS
-    //===============================================================
-
-    /**
-     * Función de respaldo global para recargar sección de usuarios
-     * Se ejecuta cuando las funciones específicas no están disponibles
-     */
     window.recargarSeccionUsuarios = function() {
-        console.log("🔄 Recargando sección completa de usuarios...");
-
         const usuariosSection = document.getElementById('usuariosSection');
         if (!usuariosSection) {
             console.error("❌ Sección de usuarios no encontrada");
             return;
         }
-
-        // Mostrar indicador de carga
-        usuariosSection.innerHTML = `
-            <div class="flex items-center justify-center p-8">
-                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                <span class="ml-2 text-gray-600">Actualizando lista de usuarios...</span>
-            </div>
-        `;
-
-        // Cargar contenido actualizado
+        usuariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <span class="ml-2 text-gray-600">Actualizando lista de usuarios...</span>
+        </div>`;
         fetch('/public_html/dashboard/paginas/usuarios/usuarios.php')
             .then(response => {
                 if (!response.ok) {
@@ -356,16 +304,11 @@ if (!isset($_SESSION['user_id'])) {
             })
             .then(html => {
                 usuariosSection.innerHTML = html;
-                console.log("✅ Sección de usuarios recargada exitosamente");
-
-                // Reinicializar funciones si están disponibles
                 if (typeof window.inicializarUsuarios === 'function') {
                     setTimeout(() => {
                         window.inicializarUsuarios();
                     }, 100);
                 }
-
-                // Trigger evento de actualización
                 document.dispatchEvent(new CustomEvent('tablaUsuariosActualizada', {
                     detail: {
                         method: 'seccionCompleta',
@@ -374,28 +317,62 @@ if (!isset($_SESSION['user_id'])) {
                 }));
             })
             .catch(error => {
-                console.error("❌ Error al recargar sección de usuarios:", error);
-
-                usuariosSection.innerHTML = `
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                        <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
-                        <p class="text-red-700 mb-2">Error al cargar la lista de usuarios</p>
-                        <button onclick="window.location.reload()" 
-                                class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
-                            Recargar página
-                        </button>
-                    </div>
-                `;
+                usuariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+                    <p class="text-red-700 mb-2">Error al cargar la lista de usuarios</p>
+                    <button onclick="window.location.reload()" 
+                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                        Recargar página
+                    </button>
+                </div>`;
             });
     };
 
-    //===============================================================
-    // UTILIDADES GLOBALES
-    //===============================================================
+    // FUNCIÓN DE RESPALDO PARA RECARGAR SECCIÓN OPERARIOS
+    window.recargarSeccionOperarios = function() {
+        const operariosSection = document.getElementById('operariosSection');
+        if (!operariosSection) {
+            console.error("❌ Sección de operarios no encontrada");
+            return;
+        }
+        operariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+            <span class="ml-2 text-gray-600">Actualizando lista de operarios...</span>
+        </div>`;
+        fetch('/public_html/dashboard/paginas/operarios/operarios.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                operariosSection.innerHTML = html;
+                if (typeof window.inicializarOperarios === 'function') {
+                    setTimeout(() => {
+                        window.inicializarOperarios();
+                    }, 100);
+                }
+                document.dispatchEvent(new CustomEvent('tablaOperariosActualizada', {
+                    detail: {
+                        method: 'seccionCompleta',
+                        timestamp: new Date()
+                    }
+                }));
+            })
+            .catch(error => {
+                operariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+                    <p class="text-red-700 mb-2">Error al cargar la lista de operarios</p>
+                    <button onclick="window.location.reload()" 
+                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                        Recargar página
+                    </button>
+                </div>`;
+            });
+    };
 
-    /**
-     * Función para mostrar notificaciones temporales
-     */
+    // UTILIDAD: Notificaciones temporales
     window.mostrarNotificacionTemporal = function(mensaje, tipo = 'info', duracion = 3000) {
         const colores = {
             'success': 'bg-green-500',
@@ -411,12 +388,10 @@ if (!isset($_SESSION['user_id'])) {
 
         document.body.appendChild(notificacion);
 
-        // Animar entrada
         setTimeout(() => {
             notificacion.classList.remove('translate-x-full');
         }, 100);
 
-        // Animar salida y remover
         setTimeout(() => {
             notificacion.classList.add('translate-x-full');
             setTimeout(() => {
@@ -427,17 +402,10 @@ if (!isset($_SESSION['user_id'])) {
         }, duracion);
     };
     </script>
-
 </body>
 
 </html>
-
 <?php
-//===============================================================
-// LOG DE FINALIZACIÓN
-//===============================================================
-
-// Log de carga exitosa del dashboard
 if (function_exists('writeLog')) {
     writeLog("dashboard.php", "Dashboard cargado exitosamente para usuario: " . $_SESSION['user_name'] . " (ID: " . $_SESSION['user_id'] . ")");
 }

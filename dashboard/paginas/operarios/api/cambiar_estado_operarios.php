@@ -1,13 +1,13 @@
 <?php
 require_once __DIR__ . '/../../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../../logs/logger.php';
-require_once __DIR__ . '/limpiar_cache_stats.php'; // ← AÑADIR ESTA LÍNEA
+require_once __DIR__ . '/limpiar_cache_stats.php'; // ← Limpia cache de stats
 
 function send_json($success, $message = '')
 {
     if (ob_get_length()) ob_end_clean();
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode(['success' => $success, 'message' => $message]);
+    echo json_encode(['success' => $success, 'message' => $message], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -18,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     writeLog("cambiar_estado_operarios.php", "POST recibido. Data: " . json_encode($data) . " | _POST: " . json_encode($_POST));
 
     if ($data && isset($data['id'], $data['nuevo_estado'])) {
-        $id = $data['id'];
+        $id = (int)$data['id'];
         $nuevo_estado = $data['nuevo_estado'];
     } else {
-        $id = $_POST['id'] ?? null;
+        $id = isset($_POST['id']) ? (int)$_POST['id'] : null;
         $nuevo_estado = $_POST['disponible'] ?? null;
     }
 
     writeLog("cambiar_estado_operarios.php", "Procesando id: $id, nuevo_estado: $nuevo_estado");
 
-    if ($id && $nuevo_estado) {
+    if ($id && ($nuevo_estado === '1' || $nuevo_estado === '0')) {
         $stmt = $conexion->prepare("UPDATE operadores SET disponible = ? WHERE id = ?");
         $stmt->bind_param("si", $nuevo_estado, $id);
 
@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         writeLog("cambiar_estado_operarios.php", "Datos incompletos. id: $id, nuevo_estado: $nuevo_estado");
         if ($data) {
-            send_json(false, 'Datos incompletos.');
+            send_json(false, 'Datos incompletos o estado inválido.');
         } else {
-            die("❌ Datos incompletos.");
+            die("❌ Datos incompletos o estado inválido.");
         }
     }
 } else {
