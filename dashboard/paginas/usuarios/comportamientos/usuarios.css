@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.users-module {
+    font-family: 'Inter', sans-serif;
+}
+
+/* ======================================= */
+/* GLASS EFFECT PARA MODALES - OPTIMIZADO */
+/* ======================================= */
+
+.glass-effect {
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+/* ======================================= */
+/* RESTO DE TU CSS ACTUAL */
+/* ======================================= */
+
+.glass-card {
+    backdrop-filter: blur(20px);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.glass-header {
+    backdrop-filter: blur(15px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-glass {
+    backdrop-filter: blur(10px);
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.1), rgba(102, 126, 234, 0.05));
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.table-glass th {
+    font-weight: 700;
+    color: #6b7280; /* Color del texto */
+    background: #f3f4f6; /* Color neutro plano */
+}
+
+.table-glass table {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 16px 0 rgba(80, 80, 160, 0.08);
+}
+.table-glass th, .table-glass td {
+    border-bottom: 1px solid #f3f4f6;
+}
+.table-glass th {
+    font-weight: 700;
+    color: #133987; /* Color del texto */
+    background: #ffffff; /* Color de fondo blanco sólido */
+}
+
+.table-glass tr:last-child td {
+    border-bottom: none;
+}
+.table-glass tbody tr:hover {
+    background: linear-gradient(90deg, #e0e7ff 0%, #f0f3ff 100%);
+    transition: background 0.2s;
+}
+.table-glass .w-10.h-10 {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 2px 8px 0 rgba(80,80,160,0.08);
+}
+
+/* ================================================================== */
+/* CORRECCIÓN CRÍTICA PARA MODALES - RENDERIZACIÓN PERFECTA */
+/* ================================================================== */
+
+/* Forzar visibilidad y posicionamiento correcto de modales */
+#modalExito,
+#modalError,
+#modalConfirmacion,
+#crearUsuarioModal,
+#verUsuarioModal,
+#editarUsuarioModal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1060 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+}
+
+/* Overlay de fondo más visible */
+#modalExito,
+#modalError,
+#modalConfirmacion,
+#crearUsuarioModal,
+#verUsuarioModal,
+#editarUsuarioModal {
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Contenido del modal con glassmorphism perfecto */
+#modalExito .modal-content,
+#modalError .modal-content,
+#modalConfirmacion .modal-content,
+#crearUsuarioModal .modal-content,
+#crearUsuarioModal .rounded-3xl,
+#verUsuarioModal .modal-content,
+#verUsuarioModal .rounded-3xl,
+#editarUsuarioModal .modal-content,
+#editarUsuarioModal .rounded-3xl {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 8px 32px 0 rgba(31, 38, 135, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    border-radius: 1.5rem !important;
+    max-height: 95vh !important;
+    overflow-y: auto !important;
+    width: 100% !important;
+    max-width: 500px !important;
+}
+
+/* Modales de gestión más anchos */
+#crearUsuarioModal .modal-content,
+#crearUsuarioModal .rounded-3xl,
+#verUsuarioModal .modal-content,
+#verUsuarioModal .rounded-3xl,
+#editarUsuarioModal .modal-content,
+#editarUsuarioModal .rounded-3xl {
+    max-width: 600px !important;
+}
+
+/* Estados de visibilidad */
+#modalExito.hidden,
+#modalError.hidden,
+#modalConfirmacion.hidden,
+#crearUsuarioModal.hidden,
+#verUsuarioModal.hidden,
+#editarUsuarioModal.hidden {
+    display: none !important;
+}
+
+#modalExito.opacity-0,
+#modalError.opacity-0,
+#modalConfirmacion.opacity-0 {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+#modalExito:not(.hidden):not(.opacity-0),
+#modalError:not(.hidden):not(.opacity-0),
+#modalConfirmacion:not(.hidden):not(.opacity-0),
+#crearUsuarioModal:not(.hidden),
+#verUsuarioModal:not(.hidden),
+#editarUsuarioModal:not(.hidden) {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Scrollbar personalizado para modales */
+#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar,
+#verUsuarioModal .overflow-y-auto::-webkit-scrollbar,
+#editarUsuarioModal .overflow-y-auto::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-track,
+#verUsuarioModal .overflow-y-auto::-webkit-scrollbar-track,
+#editarUsuarioModal .overflow-y-auto::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 3px !important;
+}
+
+#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb,
+#verUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb,
+#editarUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 3px !important;
+}
+
+#crearUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb:hover,
+#verUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb:hover,
+#editarUsuarioModal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Responsive para modales */
+@media (max-width: 768px) {
+    #modalExito,
+    #modalError,
+    #modalConfirmacion,
+    #crearUsuarioModal,
+    #verUsuarioModal,
+    #editarUsuarioModal {
+        padding: 0.5rem !important;
+    }
+    
+    #modalExito .modal-content,
+    #modalError .modal-content,
+    #modalConfirmacion .modal-content,
+    #crearUsuarioModal .modal-content,
+    #crearUsuarioModal .rounded-3xl,
+    #verUsuarioModal .modal-content,
+    #verUsuarioModal .rounded-3xl,
+    #editarUsuarioModal .modal-content,
+    #editarUsuarioModal .rounded-3xl {
+        max-width: calc(100vw - 1rem) !important;
+        max-height: 95vh !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #modalExito,
+    #modalError,
+    #modalConfirmacion,
+    #crearUsuarioModal,
+    #verUsuarioModal,
+    #editarUsuarioModal {
+        padding: 0.25rem !important;
+    }
+    
+    #modalExito .modal-content,
+    #modalError .modal-content,
+    #modalConfirmacion .modal-content,
+    #crearUsuarioModal .modal-content,
+    #crearUsuarioModal .rounded-3xl,
+    #verUsuarioModal .modal-content,
+    #verUsuarioModal .rounded-3xl,
+    #editarUsuarioModal .modal-content,
+    #editarUsuarioModal .rounded-3xl {
+        max-width: calc(100vw - 0.5rem) !important;
+        max-height: 98vh !important;
+        border-radius: 1rem !important;
+    }
+}
+
+/* ======================================= */
+/* RESTO DE TU CSS RESPONSIVE Y DEMÁS ESTILOS */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    .table-glass th, 
+    .table-glass td {
+        padding: 0.5em 0.3em;
+        font-size: 0.95em;
+    }
+
+    .table-glass .w-10.h-10 {
+        min-width: 32px;
+        min-height: 32px;
+        font-size: 0.95em;
+    }
+
+    .table-glass th:last-child,
+    .table-glass td:last-child {
+        width: 260px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .acciones-btn-group {
+        flex-direction: column;
+        gap: 0.2em;
+        min-width: auto;
+        width: 100%;
+        align-items: stretch;
+    }
+    .acciones-btn-group .action-btn {
+        width: 100% !important;
+        min-width: 60px !important;
+        max-width: none !important;
+        height: 32px !important;
+        font-size: 0.95em !important;
+        padding: 0 !important;
+    }
+
+    .btn-clear {
+        width: 100% !important;
+        min-width: auto !important;
+        padding: 0.65rem 1rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.35em 0.8em;
+    border-radius: 999px;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: #f3f4f6;
+    color: #444;
+    border: 1px solid #e5e7eb;
+    backdrop-filter: blur(10px);
+}
+
+.status-active {
+    background: linear-gradient(90deg, #34d399 0%, #10b981 100%);
+    color: #fff;
+    border: none;
+}
+
+.status-inactive {
+    background: linear-gradient(90deg, #f87171 0%, #ef4444 100%);
+    color: #fff;
+    border: none;
+}
+
+.status-pending {
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+    color: #fff;
+    border: none;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 0.35em 0.8em;
+    border-radius: 999px;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: #f3f4f6;
+    color: #444;
+    border: 1px solid #e5e7eb;
+    backdrop-filter: blur(8px);
+}
+
+.role-admin {
+    background: linear-gradient(90deg, #a78bfa 0%, #7c3aed 100%);
+    color: #fff;
+    border: none;
+}
+
+.role-user {
+    background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    color: #fff;
+    border: none;
+}
+
+.role-moderator {
+    background: linear-gradient(90deg, #34d399 0%, #059669 100%);
+    color: #fff;
+    border: none;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.35em 0.7em;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border: none;
+    background: #f3f4f6;
+    color: #444;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    min-width: 70px;
+    min-height: 32px;
+    padding: 0.35em 1em;
+    font-size: 0.95em;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 72px !important;
+    min-height: 34px !important;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+    justify-content: center;
+}
+
+.acciones-btn-group {
+    display: flex;
+    gap: 0.4em;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    padding: 0.15em 0;
+}
+
+.acciones-btn-group .action-btn {
+    flex: 1 1 0;
+    min-width: 60px;
+    max-width: 80px;
+    height: 32px;
+    padding: 0;
+    font-size: 0.80em;
+    font-weight: 500;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+    margin: 0;
+    box-sizing: border-box;
+    /* Elimina padding extra y asegura tamaño compacto */
+}
+
+.action-btn.btn-view {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.action-btn.btn-edit {
+    background: #fbbf24;
+    color: #92400e;
+}
+
+.action-btn.btn-toggle {
+    background: #34d399;
+    color: #065f46;
+}
+
+.action-btn:hover {
+    opacity: 0.85;
+}
+
+.action-btn svg {
+    vertical-align: middle;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #2563eb;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+}
+
+.btn-view {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #059669;
+}
+
+.btn-view:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+}
+
+.btn-toggle {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #d97706;
+}
+
+.btn-toggle:hover {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+}
+
+.btn-add {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.search-input {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.filter-select {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    color: #4a5568;
+}
+
+.pagination-btn:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(102, 126, 234, 0.05));
+    transform: translateY(-1px);
+}
+
+.pagination-active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.stats-card {
+    backdrop-filter: blur(15px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.empty-state {
+    backdrop-filter: blur(15px);
+    background: linear-gradient(145deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+    border: 1px solid rgba(251, 191, 36, 0.2);
+}
