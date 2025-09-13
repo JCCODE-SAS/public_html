@@ -151,9 +151,9 @@ if (!isset($_SESSION['user_id'])) {
     <?php
     // AJUSTE: Incluidos igual que usuarios, así SIEMPRE están en el DOM global.
     $modales_operarios = [
-        'ver_operario_modal.php'   => 'Visualización operarios',
-        'crear_operario_modal.php' => 'Creación operarios',
-        'editar_operario_modal.php' => 'Edición operarios'
+        'ver_operarios_modal.php'   => 'Visualización operarios',
+        'crear_operarios_modal.php' => 'Creación operarios',
+        'editar_operarios_modal.php' => 'Edición operarios'
     ];
     foreach ($modales_operarios as $archivo => $desc) {
         $p = __DIR__ . '/paginas/operarios/modales/' . $archivo;

@@ -1,6 +1,6 @@
 <?php
 //===============================================================
-// VER_OPERARIO_MODAL.PHP - Modal de Visualización de Operario
+// VER_OPERARIOS_MODAL.PHP - Modal de Visualización de Operario
 //===============================================================
 // Adaptado de usuarios, para tabla operadores.
 //===============================================================
