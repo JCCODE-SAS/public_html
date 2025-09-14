@@ -79,16 +79,23 @@ try {
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
     if (!$passwordHash) throw new Exception('Error al encriptar la contraseña');
 
-    // Insertar operario
-    $stmt = $conexion->prepare("INSERT INTO operadores (nombre, usuario, email, password, disponible, creado) VALUES (?, ?, ?, ?, ?, NOW())");
+    // Insertar operario (agregar actualizado = NOW())
+    $stmt = $conexion->prepare("INSERT INTO operadores (nombre, usuario, email, password, disponible, creado, actualizado) VALUES (?, ?, ?, ?, ?, NOW(), NOW())");
     $stmt->bind_param('ssssi', $nombre, $usuario, $email, $passwordHash, $disponible);
     if (!$stmt->execute()) throw new Exception('Error al crear operario: ' . $stmt->error);
     $operarioId = $conexion->insert_id;
     $stmt->close();
 
+    // Obtener el operario recién creado para respuesta instantánea en la tabla
+    $stmt = $conexion->prepare("SELECT id, nombre, usuario, email, disponible, creado, actualizado FROM operadores WHERE id = ?");
+    $stmt->bind_param('i', $operarioId);
+    $stmt->execute();
+    $nuevoOperario = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
     // Log y respuesta
     writeLog("crear_operario", "Operario creado exitosamente - ID: $operarioId, Usuario: $usuario");
-    send_json(['success' => true, 'operario_id' => $operarioId, 'message' => 'Operario creado exitosamente']);
+    send_json(['success' => true, 'operario' => $nuevoOperario, 'message' => 'Operario creado exitosamente']);
 } catch (Exception $e) {
     writeLog("crear_operario_error", "Error: " . $e->getMessage());
     send_json(['success' => false, 'message' => $e->getMessage()], 400);

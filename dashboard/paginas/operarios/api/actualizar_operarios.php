@@ -1,10 +1,4 @@
 <?php
-//===============================================================
-// ACTUALIZAR_OPERARIO.PHP - API de Edición de Operario COPFLOW
-//===============================================================
-ini_set('display_errors', 0);
-error_reporting(0);
-
 require_once __DIR__ . '/../../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../../logs/logger.php';
 
@@ -17,14 +11,9 @@ function send_json($payload = [], $code = 200)
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    send_json(['success' => false, 'message' => 'Método no permitido'], 405);
-}
-
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    send_json(['success' => false, 'message' => 'Usuario no autenticado'], 401);
-}
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') send_json(['success' => false, 'message' => 'Método no permitido'], 405);
+if (!isset($_SESSION['user_id'])) send_json(['success' => false, 'message' => 'Usuario no autenticado'], 401);
 
 try {
     $input = file_get_contents('php://input');
@@ -59,8 +48,15 @@ try {
     if (!$stmt->execute()) throw new Exception('Error al actualizar operario: ' . $stmt->error);
     $stmt->close();
 
+    // Devuelve el operario actualizado para el JS
+    $stmt = $conexion->prepare("SELECT id, nombre, usuario, email, disponible, creado, actualizado FROM operadores WHERE id = ?");
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $operario = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
     writeLog("actualizar_operario", "Operario actualizado - ID: $id, Usuario: $usuario");
-    send_json(['success' => true, 'message' => 'Operario actualizado correctamente']);
+    send_json(['success' => true, 'message' => 'Operario actualizado correctamente', 'operario' => $operario]);
 } catch (Exception $e) {
     writeLog("actualizar_operario_error", "Error: " . $e->getMessage());
     send_json(['success' => false, 'message' => $e->getMessage()], 400);

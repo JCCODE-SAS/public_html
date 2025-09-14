@@ -2,11 +2,7 @@
  * ===============================================================
  * EDITAR_OPERARIO.JS - Modal de Edición de Operarios COPFLOW
  * ===============================================================
- * 
- * Módulo robusto con integración de modales universales.
- * Carga datos, valida, guarda y actualiza la UI con feedback visual.
- * Manejo robusto de errores y recarga la tabla tras guardar.
- * 
+ * Edición con actualización instantánea de fila en la tabla.
  * 👨‍💻 Diomedez98 (JCCODE-SAS)
  * ===============================================================
  */
@@ -104,7 +100,7 @@
         });
     }
 
-    // Guardar cambios del operario y recargar tabla
+    // Guardar cambios del operario y actualizar la fila en la tabla
     window.guardarCambiosOperario = function() {
         if (!validarFormulario()) return;
         const datosOperario = obtenerDatosFormulario();
@@ -134,16 +130,10 @@
             }
             mostrarModalExito("¡Operario actualizado!", "Los cambios se guardaron correctamente.");
             cerrarModalForzado();
-            // --- Recargar la tabla y estadísticas tras guardar ---
-            setTimeout(function() {
-                if (typeof window.recargarTablaOperarios === 'function') {
-                    window.recargarTablaOperarios();
-                } else if (typeof window.inicializarOperarios === 'function') {
-                    window.inicializarOperarios(); // Fallback adicional
-                } else {
-                    window.location.reload();
-                }
-            }, 600); // Espera breve para que el modal se cierre visualmente
+            // --- Actualiza SOLO la fila modificada ---
+            if (data.operario) {
+                actualizarFilaOperarioEnTabla(data.operario);
+            }
         })
         .catch(error => {
             mostrarModalError("Error", "Error de conexión al guardar cambios: " + error.message);
@@ -152,6 +142,47 @@
             mostrarCargandoBoton(false);
         });
     };
+
+    // Actualiza la fila en la tabla sin recargar toda la tabla
+    function actualizarFilaOperarioEnTabla(operario) {
+        const fila = document.querySelector(`tr[data-operario-id="${operario.id}"]`);
+        if (!fila) return;
+
+        // Nombre y usuario
+        fila.querySelector('td:nth-child(2) .text-sm').textContent = operario.nombre;
+        fila.querySelector('td:nth-child(2) .text-xs').textContent = operario.usuario;
+        fila.querySelector('td:nth-child(3) .text-blue-800').textContent = operario.usuario;
+        fila.querySelector('td:nth-child(4) .text-xs').textContent = operario.email;
+
+        // Estado
+        const estadoSpan = fila.querySelector('td.user-status span');
+        estadoSpan.textContent = operario.disponible == 1 ? 'Disponible' : 'No disponible';
+        estadoSpan.className = operario.disponible == 1 ?
+            'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800' :
+            'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800';
+        // Cambia el punto de color
+        if (estadoSpan.querySelector('span')) {
+            estadoSpan.querySelector('span').className = operario.disponible == 1 ?
+                'w-1.5 h-1.5 mr-1.5 rounded-full bg-green-600' :
+                'w-1.5 h-1.5 mr-1.5 rounded-full bg-red-600';
+        }
+
+        // Fecha de última edición
+        const tdEdicion = fila.querySelector('td:nth-child(7)');
+        if (operario.actualizado) {
+            tdEdicion.innerHTML = `<span class="bg-blue-50 text-blue-800 px-2 py-1 rounded text-xs">
+                <i class="ri-history-line mr-1"></i>
+                ${formateaFecha(operario.actualizado)}
+            </span>`;
+        } else {
+            tdEdicion.innerHTML = `<span class="text-gray-400 text-xs">Sin edición</span>`;
+        }
+    }
+
+    function formateaFecha(fechaStr) {
+        const fecha = new Date(fechaStr.replace(' ', 'T'));
+        return fecha.toLocaleDateString() + ' ' + fecha.toLocaleTimeString().slice(0,5);
+    }
 
     // Manejo del formulario
     function llenarFormulario(operario) {
