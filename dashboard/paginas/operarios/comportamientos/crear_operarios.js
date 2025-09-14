@@ -2,18 +2,16 @@
 // CREAR_OPERARIO.JS v2.1 - Lógica de Creación de Operarios COPFLOW
 //===============================================================
 // Adaptado para la tabla operadores. Usar campos: nombre, usuario, email, password, disponible.
+// Ahora actualiza la tabla al instante con el nuevo operario y muestra el campo "actualizado".
 //===============================================================
 
 (function() {
     "use strict";
 
-    //===============================================================
-    // CONFIGURACIÓN Y VARIABLES GLOBALES
-    //===============================================================
     let validacionEstado = {
         nombre: false,
         usuario: false,
-        email: true, // email es opcional, no bloquea el botón
+        email: true,
         password: false,
         confirmarPassword: false
     };
@@ -42,9 +40,6 @@
         }
     }
 
-    //===============================================================
-    // FUNCIONES PRINCIPALES DEL MODAL
-    //===============================================================
     window.mostrarModalNuevoOperario = function() {
         log("Abriendo modal de creación de operario");
         limpiarFormularioCrearOperario();
@@ -100,27 +95,21 @@
         log("Formulario limpiado correctamente", 'success');
     };
 
-    //===============================================================
-    // SISTEMA DE VALIDACIONES EN TIEMPO REAL
-    //===============================================================
     function inicializarValidaciones() {
         log("Inicializando sistema de validaciones");
 
-        // Validación de nombre
         const nombreInput = document.getElementById('nombreOperario');
         if (nombreInput) {
             nombreInput.addEventListener('input', function() { validarNombre(this.value); });
             nombreInput.addEventListener('blur', function() { if (this.value.length > 0) validarNombre(this.value); });
         }
 
-        // Validación de usuario (único)
         const usuarioInput = document.getElementById('usuarioOperario');
         if (usuarioInput) {
             usuarioInput.addEventListener('input', function() { validarUsuario(this.value); });
             usuarioInput.addEventListener('blur', function() { if (this.value.length > 0) validarUsuario(this.value); });
         }
 
-        // Validación de email (opcional, pero si se ingresa debe ser formato correcto)
         const emailInput = document.getElementById('emailOperario');
         if (emailInput) {
             emailInput.addEventListener('input', function() {
@@ -144,7 +133,6 @@
             });
         }
 
-        // Validación de contraseña
         const passwordInput = document.getElementById('passwordOperario');
         if (passwordInput) {
             passwordInput.addEventListener('input', function() {
@@ -153,7 +141,6 @@
             });
         }
 
-        // Validación de confirmación de contraseña
         const confirmarInput = document.getElementById('confirmarPasswordOperario');
         if (confirmarInput) {
             confirmarInput.addEventListener('input', function() {
@@ -163,7 +150,6 @@
         log("Sistema de validaciones inicializado correctamente", 'success');
     }
 
-    // Validación de nombre
     function validarNombre(nombre) {
         const campo = document.getElementById('nombreOperario');
         const errorDiv = document.getElementById('errorNombre');
@@ -202,11 +188,8 @@
         log(`Nombre validado: "${nombre}"`, 'success');
     }
 
-    // Validación de usuario único
     function validarUsuario(usuario) {
         const campo = document.getElementById('usuarioOperario');
-        // Si quieres verificar en la BD, aquí deberías hacer fetch a /api/verificar_usuario.php
-        // Por ahora solo validación de formato
         campo.classList.remove('border-red-500', 'border-green-500');
         if (usuario.length < 4) {
             campo.classList.add('border-red-500');
@@ -232,7 +215,6 @@
         log(`Usuario validado: "${usuario}"`, 'success');
     }
 
-    // Validación de email (opcional)
     function validarEmail(email) {
         const campo = document.getElementById('emailOperario');
         if (email.length === 0) {
@@ -253,7 +235,6 @@
         log(`Email validado: "${email}"`, 'success');
     }
 
-    // Validación de contraseña
     function validarPassword(password) {
         const campo = document.getElementById('passwordOperario');
         const errorDiv = document.getElementById('errorPassword');
@@ -287,7 +268,6 @@
         log(`Contraseña validada (fortaleza: ${strength}/4)`, 'success');
     }
 
-    // Validar confirmación
     function validarConfirmarPassword() {
         const password = document.getElementById('passwordOperario').value;
         const confirmar = document.getElementById('confirmarPasswordOperario').value;
@@ -314,9 +294,6 @@
         log("Confirmación de contraseña validada", 'success');
     }
 
-    //===============================================================
-    // UTILIDADES DE VALIDACIÓN
-    //===============================================================
     function limpiarEstadosCampo(campo, errorDiv, validDiv) {
         if (campo) campo.classList.remove('border-red-500', 'border-green-500');
         if (errorDiv) errorDiv.classList.add('hidden');
@@ -356,9 +333,6 @@
         validacionEstado.email = true;
     }
 
-    //===============================================================
-    // SISTEMA DE FORTALEZA DE CONTRASEÑA
-    //===============================================================
     function calcularFortalezaPassword(password) {
         let score = 0;
         if (password.length >= 8) score++;
@@ -398,9 +372,6 @@
         }
     }
 
-    //===============================================================
-    // UTILIDADES DE INTERFAZ
-    //===============================================================
     window.togglePasswordVisibility = function(inputId, iconId) {
         const input = document.getElementById(inputId);
         const icon = document.getElementById(iconId);
@@ -432,8 +403,9 @@
     }
 
     //===============================================================
-    // FUNCIÓN PRINCIPAL DE CREACIÓN CON RECARGA AUTOMÁTICA
+    // CREACIÓN DE OPERARIO Y ACTUALIZACIÓN INSTANTÁNEA DE LA TABLA
     //===============================================================
+
     window.crearOperario = function() {
         log("Iniciando proceso de creación de operario");
         if (!validacionEstado.nombre || !validacionEstado.usuario || !validacionEstado.password || !validacionEstado.confirmarPassword || !validacionEstado.email) {
@@ -446,10 +418,10 @@
             usuario: document.getElementById('usuarioOperario').value.trim(),
             email: document.getElementById('emailOperario').value.trim(),
             password: document.getElementById('passwordOperario').value,
-            disponible: 1 // Siempre disponible al crear
+            disponible: 1
         };
         log(`Enviando datos del operario: ${datosOperario.nombre} (${datosOperario.usuario})`);
-        fetch('/public_html/dashboard/paginas/operarios/api/crear_operario.php', {
+        fetch('/public_html/dashboard/paginas/operarios/api/crear_operarios.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosOperario)
@@ -460,21 +432,22 @@
         })
         .then(data => {
             mostrarEstadoCarga(false);
-            if (data.success) {
-                log(`Operario creado exitosamente: ID ${data.operario_id || 'N/A'}`, 'success');
+            if (data.success && data.operario) {
+                log(`Operario creado exitosamente: ID ${data.operario.id || 'N/A'}`, 'success');
                 if (typeof mostrarModalExito === 'function') {
                     mostrarModalExito("Operario Creado", `El operario "${datosOperario.nombre}" ha sido creado exitosamente.`);
                 } else {
                     alert(`Operario "${datosOperario.nombre}" creado exitosamente.`);
                 }
                 cerrarModalCrearOperario();
-                setTimeout(() => {
-                    if (typeof window.recargarTablaOperarios === 'function') {
-                        window.recargarTablaOperarios();
-                    } else {
-                        window.location.reload();
-                    }
-                }, CONFIG.RELOAD_DELAY);
+                // Insertar nuevo operario en la tabla al instante
+                if (typeof window.insertarFilaOperarioEnTabla === 'function') {
+                    window.insertarFilaOperarioEnTabla(data.operario);
+                } else if (typeof window.recargarTablaOperarios === 'function') {
+                    window.recargarTablaOperarios();
+                } else {
+                    window.location.reload();
+                }
             } else {
                 log(`Error al crear operario: ${data.message}`, 'error');
                 if (typeof mostrarModalError === 'function') {
@@ -493,6 +466,79 @@
                 alert("Error de conexión. Intente nuevamente.");
             }
         });
+    };
+
+    // Inserta la fila del nuevo operario en la tabla
+    window.insertarFilaOperarioEnTabla = function(operario) {
+        const tbody = document.querySelector('.table-glass tbody');
+        if (!tbody) return;
+        function formateaFecha(fechaStr) {
+            const f = new Date(fechaStr.replace(' ', 'T'));
+            return f.toLocaleDateString() + ' ' + f.toLocaleTimeString().slice(0,5);
+        }
+        const fila = document.createElement('tr');
+        fila.setAttribute('data-operario-id', operario.id);
+        fila.className = "hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-300 group";
+        fila.innerHTML = `
+            <td class="px-6 py-4 text-sm text-gray-500 font-mono">#${String(operario.id).padStart(4,'0')}</td>
+            <td class="px-6 py-4">
+                <div class="flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
+                        ${operario.nombre.charAt(0).toUpperCase()}
+                    </div>
+                    <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">${operario.nombre}</div>
+                        <div class="text-xs text-gray-500">${operario.usuario}</div>
+                    </div>
+                </div>
+            </td>
+            <td class="px-6 py-4">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <i class="ri-user-line mr-1"></i>
+                    ${operario.usuario}
+                </span>
+            </td>
+            <td class="px-6 py-4">
+                <div class="text-xs text-gray-500">${operario.email || ''}</div>
+            </td>
+            <td class="px-6 py-4 user-status">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-green-600"></span>
+                    Disponible
+                </span>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+                <div class="flex items-center">
+                    <i class="ri-calendar-2-line mr-2 text-gray-400"></i>
+                    ${formateaFecha(operario.creado)}
+                </div>
+                <div class="text-xs text-gray-400 mt-1">
+                    ${formateaFecha(operario.creado).split(' ')[1]} hrs
+                </div>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+                <span class="bg-blue-50 text-blue-800 px-2 py-1 rounded text-xs">
+                    <i class="ri-history-line mr-1"></i>
+                    ${formateaFecha(operario.actualizado)}
+                </span>
+            </td>
+            <td class="px-6 py-4">
+                <div class="acciones-btn-group flex items-center justify-center space-x-2">
+                    <button onclick="abrirModalVerOperario(${operario.id})" class="action-btn btn-view text-xs" title="Ver">
+                        <i class="ri-eye-line"></i> Ver
+                    </button>
+                    <button onclick="editarOperario(${operario.id})" class="action-btn btn-edit text-xs" title="Editar">
+                        <i class="ri-edit-line"></i> Editar
+                    </button>
+                    <button type="button" class="action-btn btn-toggle text-xs"
+                        onclick="toggleDisponibilidad(${operario.id}, ${operario.disponible}, '${operario.nombre}')"
+                        title="Deshabilitar">
+                        <i class="ri-pause-circle-line"></i> Deshabilitar
+                    </button>
+                </div>
+            </td>
+        `;
+        tbody.prepend(fila);
     };
 
     function mostrarEstadoCarga(mostrar) {
@@ -515,9 +561,6 @@
         }
     }
 
-    //===============================================================
-    // INICIALIZACIÓN Y EVENTOS
-    //===============================================================
     document.addEventListener('DOMContentLoaded', function() {
         log("Inicializando módulo de creación de operarios", 'success');
         document.addEventListener('keydown', function(e) {
