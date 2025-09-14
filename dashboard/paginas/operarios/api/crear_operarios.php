@@ -1,6 +1,6 @@
 <?php
 //===============================================================
-// CREAR_OPERARIO.PHP - API de creación de operario COPFLOW
+// CREAR_OPERARIOS.PHP - API de creación de operario COPFLOW
 //===============================================================
 // Recibe: nombre, usuario, email (opcional), password, disponible
 //===============================================================

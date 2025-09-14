@@ -1,8 +1,8 @@
 //===============================================================
-// CREAR_OPERARIO.JS v2.1 - Lógica de Creación de Operarios COPFLOW
+// CREAR_OPERARIO.JS v2.2 [AJUSTADO] - COPFLOW
 //===============================================================
-// Adaptado para la tabla operadores. Usar campos: nombre, usuario, email, password, disponible.
-// Ahora actualiza la tabla al instante con el nuevo operario y muestra el campo "actualizado".
+// Actualiza la tabla y las estadísticas instantáneamente con el nuevo operario.
+// Igual funcionamiento que usuarios.js
 //===============================================================
 
 (function() {
@@ -19,7 +19,7 @@
     let formularioInicializado = false;
 
     const CONFIG = {
-        VERSION: '2.1',
+        VERSION: '2.2',
         DEBUG_MODE: true,
         EMAIL_CHECK_DELAY: 800,
         FOCUS_DELAY: 150,
@@ -41,41 +41,31 @@
     }
 
     window.mostrarModalNuevoOperario = function() {
-        log("Abriendo modal de creación de operario");
         limpiarFormularioCrearOperario();
         const modal = document.getElementById('crearOperarioModal');
-        if (!modal) {
-            log("Modal de creación no encontrado en el DOM", 'error');
-            mostrarError('crearOperarioModal', 'El modal de creación no está disponible. Por favor, recarga la página.');
-            return;
-        }
+        if (!modal) return;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         if (!formularioInicializado) {
             inicializarValidaciones();
             formularioInicializado = true;
-            log("Formulario inicializado por primera vez");
         }
         setTimeout(() => {
             const nombreInput = document.getElementById('nombreOperario');
             if (nombreInput) nombreInput.focus();
         }, CONFIG.FOCUS_DELAY);
-        log("Modal de creación abierto correctamente", 'success');
     };
 
     window.cerrarModalCrearOperario = function() {
-        log("Cerrando modal de creación");
         const modal = document.getElementById('crearOperarioModal');
         if (modal) {
             modal.classList.add('hidden');
             document.body.style.overflow = '';
             limpiarFormularioCrearOperario();
-            log("Modal de creación cerrado correctamente", 'success');
         }
     };
 
     window.limpiarFormularioCrearOperario = function() {
-        log("Limpiando formulario de creación");
         const form = document.getElementById('formCrearOperario');
         if (form) form.reset();
         limpiarTodasLasValidaciones();
@@ -92,24 +82,19 @@
             clearTimeout(timeoutEmail);
             timeoutEmail = null;
         }
-        log("Formulario limpiado correctamente", 'success');
     };
 
     function inicializarValidaciones() {
-        log("Inicializando sistema de validaciones");
-
         const nombreInput = document.getElementById('nombreOperario');
         if (nombreInput) {
             nombreInput.addEventListener('input', function() { validarNombre(this.value); });
             nombreInput.addEventListener('blur', function() { if (this.value.length > 0) validarNombre(this.value); });
         }
-
         const usuarioInput = document.getElementById('usuarioOperario');
         if (usuarioInput) {
             usuarioInput.addEventListener('input', function() { validarUsuario(this.value); });
             usuarioInput.addEventListener('blur', function() { if (this.value.length > 0) validarUsuario(this.value); });
         }
-
         const emailInput = document.getElementById('emailOperario');
         if (emailInput) {
             emailInput.addEventListener('input', function() {
@@ -132,7 +117,6 @@
                 }
             });
         }
-
         const passwordInput = document.getElementById('passwordOperario');
         if (passwordInput) {
             passwordInput.addEventListener('input', function() {
@@ -140,14 +124,12 @@
                 validarConfirmarPassword();
             });
         }
-
         const confirmarInput = document.getElementById('confirmarPasswordOperario');
         if (confirmarInput) {
             confirmarInput.addEventListener('input', function() {
                 validarConfirmarPassword();
             });
         }
-        log("Sistema de validaciones inicializado correctamente", 'success');
     }
 
     function validarNombre(nombre) {
@@ -185,7 +167,6 @@
         validDiv.classList.remove('hidden');
         validacionEstado.nombre = true;
         actualizarEstadoBoton();
-        log(`Nombre validado: "${nombre}"`, 'success');
     }
 
     function validarUsuario(usuario) {
@@ -212,7 +193,6 @@
         campo.classList.add('border-green-500');
         validacionEstado.usuario = true;
         actualizarEstadoBoton();
-        log(`Usuario validado: "${usuario}"`, 'success');
     }
 
     function validarEmail(email) {
@@ -232,7 +212,6 @@
         campo.classList.add('border-green-500');
         validacionEstado.email = true;
         actualizarEstadoBoton();
-        log(`Email validado: "${email}"`, 'success');
     }
 
     function validarPassword(password) {
@@ -265,7 +244,6 @@
         campo.classList.add('border-green-500');
         validacionEstado.password = true;
         actualizarEstadoBoton();
-        log(`Contraseña validada (fortaleza: ${strength}/4)`, 'success');
     }
 
     function validarConfirmarPassword() {
@@ -291,7 +269,6 @@
         validDiv.classList.remove('hidden');
         validacionEstado.confirmarPassword = true;
         actualizarEstadoBoton();
-        log("Confirmación de contraseña validada", 'success');
     }
 
     function limpiarEstadosCampo(campo, errorDiv, validDiv) {
@@ -403,15 +380,29 @@
     }
 
     //===============================================================
-    // CREACIÓN DE OPERARIO Y ACTUALIZACIÓN INSTANTÁNEA DE LA TABLA
+    // FUNCIÓN PARA ACTUALIZAR LAS ESTADÍSTICAS DE OPERARIOS
+    // Igual que en usuarios.js, busca los elementos por ID
     //===============================================================
+    window.actualizarEstadisticasOperarios = function() {
+        fetch('/public_html/dashboard/paginas/operarios/api/estadisticas_operarios.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    var elTotal = document.getElementById('statTotalOperarios');
+                    var elAvail = document.getElementById('statAvailableOperarios');
+                    var elUnavail = document.getElementById('statUnavailableOperarios');
+                    if (elTotal) elTotal.textContent = data.total;
+                    if (elAvail) elAvail.textContent = data.available;
+                    if (elUnavail) elUnavail.textContent = data.unavailable;
+                }
+            });
+    };
 
+    //===============================================================
+    // CREAR OPERARIO Y ACTUALIZAR TABLA Y ESTADÍSTICAS INSTANTÁNEAMENTE
+    //===============================================================
     window.crearOperario = function() {
-        log("Iniciando proceso de creación de operario");
-        if (!validacionEstado.nombre || !validacionEstado.usuario || !validacionEstado.password || !validacionEstado.confirmarPassword || !validacionEstado.email) {
-            log("Formulario no válido, cancelando creación", 'warn');
-            return;
-        }
+        if (!validacionEstado.nombre || !validacionEstado.usuario || !validacionEstado.password || !validacionEstado.confirmarPassword || !validacionEstado.email) return;
         mostrarEstadoCarga(true);
         const datosOperario = {
             nombre: document.getElementById('nombreOperario').value.trim(),
@@ -420,7 +411,6 @@
             password: document.getElementById('passwordOperario').value,
             disponible: 1
         };
-        log(`Enviando datos del operario: ${datosOperario.nombre} (${datosOperario.usuario})`);
         fetch('/public_html/dashboard/paginas/operarios/api/crear_operarios.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -433,23 +423,15 @@
         .then(data => {
             mostrarEstadoCarga(false);
             if (data.success && data.operario) {
-                log(`Operario creado exitosamente: ID ${data.operario.id || 'N/A'}`, 'success');
                 if (typeof mostrarModalExito === 'function') {
                     mostrarModalExito("Operario Creado", `El operario "${datosOperario.nombre}" ha sido creado exitosamente.`);
                 } else {
                     alert(`Operario "${datosOperario.nombre}" creado exitosamente.`);
                 }
                 cerrarModalCrearOperario();
-                // Insertar nuevo operario en la tabla al instante
-                if (typeof window.insertarFilaOperarioEnTabla === 'function') {
-                    window.insertarFilaOperarioEnTabla(data.operario);
-                } else if (typeof window.recargarTablaOperarios === 'function') {
-                    window.recargarTablaOperarios();
-                } else {
-                    window.location.reload();
-                }
+                window.insertarFilaOperarioEnTabla(data.operario);
+                window.actualizarEstadisticasOperarios(); // <--- Actualiza los contadores
             } else {
-                log(`Error al crear operario: ${data.message}`, 'error');
                 if (typeof mostrarModalError === 'function') {
                     mostrarModalError("Error al Crear Operario", data.message);
                 } else {
@@ -458,7 +440,6 @@
             }
         })
         .catch(error => {
-            log(`Error de conexión: ${error.message}`, 'error');
             mostrarEstadoCarga(false);
             if (typeof mostrarModalError === 'function') {
                 mostrarModalError("Error de Conexión", "No se pudo conectar con el servidor. Intente nuevamente.");
@@ -468,10 +449,10 @@
         });
     };
 
-    // Inserta la fila del nuevo operario en la tabla
+    // Igual que edición: construye la fila de la tabla con los datos recibidos
     window.insertarFilaOperarioEnTabla = function(operario) {
         const tbody = document.querySelector('.table-glass tbody');
-        if (!tbody) return;
+        if (!tbody) { console.error("No se encontró tbody para insertar operario"); return; }
         function formateaFecha(fechaStr) {
             const f = new Date(fechaStr.replace(' ', 'T'));
             return f.toLocaleDateString() + ' ' + f.toLocaleTimeString().slice(0,5);
@@ -562,7 +543,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        log("Inicializando módulo de creación de operarios", 'success');
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('crearOperarioModal');
@@ -575,11 +555,10 @@
         });
         const modalContent = document.querySelector('#crearOperarioModal .bg-white');
         if (modalContent) modalContent.addEventListener('click', function(e) { e.stopPropagation(); });
-        log("Eventos de modal configurados correctamente", 'success');
     });
 
 })();
 
 //===============================================================
-// FIN DEL MÓDULO CREAR_OPERARIO.JS v2.1
+// FIN DEL MÓDULO CREAR_OPERARIO.JS v2.2 [AJUSTADO]
 //===============================================================
