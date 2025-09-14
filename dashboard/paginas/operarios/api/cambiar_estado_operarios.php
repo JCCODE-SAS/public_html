@@ -26,16 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     writeLog("cambiar_estado_operarios.php", "Procesando id: $id, nuevo_estado: $nuevo_estado");
-    // Puedes agregar aquí un log más detallado si lo necesitas
 
-    if ($id && ($nuevo_estado === '1' || $nuevo_estado === '0')) {
+    // CORREGIDO: compara como string
+    if ($id && (strval($nuevo_estado) === '1' || strval($nuevo_estado) === '0')) {
         $stmt = $conexion->prepare("UPDATE operadores SET disponible = ? WHERE id = ?");
         $stmt->bind_param("si", $nuevo_estado, $id);
 
         if ($stmt->execute()) {
             writeLog("cambiar_estado_operarios.php", "Disponibilidad actualizada correctamente para id: $id a $nuevo_estado");
 
-            // ✅ LIMPIAR CACHE DE ESTADÍSTICAS
             limpiarCacheEstadisticas();
             writeLog("cambiar_estado_operarios.php", "Cache de estadísticas limpiado");
 

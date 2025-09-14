@@ -15,6 +15,8 @@
 
     // FUNCIÓN GLOBAL PARA ABRIR EL MODAL DE VER OPERARIO
     window.abrirModalVerOperario = function(id) {
+        // Diagnóstico: log del ID recibido
+        console.log('[ver_operarios.js] abrirModalVerOperario() ID recibido:', id);
         if (typeof window.mostrarModalVerOperario === 'function') {
             window.mostrarModalVerOperario(id);
         } else {
@@ -45,6 +47,15 @@
 
     // CARGAR DATOS DEL OPERARIO POR AJAX
     function cargarDatosOperarioVer(operarioId) {
+        // Log para depuración
+        console.log('[ver_operarios.js] cargarDatosOperarioVer() ID enviado:', operarioId);
+
+        // Validación de ID
+        if (!operarioId || operarioId <= 0) {
+            mostrarError("ID de operario inválido");
+            return;
+        }
+
         fetch("/public_html/dashboard/paginas/operarios/api/obtener_operarios.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -54,12 +65,16 @@
         .then(text => {
             let data;
             try { data = JSON.parse(text); } catch(e) { data = null; }
-            if (data && data.success && data.operario) {
+            // Diagnóstico: log de la respuesta
+            console.log('[ver_operarios.js] Respuesta AJAX:', data);
+
+            if (data && data.success && typeof data.operario === 'object' && data.operario) {
                 operarioVisualizando = data.operario;
                 mostrarDatosOperario(data.operario);
                 mostrarContenido();
             } else {
-                mostrarError("No se encontró el operario");
+                // Mostrar error más detallado
+                mostrarError(data && data.message ? data.message : "No se encontró el operario");
             }
         })
         .catch(error => {
@@ -91,6 +106,7 @@
 
     // GENERAR INICIALES DEL NOMBRE
     function generarIniciales(nombre) {
+        if (!nombre) return '';
         return nombre.split(' ').map(word => word.charAt(0).toUpperCase()).slice(0,2).join('');
     }
 
@@ -113,11 +129,14 @@
         // Ajuste de id para error (puede ser errorMessage u errorMessageOperario)
         const errorMessage = document.getElementById('errorMessageOperario') || document.getElementById('errorMessage');
         if (errorMessage) errorMessage.textContent = mensaje;
+        // Diagnóstico: log del error
+        console.error('[ver_operarios.js] mostrarError:', mensaje);
     }
 
     // FUNCIÓN GLOBAL QUE REALMENTE MUESTRA EL MODAL Y CARGA LOS DATOS
     window.mostrarModalVerOperario = function(id) {
         const modal = document.getElementById('verOperarioModal');
+        console.log('[ver_operarios.js] mostrarModalVerOperario() - Abriendo modal para ID:', id);
         if (modal) {
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';

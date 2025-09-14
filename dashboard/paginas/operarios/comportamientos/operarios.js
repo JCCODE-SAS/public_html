@@ -1,36 +1,35 @@
 /**
  * ===============================================================
- * 📄 OPERARIOS.JS v2.1 - Módulo de Gestión de Operarios COPFLOW
+ * 📄 OPERARIOS.JS v2.3 - Módulo de Gestión de Operarios COPFLOW
  * ===============================================================
  * 
- * 📋 FUNCIONALIDADES PRINCIPALES:
+ * FUNCIONALIDADES PRINCIPALES:
  * • CRUD completo de operarios (ver, crear, editar, estado)
  * • Sistema de filtros AJAX con debounce optimizado
  * • Paginación dinámica sin recargas
  * • Actualización automática de estadísticas
- * • Modales integrados y responsive
+ * • Modales integrados y responsive (REUTILIZADOS desde dashboard)
  * • Manejo robusto de errores
  * • Cache inteligente y optimizaciones
  * 
  * 👨‍💻 Desarrollado por: Diomedez98 (JCCODE-SAS)
- * 📅 Última actualización: 2025-09-13
  * ===============================================================
  */
 
 (function() {
     "use strict";
 
-    // 1. CONFIGURACIÓN Y VARIABLES GLOBALES
+    // CONFIGURACIÓN Y VARIABLES GLOBALES
     let searchTimeout = null;
     let filterTimeout = null;
     let filtroFormListenersIniciados = false;
 
     const CONFIG = {
-        VERSION: '2.1',
+        VERSION: '2.3',
         DEBUG_MODE: true,
-        DEBOUNCE_SEARCH: 500,
-        DEBOUNCE_FILTER: 200,
-        STATS_UPDATE_INTERVAL: 30000
+        DEBOUNCE_SEARCH: 1200,
+        DEBOUNCE_FILTER: 600,
+        STATS_UPDATE_INTERVAL: 180000
     };
 
     function log(mensaje, tipo = 'info') {
@@ -45,7 +44,38 @@
         }
     }
 
-    // 2. FUNCIONES DE GESTIÓN DE OPERARIOS
+    // =========================
+    // MODAL UNIVERSAL - REUTILIZADO
+    // =========================
+    // Confirmación
+    function mostrarModalConfirmacion(titulo, mensaje, callback) {
+        if (typeof window.mostrarModalConfirmacion === 'function') {
+            window.mostrarModalConfirmacion(titulo, mensaje, callback);
+        } else {
+            // Fallback
+            if (confirm(`${titulo}\n${mensaje}`)) callback && callback();
+        }
+    }
+    // Error
+    function mostrarModalError(titulo, mensaje) {
+        if (typeof window.mostrarModalError === 'function') {
+            window.mostrarModalError(titulo, mensaje);
+        } else {
+            alert(`${titulo}: ${mensaje}`);
+        }
+    }
+    // Éxito
+    function mostrarModalExito(titulo, mensaje) {
+        if (typeof window.mostrarModalExito === 'function') {
+            window.mostrarModalExito(titulo, mensaje);
+        } else {
+            alert(`${titulo}: ${mensaje}`);
+        }
+    }
+
+    // =========================
+    // FUNCIONES DE GESTIÓN DE OPERARIOS
+    // =========================
 
     function verOperario(id) {
         log(`Iniciando visualización de operario ID: ${id}`);
@@ -63,18 +93,18 @@
                 try {
                     const data = JSON.parse(text);
                     if (data.success && data.operario) {
-                        alert(`Operario: ${data.operario.nombre} (${data.operario.usuario})`);
+                        mostrarModalExito("Detalle de Operario", `Operario: ${data.operario.nombre} (${data.operario.usuario})`);
                     } else {
-                        alert(data.message || "No se encontró el operario");
+                        mostrarModalError("Error", data.message || "No se encontró el operario");
                     }
                 } catch(e) {
                     log("Error al parsear respuesta JSON", 'error');
-                    alert("El servidor no respondió correctamente");
+                    mostrarModalError("Error", "El servidor no respondió correctamente");
                 }
             })
             .catch(err => {
                 log(`Error al consultar operario: ${err.message}`, 'error');
-                alert("No se pudo consultar el operario");
+                mostrarModalError("Error", "No se pudo consultar el operario");
             });
         }
     }
@@ -85,41 +115,42 @@
             window.abrirModalEditarOperario(id);
         } else {
             log("Modal de edición no disponible", 'error');
-            alert("El modal de edición no está disponible. Por favor, recarga la página.");
+            mostrarModalError("Error", "El modal de edición no está disponible. Por favor, recarga la página.");
         }
     }
 
     function toggleDisponibilidad(id, disponibleActual, nombre) {
         const nuevoEstado = disponibleActual === 1 ? 0 : 1;
-        const accion = disponibleActual === 1 ? "marcar como no disponible" : "marcar como disponible";
-        if (confirm(`¿Seguro que deseas ${accion} al operario "${nombre}"?`)) {
-            fetch("/public_html/dashboard/paginas/operarios/api/cambiar_estado_operarios.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: id, nuevo_estado: nuevoEstado })
-            })
-            .then(response => response.text())
-            .then(text => {
-                try {
-                    const data = JSON.parse(text);
+        const accion = disponibleActual === 1 ? "desactivar" : "activar";
+
+        mostrarModalConfirmacion(
+            `¿${accion.charAt(0).toUpperCase() + accion.slice(1)} operario?`,
+            `¿Estás seguro de que deseas ${accion} al operario "${nombre}"?`,
+            function() {
+                fetch("/public_html/dashboard/paginas/operarios/api/cambiar_estado_operarios.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id: id, nuevo_estado: String(nuevoEstado) })
+                })
+                .then(response => response.json())
+                .then(data => {
                     if (data.success) {
-                        alert(`El operario "${nombre}" ha sido actualizado exitosamente.`);
+                        mostrarModalExito(
+                            "Estado actualizado",
+                            `El operario "${nombre}" ha sido ${accion}do exitosamente.`
+                        );
                         actualizarFilaOperarioEnTabla(id, nuevoEstado, nombre);
                         actualizarEstadisticasOperarios();
-                        log(`Disponibilidad actualizada correctamente para operario ${id}`, 'success');
                     } else {
-                        alert(data.message || "Error al actualizar la disponibilidad.");
+                        mostrarModalError("Error", data.message || "Error al actualizar la disponibilidad.");
                     }
-                } catch(e) {
-                    log("Error al parsear respuesta de cambio de disponibilidad", 'error');
-                    alert("El servidor no respondió correctamente");
-                }
-            })
-            .catch(error => {
-                log(`Error en toggle disponibilidad: ${error.message}`, 'error');
-                alert("Error de conexión al actualizar la disponibilidad.");
-            });
-        }
+                })
+                .catch(error => {
+                    log(`Error en toggle disponibilidad: ${error.message}`, 'error');
+                    mostrarModalError("Error", "Error de conexión al actualizar la disponibilidad.");
+                });
+            }
+        );
     }
 
     function actualizarFilaOperarioEnTabla(operarioId, nuevoEstado, nombre) {
@@ -130,15 +161,19 @@
         }
         try {
             // Actualiza la celda de disponibilidad
-            const celdaDisp = fila.querySelector("td:nth-child(5)");
+            const celdaDisp = fila.querySelector("td:nth-child(5) span");
             if (celdaDisp) {
-                celdaDisp.textContent = nuevoEstado === 1 ? 'Sí' : 'No';
+                celdaDisp.textContent = nuevoEstado === 1 ? 'Disponible' : 'No disponible';
+                celdaDisp.className =
+                    "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
+                    (nuevoEstado === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800");
             }
             // Actualiza el botón de toggle
             const btn = fila.querySelector("button[onclick*='toggleDisponibilidad']");
             if (btn) {
-                btn.textContent = nuevoEstado === 1 ? 'Deshabilitar' : 'Habilitar';
+                btn.innerHTML = `<i class="${nuevoEstado === 1 ? "ri-pause-circle-line" : "ri-play-circle-line"}"></i> ${nuevoEstado === 1 ? 'Deshabilitar' : 'Habilitar'}`;
                 btn.setAttribute("onclick", `toggleDisponibilidad(${operarioId}, ${nuevoEstado}, '${nombre}')`);
+                btn.title = `${nuevoEstado === 1 ? "Deshabilitar" : "Habilitar"} operario`;
             }
             log(`Fila actualizada para operario ${operarioId}`, 'success');
         } catch (error) {
@@ -146,10 +181,8 @@
         }
     }
 
-    // CORREGIDO: mostrarModalNuevoOperario SIN recursión infinita
     function mostrarModalNuevoOperario() {
         log("Abriendo modal de creación de operario");
-        // Lógica para mostrar el modal de creación de operario
         const modal = document.getElementById('crearOperarioModal');
         if (modal) {
             if (typeof window.limpiarFormularioCrearOperario === 'function') {
@@ -163,7 +196,7 @@
             }, 100);
             log("Modal de creación de operario abierto correctamente", 'success');
         } else {
-            alert('El modal de creación no está disponible.');
+            mostrarModalError('Error', 'El modal de creación no está disponible.');
         }
     }
     window.mostrarModalNuevoOperario = mostrarModalNuevoOperario;
@@ -193,7 +226,7 @@
         });
     }
 
-    // 3. SISTEMA DE FILTROS AJAX OPTIMIZADO
+    // SISTEMA DE FILTROS AJAX OPTIMIZADO
     function ajaxFiltrar(extraParams) {
         const filtroForm = document.getElementById("filtroOperariosForm");
         if (!filtroForm) return;
@@ -230,7 +263,7 @@
             })
             .catch(err => {
                 log(`Error en filtro AJAX: ${err.message}`, 'error');
-                alert("No se pudo actualizar la lista de operarios");
+                mostrarModalError("Error", "No se pudo actualizar la lista de operarios");
             });
         } catch (error) {
             log(`Error al construir filtro AJAX: ${error.message}`, 'error');
@@ -294,6 +327,7 @@
         })
         .catch(err => {
             log(`Error al limpiar filtros: ${err.message}`, 'error');
+            mostrarModalError("Error", "No se pudo limpiar los filtros");
         });
     }
 
@@ -324,6 +358,7 @@
         bindFiltroFormEvents();
         bindPaginacionAjax();
         actualizarEstadisticasOperarios();
+        setInterval(actualizarEstadisticasOperarios, CONFIG.STATS_UPDATE_INTERVAL);
         log("Módulo de operarios inicializado correctamente", 'success');
     };
 
@@ -339,6 +374,7 @@
         }, 100);
     }
 
+    // EXPORTACIÓN DE FUNCIONES GLOBALES
     window.verOperario = verOperario;
     window.editarOperario = editarOperario;
     window.toggleDisponibilidad = toggleDisponibilidad;
@@ -349,4 +385,5 @@
     window.actualizarFilaOperarioEnTabla = actualizarFilaOperarioEnTabla;
 
     log(`Módulo operarios.js v${CONFIG.VERSION} cargado completamente`, 'success');
+
 })();

@@ -2,14 +2,15 @@
 //===============================================================
 // ACTUALIZAR_OPERARIO.PHP - API de Edición de Operario COPFLOW
 //===============================================================
+ini_set('display_errors', 0);
+error_reporting(0);
+
 require_once __DIR__ . '/../../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../../logs/logger.php';
 
 function send_json($payload = [], $code = 200)
 {
-    if (ob_get_length()) {
-        @ob_end_clean();
-    }
+    if (ob_get_length()) @ob_end_clean();
     http_response_code($code);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($payload, JSON_UNESCAPED_UNICODE);
@@ -35,13 +36,13 @@ try {
     $nombre = trim($datos['nombre'] ?? '');
     $usuario = trim($datos['usuario'] ?? '');
     $email = trim($datos['email'] ?? '');
-    $disponible = trim($datos['disponible'] ?? '');
+    $disponible = strval($datos['disponible'] ?? '');
 
     if ($id <= 0) throw new Exception('ID inválido');
     if (strlen($nombre) < 2) throw new Exception('Nombre muy corto');
     if (strlen($usuario) < 4) throw new Exception('Usuario muy corto');
     if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) throw new Exception('Email inválido');
-    if (!in_array($disponible, ['1', '0'])) throw new Exception('Estado disponible inválido');
+    if (!in_array($disponible, ['1', '0'], true)) throw new Exception('Estado disponible inválido');
 
     // Verificar email único (si cambia)
     if ($email) {
@@ -52,7 +53,7 @@ try {
         $stmt->close();
     }
 
-    // Actualizar operario
+    // Actualizar operario (con fecha de edición)
     $stmt = $conexion->prepare("UPDATE operadores SET nombre = ?, usuario = ?, email = ?, disponible = ?, actualizado = NOW() WHERE id = ?");
     $stmt->bind_param('ssssi', $nombre, $usuario, $email, $disponible, $id);
     if (!$stmt->execute()) throw new Exception('Error al actualizar operario: ' . $stmt->error);

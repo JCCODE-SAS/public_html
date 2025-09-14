@@ -67,9 +67,9 @@ if ($page > $total_pages) {
 $offset = ($page - 1) * $records_per_page;
 
 //===============================================================
-// CONSULTA PRINCIPAL
+// CONSULTA PRINCIPAL (Ajuste: incluye actualizado)
 //===============================================================
-$sql = "SELECT id, nombre, usuario, email, disponible, creado 
+$sql = "SELECT id, nombre, usuario, email, disponible, creado, actualizado 
         FROM operadores 
         $where_clause 
         ORDER BY creado DESC 
@@ -84,20 +84,15 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 //===============================================================
-// ESTADÍSTICAS
+// ESTADÍSTICAS OPTIMIZADAS (SOLO UNA CONSULTA)
 //===============================================================
-$stats_queries = [
-    'total'       => "SELECT COUNT(*) as count FROM operadores",
-    'available'   => "SELECT COUNT(*) as count FROM operadores WHERE disponible=1",
-    'unavailable' => "SELECT COUNT(*) as count FROM operadores WHERE disponible=0"
-];
-
-$stats = [];
-foreach ($stats_queries as $k => $q) {
-    $st = $conexion->prepare($q);
-    $st->execute();
-    $stats[$k] = $st->get_result()->fetch_assoc()['count'];
-}
+$stats_sql = "SELECT COUNT(*) as total, 
+                     SUM(disponible=1) as available, 
+                     SUM(disponible=0) as unavailable 
+              FROM operadores";
+$stats_stmt = $conexion->prepare($stats_sql);
+$stats_stmt->execute();
+$stats = $stats_stmt->get_result()->fetch_assoc();
 
 //===============================================================
 // HELPER PARA LINKS DE PAGINACIÓN
@@ -276,7 +271,9 @@ function base_query(array $extra = []): string
                         <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Disponible</th>
                         <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Fecha</th>
+                            Fecha creación</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                            Última edición</th>
                         <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             Acciones</th>
                     </tr>
@@ -327,6 +324,16 @@ function base_query(array $extra = []): string
                             <div class="text-xs text-gray-400 mt-1">
                                 <?= date('H:i', strtotime($o['creado'])) ?> hrs
                             </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-500">
+                            <?php if (!empty($o['actualizado'])): ?>
+                            <span class="bg-blue-50 text-blue-800 px-2 py-1 rounded text-xs">
+                                <i class="ri-history-line mr-1"></i>
+                                <?= date('d/m/Y H:i', strtotime($o['actualizado'])) ?>
+                            </span>
+                            <?php else: ?>
+                            <span class="text-gray-400 text-xs">Sin edición</span>
+                            <?php endif; ?>
                         </td>
                         <td class="px-6 py-4">
                             <div class="acciones-btn-group flex items-center justify-center space-x-2">

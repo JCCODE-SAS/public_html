@@ -3,15 +3,13 @@
  * EDITAR_OPERARIO.JS - Modal de Edición de Operarios COPFLOW
  * ===============================================================
  * 
- * PROPÓSITO:
- * Maneja la lógica completa del modal de edición de operarios:
- * carga de datos, validaciones, guardado y actualización de UI.
+ * Módulo robusto con integración de modales universales.
+ * Carga datos, valida, guarda y actualiza la UI con feedback visual.
+ * Manejo robusto de errores y recarga la tabla tras guardar.
  * 
- * Adaptado para la tabla operadores.
- * 
+ * 👨‍💻 Diomedez98 (JCCODE-SAS)
  * ===============================================================
  */
-
 (function() {
     "use strict";
 
@@ -19,37 +17,33 @@
     let cambiosPendientes = false;
     let validacionTimeout = null;
 
-    // Mostrar modal de edición de operario
+    // Mostrar modal y cargar datos del operario
     window.mostrarModalEditarOperario = function(id) {
-        // Busca el modal por ID y lo muestra
+        resetearModal();
         const modal = document.getElementById('editarOperarioModal');
         if (modal) {
-            modal.style.display = 'block';
-            // Si tienes campos en el modal, puedes rellenarlos aquí usando el id
-            // Por ejemplo, podrías hacer una petición AJAX para obtener los datos del operario
-            // y mostrarlos en el modal.
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            cargarDatosOperario(id);
         } else {
-            alert('Modal de editar operario no encontrado');
+            mostrarModalError('Error', 'Modal de editar operario no encontrado');
         }
     };
-
-    // Abrir modal y cargar datos del operario
-    window.abrirModalEditarOperario = function(id) {
-        window.mostrarModalEditarOperario(id);
-    };
+    window.abrirModalEditarOperario = window.mostrarModalEditarOperario;
 
     // Cerrar modal con confirmación si hay cambios
     window.cerrarModalEditarOperario = function() {
         if (cambiosPendientes) {
-            if (confirm("Tienes cambios sin guardar. ¿Cerrar sin guardar cambios?")) {
-                cerrarModalForzado();
-            }
+            mostrarModalConfirmacion(
+                "¿Cerrar sin guardar cambios?",
+                "Tienes cambios sin guardar. ¿Seguro que deseas cerrar el formulario?",
+                cerrarModalForzado
+            );
         } else {
             cerrarModalForzado();
         }
     };
 
-    // Cerrar modal sin confirmación
     function cerrarModalForzado() {
         const modal = document.getElementById('editarOperarioModal');
         if (modal) {
@@ -58,13 +52,14 @@
         }
         operarioActual = null;
         cambiosPendientes = false;
-        console.log("Modal de edición cerrado");
+        resetearModal();
     }
 
-    // Resetear modal a estado inicial
     function resetearModal() {
-        document.getElementById('loadingEditarOperario').classList.remove('hidden');
-        document.getElementById('formEditarOperario').classList.add('hidden');
+        const loading = document.getElementById('loadingEditarOperario');
+        const form = document.getElementById('formEditarOperario');
+        if (loading) loading.classList.remove('hidden');
+        if (form) form.classList.add('hidden');
         limpiarErrores();
         const btnGuardar = document.getElementById('btnGuardarOperario');
         if (btnGuardar) {
@@ -74,7 +69,6 @@
         }
         cambiosPendientes = false;
         operarioActual = null;
-        console.log("Modal reseteado a estado inicial");
     }
 
     // Cargar datos del operario desde la API
@@ -84,54 +78,75 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: operarioId })
         })
-        .then(response => response.text())
-        .then(text => {
+        .then(async response => {
+            const text = await response.text();
+            let data = null;
             try {
-                const data = JSON.parse(text);
-                if (data.success && data.operario) {
-                    operarioActual = data.operario;
-                    llenarFormulario(data.operario);
-                    mostrarFormulario();
-                } else {
-                    throw new Error(data.message || "Error al obtener datos del operario");
-                }
+                data = JSON.parse(text);
             } catch (e) {
-                mostrarErrorCarga("El servidor no respondió correctamente");
+                if (text.trim().startsWith('<!DOCTYPE')) {
+                    mostrarErrorCarga("La respuesta del servidor no es válida. Verifica la sesión o el endpoint.");
+                    return;
+                }
+                mostrarErrorCarga("Error inesperado: " + text);
+                return;
+            }
+            if (data.success && data.operario) {
+                operarioActual = data.operario;
+                llenarFormulario(data.operario);
+                mostrarFormulario();
+            } else {
+                mostrarErrorCarga(data.message || "Error al obtener datos del operario");
             }
         })
         .catch(error => {
-            mostrarErrorCarga("Error de conexión al cargar datos del operario");
+            mostrarErrorCarga("Error de conexión al cargar datos del operario: " + error.message);
         });
     }
 
-    // Guardar cambios del operario
+    // Guardar cambios del operario y recargar tabla
     window.guardarCambiosOperario = function() {
         if (!validarFormulario()) return;
         const datosOperario = obtenerDatosFormulario();
         mostrarCargandoBoton(true);
-        fetch("/public_html/dashboard/paginas/operarios/api/actualizar_operario.php", {
+
+        fetch("/public_html/dashboard/paginas/operarios/api/actualizar_operarios.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datosOperario)
         })
-        .then(response => response.text())
-        .then(text => {
-            let data;
-            try { data = JSON.parse(text); } catch(e) { data = null; }
-            if (!data || !data.success) {
-                mostrarError("errorGeneral", data?.message || "Error al actualizar operario");
+        .then(async response => {
+            const text = await response.text();
+            let data = null;
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                if (text.trim().startsWith('<!DOCTYPE')) {
+                    mostrarModalError("Error", "La respuesta del servidor no es válida. Verifica la sesión o el endpoint.");
+                    return;
+                }
+                mostrarModalError("Error", "Error inesperado: " + text);
                 return;
             }
-            alert(`Operario actualizado correctamente`);
-            cerrarModalForzado();
-            if (typeof window.recargarTablaOperarios === 'function') {
-                window.recargarTablaOperarios();
-            } else {
-                window.location.reload();
+            if (!data.success) {
+                mostrarModalError("Error", data.message || "Error al actualizar operario");
+                return;
             }
+            mostrarModalExito("¡Operario actualizado!", "Los cambios se guardaron correctamente.");
+            cerrarModalForzado();
+            // --- Recargar la tabla y estadísticas tras guardar ---
+            setTimeout(function() {
+                if (typeof window.recargarTablaOperarios === 'function') {
+                    window.recargarTablaOperarios();
+                } else if (typeof window.inicializarOperarios === 'function') {
+                    window.inicializarOperarios(); // Fallback adicional
+                } else {
+                    window.location.reload();
+                }
+            }, 600); // Espera breve para que el modal se cierre visualmente
         })
         .catch(error => {
-            mostrarError("errorGeneral", "Error de conexión al guardar cambios: " + error.message);
+            mostrarModalError("Error", "Error de conexión al guardar cambios: " + error.message);
         })
         .finally(() => {
             mostrarCargandoBoton(false);
@@ -192,9 +207,7 @@
         );
         cambiosPendientes = hayCambios;
         const btnGuardar = document.getElementById('btnGuardarOperario');
-        if (btnGuardar) {
-            btnGuardar.disabled = !hayCambios || !validarFormulario(true);
-        }
+        if (btnGuardar) btnGuardar.disabled = !hayCambios || !validarFormulario(true);
     }
 
     // Validaciones
@@ -301,19 +314,41 @@
         }
     }
 
-    // Event listeners
+    // Event listeners para cerrar modal desde overlay/esc
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const modal = document.getElementById('editarOperarioModal');
             if (modal && !modal.classList.contains('hidden')) {
-                cerrarModalEditarOperario();
+                window.cerrarModalEditarOperario();
             }
         }
     });
     document.addEventListener('click', function(e) {
         const modal = document.getElementById('editarOperarioModal');
-        if (e.target === modal) cerrarModalEditarOperario();
+        if (e.target === modal) window.cerrarModalEditarOperario();
     });
+
+    function mostrarModalError(titulo, mensaje) {
+        if (typeof window.mostrarModalError === 'function') {
+            window.mostrarModalError(titulo, mensaje);
+        } else {
+            alert(`${titulo}: ${mensaje}`);
+        }
+    }
+    function mostrarModalExito(titulo, mensaje) {
+        if (typeof window.mostrarModalExito === 'function') {
+            window.mostrarModalExito(titulo, mensaje);
+        } else {
+            alert(`${titulo}: ${mensaje}`);
+        }
+    }
+    function mostrarModalConfirmacion(titulo, mensaje, callback) {
+        if (typeof window.mostrarModalConfirmacion === 'function') {
+            window.mostrarModalConfirmacion(titulo, mensaje, callback);
+        } else {
+            if (confirm(`${titulo}\n${mensaje}`)) callback && callback();
+        }
+    }
 
     console.log("Módulo editar_operario.js cargado - COPFLOW");
 

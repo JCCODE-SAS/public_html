@@ -1,7 +1,4 @@
 <?php
-//===============================================================
-// OBTENER_OPERARIOS.PHP - API para obtener datos de un operario
-//===============================================================
 require_once __DIR__ . '/../../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../../logs/logger.php';
 
@@ -15,17 +12,31 @@ try {
     $id = (int)$datos['id'];
     if ($id <= 0) throw new Exception('ID inválido');
 
-    $stmt = $conexion->prepare("SELECT id, nombre, usuario, email, disponible, creado, IFNULL(actualizado,'') as actualizado FROM operadores WHERE id = ?");
+    // Consulta usando bind_result (más compatible)
+    $stmt = $conexion->prepare("SELECT id, nombre, usuario, email, disponible, creado FROM operadores WHERE id = ?");
+    if (!$stmt) throw new Exception("Error en prepare: " . $conexion->error);
+
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $operario = $result->fetch_assoc();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 0) {
+        $stmt->close();
+        throw new Exception('Operario no encontrado');
+    }
+
+    $stmt->bind_result($idDB, $nombre, $usuario, $email, $disponible, $creado);
+    $stmt->fetch();
     $stmt->close();
 
-    if (!$operario) throw new Exception('Operario no encontrado');
-
-    // Formatear datos para el modal
-    $operario['disponible'] = $operario['disponible'] == '1' ? 1 : 0;
+    $operario = [
+        'id' => $idDB,
+        'nombre' => $nombre,
+        'usuario' => $usuario,
+        'email' => $email,
+        'disponible' => $disponible == 1 ? 1 : 0,
+        'creado' => $creado,
+    ];
 
     echo json_encode(['success' => true, 'operario' => $operario]);
 } catch (Exception $e) {

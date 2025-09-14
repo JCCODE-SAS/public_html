@@ -17,26 +17,25 @@ try {
         throw new Exception("Error de conexión a la base de datos: " . $conexion->connect_error);
     }
 
-    $stats = [];
+    // SOLO UNA CONSULTA para todas las estadísticas
+    $result = $conexion->query("
+        SELECT
+            COUNT(*) as total,
+            SUM(disponible = '1') as available,
+            SUM(disponible = '0') as unavailable
+        FROM operadores
+    ");
+    $stats = $result ? $result->fetch_assoc() : ['total' => 0, 'available' => 0, 'unavailable' => 0];
 
-    // Total de operarios
-    $result = $conexion->query("SELECT COUNT(*) as total FROM operadores");
-    $stats['total'] = $result ? (int)$result->fetch_assoc()['total'] : 0;
-
-    // Operarios disponibles (disponible = '1')
-    $result = $conexion->query("SELECT COUNT(*) as disponibles FROM operadores WHERE disponible = '1'");
-    $stats['available'] = $result ? (int)$result->fetch_assoc()['disponibles'] : 0;
-
-    // No disponibles (disponible = '0')
-    $result = $conexion->query("SELECT COUNT(*) as no_disponibles FROM operadores WHERE disponible = '0'");
-    $stats['unavailable'] = $result ? (int)$result->fetch_assoc()['no_disponibles'] : 0;
-
-    // Log de éxito
     if (function_exists('writeSuccess')) {
         writeSuccess("estadisticas_operarios.api", "Estadísticas obtenidas correctamente", $stats);
     }
 
-    $response = array_merge(['success' => true], $stats);
+    $response = array_merge(['success' => true], [
+        'total' => (int)$stats['total'],
+        'available' => (int)$stats['available'],
+        'unavailable' => (int)$stats['unavailable'],
+    ]);
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 } catch (Exception $e) {
     if (function_exists('writeError')) {
