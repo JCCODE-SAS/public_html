@@ -1,16 +1,15 @@
 /**
  * ===============================================================
- * 📄 OPERARIOS.JS v2.3 - Módulo de Gestión de Operarios COPFLOW
+ * 📄 OPERARIOS.JS v2.4 - Módulo de Gestión de Operarios COPFLOW
  * ===============================================================
  * 
  * FUNCIONALIDADES PRINCIPALES:
  * • CRUD completo de operarios (ver, crear, editar, estado)
- * • Sistema de filtros AJAX con debounce optimizado
+ * • Sistema de filtros AJAX igual a usuarios (filtros, paginación y per_page)
  * • Paginación dinámica sin recargas
  * • Actualización automática de estadísticas
  * • Modales integrados y responsive (REUTILIZADOS desde dashboard)
  * • Manejo robusto de errores
- * • Cache inteligente y optimizaciones
  * 
  * 👨‍💻 Desarrollado por: Diomedez98 (JCCODE-SAS)
  * ===============================================================
@@ -19,16 +18,15 @@
 (function() {
     "use strict";
 
-    // CONFIGURACIÓN Y VARIABLES GLOBALES
     let searchTimeout = null;
     let filterTimeout = null;
     let filtroFormListenersIniciados = false;
 
     const CONFIG = {
-        VERSION: '2.3',
+        VERSION: '2.4',
         DEBUG_MODE: true,
-        DEBOUNCE_SEARCH: 1200,
-        DEBOUNCE_FILTER: 600,
+        DEBOUNCE_SEARCH: 600,
+        DEBOUNCE_FILTER: 400,
         STATS_UPDATE_INTERVAL: 180000
     };
 
@@ -45,36 +43,7 @@
     }
 
     // =========================
-    // MODAL UNIVERSAL - REUTILIZADO
-    // =========================
-    // Confirmación
-    function mostrarModalConfirmacion(titulo, mensaje, callback) {
-        if (typeof window.mostrarModalConfirmacion === 'function') {
-            window.mostrarModalConfirmacion(titulo, mensaje, callback);
-        } else {
-            // Fallback
-            if (confirm(`${titulo}\n${mensaje}`)) callback && callback();
-        }
-    }
-    // Error
-    function mostrarModalError(titulo, mensaje) {
-        if (typeof window.mostrarModalError === 'function') {
-            window.mostrarModalError(titulo, mensaje);
-        } else {
-            alert(`${titulo}: ${mensaje}`);
-        }
-    }
-    // Éxito
-    function mostrarModalExito(titulo, mensaje) {
-        if (typeof window.mostrarModalExito === 'function') {
-            window.mostrarModalExito(titulo, mensaje);
-        } else {
-            alert(`${titulo}: ${mensaje}`);
-        }
-    }
-
-    // =========================
-    // FUNCIONES DE GESTIÓN DE OPERARIOS
+    // CRUD FUNCIONES
     // =========================
 
     function verOperario(id) {
@@ -160,7 +129,6 @@
             return;
         }
         try {
-            // Actualiza la celda de disponibilidad
             const celdaDisp = fila.querySelector("td:nth-child(5) span");
             if (celdaDisp) {
                 celdaDisp.textContent = nuevoEstado === 1 ? 'Disponible' : 'No disponible';
@@ -168,7 +136,6 @@
                     "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
                     (nuevoEstado === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800");
             }
-            // Actualiza el botón de toggle
             const btn = fila.querySelector("button[onclick*='toggleDisponibilidad']");
             if (btn) {
                 btn.innerHTML = `<i class="${nuevoEstado === 1 ? "ri-pause-circle-line" : "ri-play-circle-line"}"></i> ${nuevoEstado === 1 ? 'Deshabilitar' : 'Habilitar'}`;
@@ -226,16 +193,14 @@
         });
     }
 
-    // SISTEMA DE FILTROS AJAX OPTIMIZADO
-    function ajaxFiltrar(extraParams) {
+    // =========================
+    // SISTEMA DE FILTROS AJAX IGUAL A USUARIOS
+    // =========================
+    function filtrarOperariosAjax(extraParams) {
         const filtroForm = document.getElementById("filtroOperariosForm");
         if (!filtroForm) return;
         try {
-            const search = filtroForm.querySelector('input[name="search"]')?.value || '';
-            const status = filtroForm.querySelector('select[name="status"]')?.value || '';
-            const params = new URLSearchParams();
-            params.append("search", search);
-            params.append("status", status);
+            const params = new URLSearchParams(new FormData(filtroForm));
             if (extraParams) {
                 Object.entries(extraParams).forEach(([k, v]) => params.set(k, v));
             }
@@ -247,19 +212,16 @@
             .then(html => {
                 const tempDiv = document.createElement("div");
                 tempDiv.innerHTML = html;
-                // Actualizar tabla
-                const nuevaTabla = tempDiv.querySelector(".table-glass");
-                const actualTabla = document.querySelector(".table-glass");
-                if (nuevaTabla && actualTabla) actualTabla.innerHTML = nuevaTabla.innerHTML;
-                // Actualizar paginación
-                const nuevaPaginacion = tempDiv.querySelector('.pagination-btn')?.closest('.flex');
-                const actualPaginacion = document.querySelector('.pagination-btn')?.closest('.flex');
-                if (nuevaPaginacion && actualPaginacion) actualPaginacion.innerHTML = nuevaPaginacion.innerHTML;
-                // Reinicializar eventos
-                filtroFormListenersIniciados = false;
-                bindFiltroFormEvents();
-                bindPaginacionAjax();
-                log("Contenido actualizado vía AJAX", 'success');
+                const nuevoWrapper = tempDiv.querySelector("#operarios-wrapper");
+                const actualWrapper = document.getElementById("operarios-wrapper");
+                if (nuevoWrapper && actualWrapper) {
+                    actualWrapper.replaceWith(nuevoWrapper);
+                    filtroFormListenersIniciados = false;
+                    bindFiltroFormEvents();
+                    bindPaginacionAjax();
+                    actualizarEstadisticasOperarios();
+                    log("Operarios filtrados y recargados por AJAX", 'success');
+                }
             })
             .catch(err => {
                 log(`Error en filtro AJAX: ${err.message}`, 'error');
@@ -274,30 +236,29 @@
         const filtroForm = document.getElementById("filtroOperariosForm");
         if (!filtroForm || filtroFormListenersIniciados) return;
         filtroFormListenersIniciados = true;
-        // Filtro por texto con debounce
+
         const searchInput = filtroForm.querySelector('input[name="search"]');
         if (searchInput) {
             searchInput.oninput = function() {
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(() => {
-                    ajaxFiltrar();
+                    filtrarOperariosAjax();
                 }, CONFIG.DEBOUNCE_SEARCH);
             };
         }
-        // Filtro por select con debounce
         const selects = filtroForm.querySelectorAll("select");
         selects.forEach(sel => {
             sel.onchange = function() {
                 clearTimeout(filterTimeout);
                 filterTimeout = setTimeout(() => {
-                    ajaxFiltrar();
+                    filtrarOperariosAjax();
                 }, CONFIG.DEBOUNCE_FILTER);
             };
         });
         filtroForm.onsubmit = function(e) {
             e.preventDefault();
+            filtrarOperariosAjax();
         };
-        // Botón limpiar filtros
         const limpiarBtn = document.getElementById("limpiarFiltrosBtn");
         if (limpiarBtn) limpiarBtn.onclick = function(e) {
             e.preventDefault();
@@ -310,25 +271,7 @@
         clearTimeout(filterTimeout);
         const filtroForm = document.getElementById("filtroOperariosForm");
         if (filtroForm) filtroForm.reset();
-        fetch("/public_html/dashboard/paginas/operarios/operarios.php", {
-            method: "GET",
-            headers: { "X-Requested-With": "XMLHttpRequest" }
-        })
-        .then(r => r.text())
-        .then(html => {
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = html;
-            const nuevaTabla = tempDiv.querySelector(".table-glass");
-            const actualTabla = document.querySelector(".table-glass");
-            if (nuevaTabla && actualTabla) actualTabla.innerHTML = nuevaTabla.innerHTML;
-            filtroFormListenersIniciados = false;
-            bindFiltroFormEvents();
-            bindPaginacionAjax();
-        })
-        .catch(err => {
-            log(`Error al limpiar filtros: ${err.message}`, 'error');
-            mostrarModalError("Error", "No se pudo limpiar los filtros");
-        });
+        filtrarOperariosAjax();
     }
 
     function bindPaginacionAjax() {
@@ -345,11 +288,26 @@
                         const match = href.match(/(?:\?|&)page=(\d+)/);
                         page = match ? match[1] : null;
                     }
-                    if (page) ajaxFiltrar({ page });
+                    if (page) filtrarOperariosAjax({ page });
                 }
             });
             enlace.__bound = true;
         });
+        document.querySelectorAll("form#formPerPage select[name='per_page']").forEach(sel => {
+            sel.onchange = function() {
+                filtrarOperariosAjax({ per_page: sel.value, page: 1 });
+            }
+        });
+        const goToForm = document.getElementById("formGoTo");
+        if (goToForm) {
+            goToForm.onsubmit = function(e) {
+                e.preventDefault();
+                const input = goToForm.querySelector('[name=page]');
+                if (input && input.value) {
+                    filtrarOperariosAjax({ page: input.value });
+                }
+            };
+        }
     }
 
     window.inicializarOperarios = function() {
@@ -381,7 +339,7 @@
     window.mostrarModalNuevoOperario = mostrarModalNuevoOperario;
     window.actualizarEstadisticasOperarios = actualizarEstadisticasOperarios;
     window.limpiarTodosFiltros = limpiarTodosFiltros;
-    window.ajaxFiltrar = ajaxFiltrar;
+    window.filtrarOperariosAjax = filtrarOperariosAjax;
     window.actualizarFilaOperarioEnTabla = actualizarFilaOperarioEnTabla;
 
     log(`Módulo operarios.js v${CONFIG.VERSION} cargado completamente`, 'success');

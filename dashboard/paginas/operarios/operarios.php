@@ -67,7 +67,7 @@ if ($page > $total_pages) {
 $offset = ($page - 1) * $records_per_page;
 
 //===============================================================
-// CONSULTA PRINCIPAL (Ajuste: incluye actualizado)
+// CONSULTA PRINCIPAL
 //===============================================================
 $sql = "SELECT id, nombre, usuario, email, disponible, creado, actualizado 
         FROM operadores 
@@ -84,7 +84,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 //===============================================================
-// ESTADÍSTICAS OPTIMIZADAS (SOLO UNA CONSULTA)
+// ESTADÍSTICAS OPTIMIZADAS
 //===============================================================
 $stats_sql = "SELECT COUNT(*) as total, 
                      SUM(disponible=1) as available, 
@@ -220,8 +220,8 @@ function base_query(array $extra = []): string
                 </select>
             </div>
             <div class="md:col-span-1 flex justify-end">
-                <button type="submit" class="action-btn btn-clear w-full lg:w-auto group">
-                    <i class="ri-refresh-line mr-1"></i> Filtrar
+                <button type="button" id="limpiarFiltrosBtn" class="action-btn btn-clear w-full lg:w-auto group">
+                    <i class="ri-refresh-line mr-1"></i> Limpiar
                 </button>
             </div>
         </form>
@@ -245,7 +245,7 @@ function base_query(array $extra = []): string
             </p>
             <div class="flex gap-3 justify-center flex-wrap">
                 <?php if ($search || $status_filter): ?>
-                <button type="button" onclick="location.href='?'" class="action-btn btn-edit">
+                <button type="button" onclick="limpiarTodosFiltros()" class="action-btn btn-edit">
                     <i class="ri-filter-off-line"></i> Limpiar filtros
                 </button>
                 <?php endif; ?>
