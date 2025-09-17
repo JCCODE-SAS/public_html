@@ -24,7 +24,7 @@ window.rutas = {
     dashboard: baseURL + "dashboard/dashboard.php",
     usuarios: baseURL + "dashboard/paginas/usuarios/usuarios.php",
     operarios: baseURL + "dashboard/paginas/operarios/operarios.php",
-    reportes: baseURL + "dashboard/paginas/reportes/reportes.php",
+    whatsapp: baseURL + "dashboard/paginas/whatsapp/whatsapp.php",
     perfil: baseURL + "dashboard/paginas/perfil/perfil.php",
     configuracion: baseURL + "dashboard/paginas/configuracion/configuracion.php",
 

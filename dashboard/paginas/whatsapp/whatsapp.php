@@ -1,5 +1,8 @@
 <?php
-// Asegúrate de que aquí verificas login, permisos, etc. según tu sistema.
+// Asegura que solo usuarios autenticados pueden acceder (ajusta según tu lógica de login)
+require_once __DIR__ . '/../../../configuracion/bd.php';
+require_once __DIR__ . '/../../../logs/logger.php';
+// Puedes agregar aquí verificaciones de rol, permisos, etc.
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,9 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <title>WhatsApp Web - Módulo Operador</title>
-    <link rel="stylesheet" href="comportamientos/whatsapp.css">
+    <link rel="stylesheet" href="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.css">
     <style>
-    /* Puedes mover esto a whatsapp.css */
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -113,6 +115,26 @@
         color: #888;
         margin-top: 5px;
     }
+
+    @media (max-width: 900px) {
+        .wa-container {
+            flex-direction: column;
+            height: auto;
+            min-height: 100vh;
+            border-radius: 0;
+        }
+
+        .wa-chats {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid #eee;
+            min-height: 160px;
+        }
+
+        .wa-main {
+            min-height: 400px;
+        }
+    }
     </style>
 </head>
 
@@ -121,7 +143,7 @@
         <aside class="wa-chats">
             <h2 style="padding:18px 15px 0 15px; margin:0 0 10px 0;">Chats activos</h2>
             <ul class="wa-chatlist" id="wa-chatlist">
-                <!-- Aquí se cargan los chats vía JS -->
+                <!-- Los chats se cargarán aquí vía JS -->
             </ul>
         </aside>
         <main class="wa-main">
@@ -136,7 +158,7 @@
             </form>
         </main>
     </div>
-    <script src="comportamientos/whatsapp.js"></script>
+    <script src="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </body>
 
 </html>

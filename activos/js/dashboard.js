@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.rutas = {
       usuarios: '/public_html/dashboard/paginas/usuarios/usuarios.php',
       operarios: '/public_html/dashboard/paginas/operarios/operarios.php',
-      reportes: '/public_html/dashboard/paginas/reportes/reportes.php',
+      whatsapp: '/public_html/dashboard/paginas/whatsapp/whatsapp.php',
       perfil: '/public_html/dashboard/paginas/perfil/perfil.php',
       configuracion: '/public_html/dashboard/paginas/configuracion/configuracion.php',
       logout: '/public_html/sesiones/destruir_sesion.php',
@@ -201,6 +201,22 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     }
   });
+
+  document.querySelectorAll('.nav-link').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const section = btn.getAttribute('data-section');
+        // Oculta todas las secciones
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        // Muestra solo la sección seleccionada
+        document.getElementById(section).classList.add('active');
+        
+        // Carga contenido dinámico según la sección
+        if (section === 'usuariosSection') window.recargarSeccionUsuarios();
+        if (section === 'operariosSection') window.recargarSeccionOperarios();
+        if (section === 'whatsAppSection') window.recargarSeccionwhatsapp(); 
+        // ...otros casos si tienes más secciones
+    });
+});
 
   console.log('✅ Dashboard inicializado correctamente - CopFlow v3.0 by Diomedez98');
 });

@@ -61,11 +61,13 @@ if (!isset($_SESSION['user_id'])) {
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-section="reportesSection">
-                                <i class="nav-icon ri-bar-chart-line"></i>
-                                <span class="nav-text">Reportes</span>
+                            <button class="nav-link" data-section="whatsappSection">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                    alt="whatsapp" class="nav-icon" width="20" height="20">
+                                <span class="nav-text">whatsapp</span>
                             </button>
                         </li>
+
                     </ul>
                 </div>
                 <div class="nav-group">
@@ -109,7 +111,7 @@ if (!isset($_SESSION['user_id'])) {
             <main class="main-content">
                 <section id="usuariosSection" class="content-section active"></section>
                 <section id="operariosSection" class="content-section"></section>
-                <section id="reportesSection" class="content-section"></section>
+                <section id="whatsappSection" class="content-section"></section>
                 <section id="perfilSection" class="content-section"></section>
                 <section id="configuracionSection" class="content-section"></section>
             </main>
@@ -403,6 +405,39 @@ if (!isset($_SESSION['user_id'])) {
                 }
             }, 300);
         }, duracion);
+    };
+
+    window.recargarSeccionwhatsapp = function() {
+        const whatsappSection = document.getElementById('whatsappSection');
+        if (!whatsappSection) {
+            console.error("❌ Sección de whatsapp no encontrada");
+            return;
+        }
+        whatsappSection.innerHTML = `<div class="flex items-center justify-center p-8">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+        <span class="ml-2 text-gray-600">Cargando whatsapp Web...</span>
+    </div>`;
+        fetch('/public_html/dashboard/paginas/whatsapp/whatsapp.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                whatsappSection.innerHTML = html;
+                // Aquí puedes inicializar funciones de whatsapp si las necesitas
+            })
+            .catch(error => {
+                whatsappSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+                <p class="text-red-700 mb-2">Error al cargar la sección whatsapp</p>
+                <button onclick="window.location.reload()" 
+                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                    Recargar página
+                </button>
+            </div>`;
+            });
     };
     </script>
 </body>
