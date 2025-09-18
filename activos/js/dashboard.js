@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
               CopFlow v3.0 - Sistema de ${key.charAt(0).toUpperCase() + key.slice(1)}
             </p>
             <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-              Desarrollado por Diomedez98
+              Desarrollado por Diomedes Madrigal
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Carga contenido dinámico según la sección
         if (section === 'usuariosSection') window.recargarSeccionUsuarios();
         if (section === 'operariosSection') window.recargarSeccionOperarios();
-        if (section === 'whatsAppSection') window.recargarSeccionwhatsapp(); 
+        if (section === 'whatsappSection') window.recargarSeccionwhatsapp(); 
         // ...otros casos si tienes más secciones
     });
 });

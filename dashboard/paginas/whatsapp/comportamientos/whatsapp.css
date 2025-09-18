@@ -1,0 +1,160 @@
+.wa-container {
+    display: flex;
+    width: 100%;
+    height: 76vh;
+    min-height: 420px;
+    background: #f6f7fb;
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.09);
+    overflow: hidden;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.wa-chats {
+    width: 310px;
+    background: #fff;
+    border-right: 1.5px solid #f1f1f1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+    max-width: 370px;
+    transition: background 0.2s;
+}
+.wa-chats h2 {
+    font-size: 20px;
+    color: #333;
+    padding-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+.wa-chatlist {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 8px 0;
+}
+.wa-chat {
+    padding: 15px 18px 13px 18px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 4px solid transparent;
+    background: #fff;
+}
+.wa-chat.selected {
+    background: #e7f9ed;
+    border-left: 4px solid #25d366;
+}
+.wa-chat:hover {
+    background: #f7f7fa;
+}
+.wa-chat strong {
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+.wa-chat .wa-lastmsg {
+    color: #888;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.wa-main {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    position: relative;
+    min-width: 0;
+    height: 100%;
+}
+.wa-messages {
+    flex: 1 1 0;
+    overflow-y: auto;
+    padding: 32px 24px 24px 24px;
+    min-height: 220px;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.wa-bubble {
+    margin-bottom: 8px;
+    display: inline-block;
+    max-width: 80%;
+    padding: 10px 14px 8px 14px;
+    border-radius: 16px;
+    font-size: 15px;
+    color: #222;
+    background: #e9fbe5;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    position: relative;
+    clear: both;
+}
+.wa-bubble.cliente {
+    background: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+.wa-bubble.operador, .wa-bubble.mia {
+    background: #dcf8c6;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+.wa-msg-meta {
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.wa-inputbox {
+    display: flex;
+    margin: 0;
+    border-top: 1.5px solid #e1e1e1;
+    background: #fff;
+    padding: 14px 18px;
+    align-items: center;
+    gap: 10px;
+}
+#wa-input {
+    flex: 1 1 0;
+    border: none;
+    border-radius: 7px;
+    background: #f7faf7;
+    padding: 10px 14px;
+    font-size: 15px;
+    color: #222;
+    outline: none;
+    margin-right: 10px;
+    box-shadow: 0 1px 1.5px rgba(0,0,0,0.03);
+    transition: background 0.2s;
+}
+#wa-input:focus {
+    background: #e9fbe5;
+}
+.wa-inputbox button {
+    background: #25d366;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.wa-inputbox button:hover {
+    background: #20b858;
+}
+@media (max-width: 900px) {
+    .wa-container { flex-direction: column; min-height: 320px; }
+    .wa-chats { width: 100%; max-width: 100%; min-width: 0; border-right: none; border-bottom: 1.5px solid #f1f1f1; }
+    .wa-main { min-height: 220px; }
+}
+@media (max-width: 600px) {
+    .wa-container { border-radius: 0; }
+    .wa-main, .wa-chats { padding: 0 !important; }
+}

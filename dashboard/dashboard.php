@@ -22,6 +22,10 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
+    <!-- Rutas centralizadas: debe ir primero -->
+    <script src="../activos/js/ubicacion_paginas.js"></script>
+    <!-- WhatsApp JS GLOBAL para integración SPA (carga solo una vez) -->
+    <script src="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </head>
 
 <body class="font-inter antialiased">
@@ -49,7 +53,7 @@ if (!isset($_SESSION['user_id'])) {
                     <h3 class="nav-group-title">Gestión</h3>
                     <ul class="nav-menu">
                         <li class="nav-item">
-                            <button class="nav-link active" data-section="usuariosSection">
+                            <button class="nav-link" data-section="usuariosSection">
                                 <i class="nav-icon ri-user-settings-line"></i>
                                 <span class="nav-text">Usuarios</span>
                             </button>
@@ -67,7 +71,6 @@ if (!isset($_SESSION['user_id'])) {
                                 <span class="nav-text">whatsapp</span>
                             </button>
                         </li>
-
                     </ul>
                 </div>
                 <div class="nav-group">
@@ -207,176 +210,6 @@ if (!isset($_SESSION['user_id'])) {
     ?>
 
     <script>
-    // INICIALIZACIÓN Y VERIFICACIÓN DEL DASHBOARD
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Inicializando Dashboard COPFLOW v2.1...');
-        console.log('👤 Usuario:', '<?= htmlspecialchars($_SESSION['user_name']) ?>');
-        console.log('🔐 Rol:', '<?= htmlspecialchars($_SESSION['user_role'] ?? 'usuario') ?>');
-
-        const funcionesCriticas = [
-            'mostrarModalNuevoUsuario',
-            'cerrarModalCrearUsuario',
-            'crearUsuario',
-            'limpiarFormularioCrear',
-            'recargarTablaUsuarios',
-            'actualizarEstadisticasUsuarios',
-            'mostrarModalNuevoOperario',
-            'cerrarModalCrearOperario',
-            'crearOperario',
-            'limpiarFormularioCrearOperario',
-            'recargarTablaOperarios',
-            'actualizarEstadisticasOperarios'
-        ];
-
-        const funcionesFaltantes = [];
-        const funcionesDisponibles = [];
-
-        funcionesCriticas.forEach(funcion => {
-            if (typeof window[funcion] === 'function') {
-                funcionesDisponibles.push(funcion);
-            } else {
-                funcionesFaltantes.push(funcion);
-            }
-        });
-
-        console.log('📋 Estado de funciones del sistema:');
-        funcionesDisponibles.forEach(funcion => {
-            console.log(`  ✅ ${funcion}: Disponible`);
-        });
-
-        if (funcionesFaltantes.length > 0) {
-            console.warn('⚠️ Funciones faltantes:');
-            funcionesFaltantes.forEach(funcion => {
-                console.warn(`  ❌ ${funcion}: No disponible`);
-            });
-        }
-
-        document.addEventListener('tablaUsuariosActualizada', function(e) {
-            console.log('🎉 Tabla de usuarios actualizada exitosamente:', e.detail);
-            if (typeof mostrarNotificacionTemporal === 'function') {
-                mostrarNotificacionTemporal('Lista de usuarios actualizada', 'success', 2000);
-            }
-        });
-
-        document.addEventListener('tablaOperariosActualizada', function(e) {
-            console.log('🎉 Tabla de operarios actualizada exitosamente:', e.detail);
-            if (typeof mostrarNotificacionTemporal === 'function') {
-                mostrarNotificacionTemporal('Lista de operarios actualizada', 'success', 2000);
-            }
-        });
-
-        window.addEventListener('error', function(e) {
-            console.error('❌ Error global capturado:', e.error);
-            console.error('📍 Archivo:', e.filename);
-            console.error('📍 Línea:', e.lineno);
-            console.error('📍 Columna:', e.colno);
-        });
-
-        setTimeout(() => {
-            console.log('✅ Dashboard COPFLOW v2.1 inicializado correctamente');
-            console.log('🔧 Funciones disponibles:', funcionesDisponibles.length + '/' +
-                funcionesCriticas.length);
-            document.dispatchEvent(new CustomEvent('dashboardReady', {
-                detail: {
-                    version: '2.1',
-                    user: '<?= htmlspecialchars($_SESSION['user_name']) ?>',
-                    role: '<?= htmlspecialchars($_SESSION['user_role'] ?? 'usuario') ?>',
-                    timestamp: new Date(),
-                    funcionesDisponibles: funcionesDisponibles,
-                    funcionesFaltantes: funcionesFaltantes
-                }
-            }));
-        }, 100);
-    });
-
-    // FUNCIÓN DE RESPALDO PARA RECARGAR SECCIÓN USUARIOS
-    window.recargarSeccionUsuarios = function() {
-        const usuariosSection = document.getElementById('usuariosSection');
-        if (!usuariosSection) {
-            console.error("❌ Sección de usuarios no encontrada");
-            return;
-        }
-        usuariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            <span class="ml-2 text-gray-600">Actualizando lista de usuarios...</span>
-        </div>`;
-        fetch('/public_html/dashboard/paginas/usuarios/usuarios.php')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                return response.text();
-            })
-            .then(html => {
-                usuariosSection.innerHTML = html;
-                if (typeof window.inicializarUsuarios === 'function') {
-                    setTimeout(() => {
-                        window.inicializarUsuarios();
-                    }, 100);
-                }
-                document.dispatchEvent(new CustomEvent('tablaUsuariosActualizada', {
-                    detail: {
-                        method: 'seccionCompleta',
-                        timestamp: new Date()
-                    }
-                }));
-            })
-            .catch(error => {
-                usuariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
-                    <p class="text-red-700 mb-2">Error al cargar la lista de usuarios</p>
-                    <button onclick="window.location.reload()" 
-                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
-                        Recargar página
-                    </button>
-                </div>`;
-            });
-    };
-
-    // FUNCIÓN DE RESPALDO PARA RECARGAR SECCIÓN OPERARIOS
-    window.recargarSeccionOperarios = function() {
-        const operariosSection = document.getElementById('operariosSection');
-        if (!operariosSection) {
-            console.error("❌ Sección de operarios no encontrada");
-            return;
-        }
-        operariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
-            <span class="ml-2 text-gray-600">Actualizando lista de operarios...</span>
-        </div>`;
-        fetch('/public_html/dashboard/paginas/operarios/operarios.php')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                return response.text();
-            })
-            .then(html => {
-                operariosSection.innerHTML = html;
-                if (typeof window.inicializarOperarios === 'function') {
-                    setTimeout(() => {
-                        window.inicializarOperarios();
-                    }, 100);
-                }
-                document.dispatchEvent(new CustomEvent('tablaOperariosActualizada', {
-                    detail: {
-                        method: 'seccionCompleta',
-                        timestamp: new Date()
-                    }
-                }));
-            })
-            .catch(error => {
-                operariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
-                    <p class="text-red-700 mb-2">Error al cargar la lista de operarios</p>
-                    <button onclick="window.location.reload()" 
-                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
-                        Recargar página
-                    </button>
-                </div>`;
-            });
-    };
-
     // UTILIDAD: Notificaciones temporales
     window.mostrarNotificacionTemporal = function(mensaje, tipo = 'info', duracion = 3000) {
         const colores = {
@@ -407,6 +240,87 @@ if (!isset($_SESSION['user_id'])) {
         }, duracion);
     };
 
+
+    // =========== RECARGA DINÁMICA DE SECCIONES PRINCIPALES ===========
+
+    window.recargarSeccionUsuarios = function() {
+        const usuariosSection = document.getElementById('usuariosSection');
+        if (!usuariosSection) {
+            console.error("❌ Sección de usuarios no encontrada");
+            return;
+        }
+        usuariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <span class="ml-2 text-gray-600">Actualizando lista de usuarios...</span>
+        </div>`;
+        fetch(window.rutas.usuarios)
+            .then(response => response.text())
+            .then(html => {
+                usuariosSection.innerHTML = html;
+                if (typeof window.inicializarUsuarios === 'function') {
+                    setTimeout(() => {
+                        window.inicializarUsuarios();
+                    }, 100);
+                }
+                document.dispatchEvent(new CustomEvent('tablaUsuariosActualizada', {
+                    detail: {
+                        method: 'seccionCompleta',
+                        timestamp: new Date()
+                    }
+                }));
+            })
+            .catch(error => {
+                usuariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+                    <p class="text-red-700 mb-2">Error al cargar la lista de usuarios</p>
+                    <button onclick="window.location.reload()" 
+                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                        Recargar página
+                    </button>
+                </div>`;
+            });
+    };
+
+    window.recargarSeccionOperarios = function() {
+        const operariosSection = document.getElementById('operariosSection');
+        if (!operariosSection) {
+            console.error("❌ Sección de operarios no encontrada");
+            return;
+        }
+        operariosSection.innerHTML = `<div class="flex items-center justify-center p-8">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+            <span class="ml-2 text-gray-600">Actualizando lista de operarios...</span>
+        </div>`;
+        fetch(window.rutas.operarios)
+            .then(response => response.text())
+            .then(html => {
+                operariosSection.innerHTML = html;
+                if (typeof window.inicializarOperarios === 'function') {
+                    setTimeout(() => {
+                        window.inicializarOperarios();
+                    }, 100);
+                }
+                document.dispatchEvent(new CustomEvent('tablaOperariosActualizada', {
+                    detail: {
+                        method: 'seccionCompleta',
+                        timestamp: new Date()
+                    }
+                }));
+            })
+            .catch(error => {
+                operariosSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                    <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+                    <p class="text-red-700 mb-2">Error al cargar la lista de operarios</p>
+                    <button onclick="window.location.reload()" 
+                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                        Recargar página
+                    </button>
+                </div>`;
+            });
+    };
+
+    // =========== MODULO WHATSAPP: CARGA DINÁMICA Y JS ===========
+
     window.recargarSeccionwhatsapp = function() {
         const whatsappSection = document.getElementById('whatsappSection');
         if (!whatsappSection) {
@@ -417,7 +331,21 @@ if (!isset($_SESSION['user_id'])) {
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
         <span class="ml-2 text-gray-600">Cargando whatsapp Web...</span>
     </div>`;
-        fetch('/public_html/dashboard/paginas/whatsapp/whatsapp.php')
+
+        if (!window.rutas || !window.rutas.whatsapp) {
+            console.error("❌ La ruta para WhatsApp no está definida. Revisa ubicacion_paginas.js");
+            whatsappSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+            <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+            <p class="text-red-700 mb-2">Error de configuración: ruta de WhatsApp no encontrada.</p>
+            <button onclick="window.location.reload()" 
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                Recargar página
+            </button>
+        </div>`;
+            return;
+        }
+
+        fetch(window.rutas.whatsapp)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -426,19 +354,70 @@ if (!isset($_SESSION['user_id'])) {
             })
             .then(html => {
                 whatsappSection.innerHTML = html;
-                // Aquí puedes inicializar funciones de whatsapp si las necesitas
+
+                // Limpia intervalos antes de iniciar el módulo (para evitar duplicados)
+                if (typeof window.limpiarWhatsappIntervals === 'function') {
+                    window.limpiarWhatsappIntervals();
+                }
+
+                // Inicializa WhatsApp al cargar el HTML
+                setTimeout(() => {
+                    if (typeof window.inicializarWhatsapp === 'function') {
+                        window.inicializarWhatsapp();
+                    }
+                }, 100);
             })
             .catch(error => {
                 whatsappSection.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
-                <p class="text-red-700 mb-2">Error al cargar la sección whatsapp</p>
-                <button onclick="window.location.reload()" 
-                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
-                    Recargar página
-                </button>
-            </div>`;
+            <i class="ri-error-warning-line text-red-500 text-2xl mb-2"></i>
+            <p class="text-red-700 mb-2">Error al cargar la sección whatsapp</p>
+            <p class="text-red-500">${error.message}</p>
+            <button onclick="window.location.reload()" 
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                Recargar página
+            </button>
+        </div>`;
             });
     };
+
+    // =========== CAMBIO DE SECCIÓN EN DASHBOARD ===========
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const section = btn.getAttribute('data-section');
+                // Si vas a otra sección que NO es whatsapp, limpia intervalos
+                if (section !== 'whatsappSection' && typeof window.limpiarWhatsappIntervals ===
+                    'function') {
+                    window.limpiarWhatsappIntervals();
+                }
+
+                // Oculta todas las secciones
+                document.querySelectorAll('.content-section').forEach(sec => sec.classList
+                    .remove('active'));
+                // Muestra solo la sección seleccionada
+                document.getElementById(section).classList.add('active');
+
+                // Carga contenido dinámico según la sección
+                if (section === 'usuariosSection') window.recargarSeccionUsuarios();
+                if (section === 'operariosSection') window.recargarSeccionOperarios();
+                if (section === 'whatsappSection') window.recargarSeccionwhatsapp();
+                if (section === 'perfilSection') {
+                    // Si tienes función para perfil, agrégala aquí
+                }
+                if (section === 'configuracionSection') {
+                    // Si tienes función para configuración, agrégala aquí
+                }
+            });
+        });
+
+        // Carga la sección inicial activa
+        setTimeout(() => {
+            const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+            if (activeLink) activeLink.click();
+        }, 100);
+    });
     </script>
 </body>
 
