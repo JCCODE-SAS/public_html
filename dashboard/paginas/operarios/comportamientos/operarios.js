@@ -14,7 +14,6 @@
  * 👨‍💻 Desarrollado por: Diomedez98 (JCCODE-SAS)
  * ===============================================================
  */
-
 (function() {
     "use strict";
 
@@ -33,12 +32,12 @@
     function log(mensaje, tipo = 'info') {
         if (!CONFIG.DEBUG_MODE) return;
         const timestamp = new Date().toLocaleTimeString();
-        const prefix = `[${timestamp}] [OPERARIOS.JS v${CONFIG.VERSION}]`;
+        const prefix  = `[${timestamp}] [OPERARIOS.JS v${CONFIG.VERSION}]`;
         switch(tipo) {
-            case 'error': console.error(`${prefix} ❌`, mensaje); break;
-            case 'warn': console.warn(`${prefix} ⚠️`, mensaje); break;
-            case 'success': console.log(`${prefix} ✅`, mensaje); break;
-            default: console.log(`${prefix} 🔄`, mensaje); break;
+            case 'error':   console.error(`${prefix} ❌`, mensaje); break;
+            case 'warn':    console.warn(  `${prefix} ⚠️`, mensaje); break;
+            case 'success': console.log(  `${prefix} ✅`, mensaje); break;
+            default:        console.log(  `${prefix} 🔄`, mensaje); break;
         }
     }
 
@@ -57,12 +56,15 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })
             })
-            .then(response => response.text())
+            .then(res => res.text())
             .then(text => {
                 try {
                     const data = JSON.parse(text);
                     if (data.success && data.operario) {
-                        mostrarModalExito("Detalle de Operario", `Operario: ${data.operario.nombre} (${data.operario.usuario})`);
+                        mostrarModalExito(
+                            "Detalle de Operario",
+                            `Operario: ${data.operario.nombre} (${data.operario.usuario})`
+                        );
                     } else {
                         mostrarModalError("Error", data.message || "No se encontró el operario");
                     }
@@ -99,9 +101,9 @@
                 fetch("/public_html/dashboard/paginas/operarios/api/cambiar_estado_operarios.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: id, nuevo_estado: String(nuevoEstado) })
+                    body: JSON.stringify({ id, nuevo_estado: String(nuevoEstado) })
                 })
-                .then(response => response.json())
+                .then(res => res.json())
                 .then(data => {
                     if (data.success) {
                         mostrarModalExito(
@@ -132,7 +134,7 @@
             const celdaDisp = fila.querySelector("td:nth-child(5) span");
             if (celdaDisp) {
                 celdaDisp.textContent = nuevoEstado === 1 ? 'Disponible' : 'No disponible';
-                celdaDisp.className =
+                celdaDisp.className = 
                     "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
                     (nuevoEstado === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800");
             }
@@ -171,21 +173,21 @@
     function actualizarEstadisticasOperarios() {
         log("Actualizando estadísticas de operarios");
         fetch("/public_html/dashboard/paginas/operarios/api/estadisticas_operarios.php")
-        .then(response => response.text())
+        .then(res => res.text())
         .then(text => {
             try {
                 const stats = JSON.parse(text);
                 const elementos = {
-                    total: document.getElementById("stats-total"),
-                    available: document.getElementById("stats-available"),
+                    total:       document.getElementById("stats-total"),
+                    available:   document.getElementById("stats-available"),
                     unavailable: document.getElementById("stats-unavailable")
                 };
-                if (elementos.total && stats.total !== undefined) elementos.total.textContent = stats.total;
-                if (elementos.available && stats.available !== undefined) elementos.available.textContent = stats.available;
+                if (elementos.total       && stats.total       !== undefined) elementos.total.textContent       = stats.total;
+                if (elementos.available   && stats.available   !== undefined) elementos.available.textContent   = stats.available;
                 if (elementos.unavailable && stats.unavailable !== undefined) elementos.unavailable.textContent = stats.unavailable;
-                log(`Estadísticas actualizadas`, 'success');
+                log("Estadísticas actualizadas", 'success');
             } catch (e) {
-                log(`Respuesta inesperada en estadísticas: ${text.substring(0, 200)}`, 'error');
+                log(`Respuesta inesperada en estadísticas: ${text.substring(0,200)}`, 'error');
             }
         })
         .catch(err => {
@@ -194,8 +196,9 @@
     }
 
     // =========================
-    // SISTEMA DE FILTROS AJAX IGUAL A USUARIOS
+    // SISTEMA DE FILTROS AJAX
     // =========================
+
     function filtrarOperariosAjax(extraParams) {
         const filtroForm = document.getElementById("filtroOperariosForm");
         if (!filtroForm) return;
@@ -212,14 +215,13 @@
             .then(html => {
                 const tempDiv = document.createElement("div");
                 tempDiv.innerHTML = html;
-                const nuevoWrapper = tempDiv.querySelector("#operarios-wrapper");
+                const nuevoWrapper  = tempDiv.querySelector("#operarios-wrapper");
                 const actualWrapper = document.getElementById("operarios-wrapper");
                 if (nuevoWrapper && actualWrapper) {
                     actualWrapper.replaceWith(nuevoWrapper);
                     filtroFormListenersIniciados = false;
                     bindFiltroFormEvents();
                     bindPaginacionAjax();
-                    actualizarEstadisticasOperarios();
                     log("Operarios filtrados y recargados por AJAX", 'success');
                 }
             })
@@ -239,28 +241,27 @@
 
         const searchInput = filtroForm.querySelector('input[name="search"]');
         if (searchInput) {
-            searchInput.oninput = function() {
+            searchInput.oninput = () => {
                 clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    filtrarOperariosAjax();
-                }, CONFIG.DEBOUNCE_SEARCH);
+                searchTimeout = setTimeout(filtrarOperariosAjax, CONFIG.DEBOUNCE_SEARCH);
             };
         }
+
         const selects = filtroForm.querySelectorAll("select");
         selects.forEach(sel => {
-            sel.onchange = function() {
+            sel.onchange = () => {
                 clearTimeout(filterTimeout);
-                filterTimeout = setTimeout(() => {
-                    filtrarOperariosAjax();
-                }, CONFIG.DEBOUNCE_FILTER);
+                filterTimeout = setTimeout(filtrarOperariosAjax, CONFIG.DEBOUNCE_FILTER);
             };
         });
-        filtroForm.onsubmit = function(e) {
+
+        filtroForm.onsubmit = e => {
             e.preventDefault();
             filtrarOperariosAjax();
         };
+
         const limpiarBtn = document.getElementById("limpiarFiltrosBtn");
-        if (limpiarBtn) limpiarBtn.onclick = function(e) {
+        if (limpiarBtn) limpiarBtn.onclick = e => {
             e.preventDefault();
             limpiarTodosFiltros();
         };
@@ -277,7 +278,7 @@
     function bindPaginacionAjax() {
         document.querySelectorAll("a.pagination-btn").forEach(enlace => {
             if (enlace.__bound) return;
-            enlace.addEventListener("click", function(e) {
+            enlace.addEventListener("click", e => {
                 const href = enlace.getAttribute("href") || "";
                 if (href.includes("page=")) {
                     e.preventDefault();
@@ -293,22 +294,24 @@
             });
             enlace.__bound = true;
         });
+
         document.querySelectorAll("form#formPerPage select[name='per_page']").forEach(sel => {
-            sel.onchange = function() {
-                filtrarOperariosAjax({ per_page: sel.value, page: 1 });
-            }
+            sel.onchange = () => filtrarOperariosAjax({ per_page: sel.value, page: 1 });
         });
+
         const goToForm = document.getElementById("formGoTo");
         if (goToForm) {
-            goToForm.onsubmit = function(e) {
+            goToForm.onsubmit = e => {
                 e.preventDefault();
                 const input = goToForm.querySelector('[name=page]');
-                if (input && input.value) {
-                    filtrarOperariosAjax({ page: input.value });
-                }
+                if (input && input.value) filtrarOperariosAjax({ page: input.value });
             };
         }
     }
+
+    // =========================
+    // INICIALIZACIÓN
+    // =========================
 
     window.inicializarOperarios = function() {
         log(`Inicializando módulo de operarios COPFLOW v${CONFIG.VERSION}`, 'success');
@@ -316,12 +319,20 @@
         bindFiltroFormEvents();
         bindPaginacionAjax();
         actualizarEstadisticasOperarios();
-        setInterval(actualizarEstadisticasOperarios, CONFIG.STATS_UPDATE_INTERVAL);
+
+        // ← SOLO UN setInterval (persistente en window)
+        if (!window._copflow_statsIntervalOperarios) {
+            window._copflow_statsIntervalOperarios = setInterval(
+                actualizarEstadisticasOperarios,
+                CONFIG.STATS_UPDATE_INTERVAL
+            );
+        }
+
         log("Módulo de operarios inicializado correctamente", 'success');
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 if (window.inicializarOperarios) window.inicializarOperarios();
             }, 100);
@@ -333,15 +344,14 @@
     }
 
     // EXPORTACIÓN DE FUNCIONES GLOBALES
-    window.verOperario = verOperario;
-    window.editarOperario = editarOperario;
-    window.toggleDisponibilidad = toggleDisponibilidad;
-    window.mostrarModalNuevoOperario = mostrarModalNuevoOperario;
+    window.verOperario                   = verOperario;
+    window.editarOperario                = editarOperario;
+    window.toggleDisponibilidad          = toggleDisponibilidad;
+    window.mostrarModalNuevoOperario     = mostrarModalNuevoOperario;
     window.actualizarEstadisticasOperarios = actualizarEstadisticasOperarios;
-    window.limpiarTodosFiltros = limpiarTodosFiltros;
-    window.filtrarOperariosAjax = filtrarOperariosAjax;
+    window.limpiarTodosFiltros           = limpiarTodosFiltros;
+    window.filtrarOperariosAjax          = filtrarOperariosAjax;
     window.actualizarFilaOperarioEnTabla = actualizarFilaOperarioEnTabla;
 
     log(`Módulo operarios.js v${CONFIG.VERSION} cargado completamente`, 'success');
-
 })();
