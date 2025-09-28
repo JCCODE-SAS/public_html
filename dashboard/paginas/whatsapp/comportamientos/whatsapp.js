@@ -23,7 +23,6 @@
         }
     }
 
-    // 1. Cargar lista de chats (solo al iniciar)
     function cargarChats() {
         fetch('/public_html/dashboard/paginas/whatsapp/api/obtener_chats.php', { credentials: 'include' })
             .then(resp => resp.json())
@@ -31,23 +30,32 @@
                 const lista = document.getElementById('wa-chatlist');
                 if (!lista) return;
                 lista.innerHTML = '';
+    
                 if (!data.ok) {
-                    lista.innerHTML = `<li style="color:#d33;padding:20px;">${data.error||'Error cargando chats'}</li>`;
-                    log(data.error||'Error cargando chats','error');
+                    lista.innerHTML = `<li style="color:#d33;padding:20px;">${data.error || 'Error cargando chats'}</li>`;
+                    log(data.error || 'Error cargando chats', 'error');
                     return;
                 }
+    
                 if (!Array.isArray(data.chats) || data.chats.length === 0) {
                     lista.innerHTML = `<li style="color:#aaa;padding:20px;">No hay chats activos</li>`;
                     return;
                 }
+    
                 data.chats.forEach(chat => {
                     const li = document.createElement('li');
                     li.className = 'wa-chat';
                     li.dataset.chatId = chat.id;
+    
+                    // Renderizado limpio: solo si hay mensaje
+                    const mensajeHTML = chat.ultimo_mensaje
+                        ? `<div class="wa-lastmsg">${chat.ultimo_mensaje}</div>`
+                        : '';
+    
                     li.innerHTML = `
-                        <div><strong>${chat.cliente}</strong></div>
-                        <div class="wa-lastmsg">${chat.ultimo_mensaje||'(sin mensajes)'}</div>
-                        <div style="font-size:11px;color:#25d366;">${chat.estado}</div>`;
+                    <div><strong>${chat.cliente}</strong></div>
+                    <div>${chat.estado}</div>
+                `;
                     li.addEventListener('click', () => {
                         if (chatSeleccionado === chat.id) return;
                         document.querySelectorAll('.wa-chat').forEach(c => c.classList.remove('selected'));
@@ -55,16 +63,19 @@
                         chatSeleccionado = chat.id;
                         cargarMensajes(chat.id, true);
                     });
+    
                     lista.appendChild(li);
                 });
-                log(`Chats activos cargados (${data.chats.length})`,'success');
+    
+                log(`Chats activos cargados (${data.chats.length})`, 'success');
             })
             .catch(err => {
                 const lista = document.getElementById('wa-chatlist');
                 if (lista) lista.innerHTML = `<li style="color:#d33;padding:20px;">Error de red al cargar chats</li>`;
-                log(`Error de red al cargar chats: ${err.message}`,'error');
+                log(`Error de red al cargar chats: ${err.message}`, 'error');
             });
     }
+    
 
     // 2. Cargar mensajes de un chat (solo al seleccionarlo)
     function cargarMensajes(chatId, scrollToEnd) {
