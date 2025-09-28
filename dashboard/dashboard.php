@@ -112,9 +112,9 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </header>
             <main class="main-content">
-                <section id="usuariosSection" class="content-section active"></section>
+                <section id="usuariosSection" class="content-section"></section>
                 <section id="operariosSection" class="content-section"></section>
-                <section id="whatsappSection" class="content-section"></section>
+                <section id="whatsappSection" class="content-section active"></section>
                 <section id="perfilSection" class="content-section"></section>
                 <section id="configuracionSection" class="content-section"></section>
             </main>
