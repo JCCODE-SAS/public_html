@@ -1,0 +1,174 @@
+[18:01:20.136] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:01:20.138] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => dc314387@gmail.com
+    [password] => 3045800669
+)
+
+[18:01:20.382] [INFO   ] [validar_login.php   ] Login fallido para 'dc314387@gmail.com'
+[18:03:40.157] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:03:40.157] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => dc314387@gmail.com
+    [password] => 3045800669
+)
+
+[18:03:40.398] [INFO   ] [validar_login.php   ] Login fallido para 'dc314387@gmail.com'
+[18:03:48.557] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:03:48.558] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => prueba@example.com
+    [password] => test1234
+)
+
+[18:03:48.723] [INFO   ] [validar_login.php   ] Login fallido para 'prueba@example.com'
+[18:03:54.627] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:03:54.628] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => soporteclangsm@gmail.com
+    [password] => admin123
+)
+
+[18:03:54.785] [INFO   ] [validar_login.php   ] ✅ Login exitoso en users: soporteclangsm@gmail.com (admin)
+[18:04:00.082] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:00.135] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:00.137] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:00.138] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:04:00.220] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:04:00.441] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:04:00.892] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=9, Página=1, PerPage=10
+[18:04:02.049] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:02.050] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:04:02.094] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:02.425] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:04:02.829] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=9, Página=1, PerPage=10
+[18:04:03.629] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:03.631] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:04:03.773] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:04.099] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:04:04.546] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=9, Página=1, PerPage=10
+[18:04:05.126] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:05.248] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:05.248] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:04:05.445] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:04:05.644] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:04:05.983] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:05.983] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:04:06.103] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:06.182] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:04:06.380] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:04:06.840] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:06.841] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:04:06.882] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:06.961] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:04:07.210] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:04:07.779] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:07.819] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:04:09.544] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:09.545] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:04:10.078] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=9, Página=1, PerPage=10
+[18:04:10.337] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:10.337] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:04:10.459] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:10.782] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:04:11.218] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=9, Página=1, PerPage=10
+[18:04:11.708] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:04:11.891] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:05:16.784] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:05:16.785] [INFO   ] [cambiar_estado_usuario.php] POST recibido. Data: {"id":4,"nuevo_estado":"inactivo"} | _POST: []
+[18:05:16.785] [INFO   ] [cambiar_estado_usuario.php] Procesando id: 4, nuevo_estado: inactivo
+[18:05:16.883] [INFO   ] [cambiar_estado_usuario.php] Estado actualizado correctamente para id: 4 a inactivo
+[18:05:16.884] [INFO   ] [cambiar_estado_usuario.php] Cache de estadísticas limpiado
+[18:05:18.082] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:05:18.368] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":5,"inactive":4,"admins":4}
+[18:06:21.906] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:06:21.907] [INFO   ] [cambiar_estado_usuario.php] POST recibido. Data: {"id":4,"nuevo_estado":"activo"} | _POST: []
+[18:06:21.908] [INFO   ] [cambiar_estado_usuario.php] Procesando id: 4, nuevo_estado: activo
+[18:06:22.069] [INFO   ] [cambiar_estado_usuario.php] Estado actualizado correctamente para id: 4 a activo
+[18:06:22.076] [INFO   ] [cambiar_estado_usuario.php] Cache de estadísticas limpiado
+[18:06:22.614] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:06:23.185] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":9,"active":6,"inactive":3,"admins":4}
+[18:06:59.501] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:06:59.542] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:09:59.596] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:09:59.638] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:12:59.476] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:12:59.518] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:13:21.745] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:21.746] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:21.789] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:21.789] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:13:21.835] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:13:22.092] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:13:22.553] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[18:13:22.813] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:22.814] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:13:23.252] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:23.577] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:13:23.954] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[18:13:24.351] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:24.352] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:13:24.474] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:24.806] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:13:25.197] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[18:13:25.618] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:25.780] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:13:26.150] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:26.151] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:13:26.394] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:13:26.648] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:26.649] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:13:26.892] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:26.973] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:13:27.101] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:13:27.393] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:27.393] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:13:27.516] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:27.597] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:13:27.796] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:13:28.198] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:13:28.260] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:16:22.481] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:16:22.522] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:19:22.491] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:19:22.532] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:22:22.521] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:22.562] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:22:26.392] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:26.393] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:22:26.928] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[18:22:27.176] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:27.176] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[18:22:27.299] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:27.622] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:22:28.085] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[18:22:28.511] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:28.674] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[18:22:29.048] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:29.049] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:22:29.295] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:22:29.588] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:29.589] [INFO   ] [operarios.php       ] Filtros recibidos: search='', status='', page=1, per_page=10
+[18:22:29.709] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:29.791] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:22:30.186] [INFO   ] [operarios.php       ] Módulo operarios cargado. Total=3, Página=1, PerPage=10
+[18:22:30.228] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:30.228] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[18:22:30.557] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:30.557] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[18:22:30.597] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:30.678] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[18:22:30.918] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:30.919] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[18:22:31.275] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:31.482] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[18:22:31.721] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:31.924] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[18:22:37.276] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:37.362] [INFO   ] [obtener_mensajes.php] Consultados 9 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[18:22:40.034] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:40.115] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[18:22:47.942] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:22:48.024] [INFO   ] [obtener_mensajes.php] Consultados 9 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[18:25:22.482] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[18:25:22.523] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
