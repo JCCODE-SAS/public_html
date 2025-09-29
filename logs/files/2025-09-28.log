@@ -1051,3 +1051,246 @@
 [22:38:44.828] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
 [22:40:50.061] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
 [22:40:50.105] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:43:49.466] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:43:49.507] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:46:24.185] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:24.268] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[22:46:24.443] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:24.525] [INFO   ] [obtener_mensajes.php] Consultados 31 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:46:24.776] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:24.980] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:46:47.875] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:47.876] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:47.918] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:47.918] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:46:47.958] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:46:48.205] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:46:48.783] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:46:49.172] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:49.173] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:46:50.091] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.092] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:46:50.094] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.226] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:46:50.427] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.427] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:46:50.466] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:46:50.508] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.508] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:46:50.670] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.670] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:46:50.709] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:50.917] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:51.038] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:46:51.280] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:46:51.517] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:51.557] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:46:51.949] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:51.989] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:46:52.190] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:46:53.105] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:53.186] [INFO   ] [obtener_mensajes.php] Consultados 33 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:46:58.945] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:59.029] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[22:46:59.369] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:46:59.449] [INFO   ] [obtener_mensajes.php] Consultados 34 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:47:21.489] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:47:21.570] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[22:47:22.704] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:47:22.785] [INFO   ] [obtener_mensajes.php] Consultados 35 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:49:13.841] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:49:13.923] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[22:49:14.260] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:49:14.343] [INFO   ] [obtener_mensajes.php] Consultados 37 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:49:24.571] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:49:24.654] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[22:49:24.987] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:49:25.068] [INFO   ] [obtener_mensajes.php] Consultados 38 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:49:48.464] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:49:48.505] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:50:08.264] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:08.265] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:08.266] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:08.266] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:50:08.330] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:08.330] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:50:08.331] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:08.332] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:50:08.375] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:50:08.614] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:50:09.347] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:50:09.572] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:50:09.572] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:50:10.322] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:10.450] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:10.450] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:50:10.652] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:50:10.700] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:10.700] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:50:10.921] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:10.966] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:10.966] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:50:11.209] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:11.251] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:50:11.533] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:11.654] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:50:11.852] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:50:11.893] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:50:12.136] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:53:08.466] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:53:08.507] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:54:09.182] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:54:09.265] [INFO   ] [obtener_mensajes.php] Consultados 38 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:54:14.966] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:54:15.049] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[22:54:15.377] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:54:15.460] [INFO   ] [obtener_mensajes.php] Consultados 39 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[22:56:08.460] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:56:08.500] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:57:42.853] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:42.900] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:42.901] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:57:42.901] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:42.901] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:42.902] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:57:42.902] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:42.902] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[22:57:42.984] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[22:57:43.182] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:57:43.726] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:43.727] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:57:43.969] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:43.969] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:57:44.095] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:57:44.137] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:57:44.139] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[22:57:44.264] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:44.265] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[22:57:44.562] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:44.602] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:44.928] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:57:44.968] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:57:45.204] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:45.247] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:45.529] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[22:57:45.650] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[22:57:45.769] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[22:57:45.930] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:00:42.490] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:00:42.531] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:02:00.774] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:00.774] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:00.775] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:00.775] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:02:00.830] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:00.830] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:02:00.830] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:00.831] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:02:00.870] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:02:01.110] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:02:01.841] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:02:01.888] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:02:01.893] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:02:03.186] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:03.479] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:02:03.753] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:03.753] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:02:03.798] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:03.993] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:03.993] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:02:04.116] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:02:04.236] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:04.236] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:02:04.358] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:04.478] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:04.683] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:02:04.842] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[23:02:05.086] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:02:05.290] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[23:04:49.278] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:49.278] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:49.320] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:49.321] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:04:49.365] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:04:49.602] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:04:50.107] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:04:50.421] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:50.421] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:04:50.892] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:51.255] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:04:51.661] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:04:51.954] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:51.954] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[23:04:52.082] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:52.396] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:04:52.799] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=1, Página=1, PerPage=10
+[23:04:53.253] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:04:53.417] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":1,"active":1,"inactive":0,"admins":1}
+[23:05:19.652] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:19.653] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:05:19.815] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:19.816] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:05:20.032] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:20.033] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Noe Diomedes Diaz Madrigal (rol=usuario, id=1)
+[23:05:20.257] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:20.465] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[23:05:20.752] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:20.957] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Noe Diomedes Diaz Madrigal (id=1)
+[23:05:23.054] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:23.138] [INFO   ] [obtener_mensajes.php] Consultados 39 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[23:05:32.293] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:32.375] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[23:05:44.217] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:44.297] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[23:05:44.898] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:05:44.980] [INFO   ] [obtener_mensajes.php] Consultados 41 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[23:07:49.378] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:07:49.419] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:10:49.501] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:10:49.554] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:13:49.457] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:13:49.497] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:16:49.464] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:16:49.506] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:19:49.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:19:49.869] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:22:49.418] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:22:49.458] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:25:52.482] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:25:52.524] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:28:52.612] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:28:52.653] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:31:04.847] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:31:04.931] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[23:31:05.449] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:31:05.532] [INFO   ] [obtener_mensajes.php] Consultados 44 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[23:31:50.032] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:31:50.120] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:34:52.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:34:52.529] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:37:52.688] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:37:52.734] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:40:47.943] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:40:48.023] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[23:40:48.358] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:40:48.455] [INFO   ] [obtener_mensajes.php] Consultados 45 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[23:40:49.536] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:40:49.579] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:41:05.547] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:41:05.632] [INFO   ] [obtener_mensajes.php] Consultados 1 mensajes para chat 1 por Noe Diomedes Diaz Madrigal (id=1)
+[23:41:06.115] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:41:06.197] [INFO   ] [obtener_mensajes.php] Consultados 46 mensajes para chat 2 por Noe Diomedes Diaz Madrigal (id=1)
+[23:42:39.064] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:42:39.150] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 2
+[23:43:49.499] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:43:49.542] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:46:52.463] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:46:52.504] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:49:52.482] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:49:52.523] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:52:52.478] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:52:52.520] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:55:52.470] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:55:52.510] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[23:58:52.725] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[23:58:52.768] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
