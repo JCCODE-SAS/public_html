@@ -3,7 +3,21 @@
 header('Content-Type: application/json');
 
 // --- Inclusión de dependencias ---
-require_once __DIR__ . '/../../../../configuracion/bd.php'; // $mysqli ya disponible
+// Esto define $conexion según tu archivo bd.php
+require_once __DIR__ . '/../../../../configuracion/bd.php';
+
+// 🟢 BLOQUE DE PARCHE CRÍTICO PARA LA API:
+// 1. Unificar Variables: Hace que la variable principal $mysqli sea igual a $conexion.
+$mysqli = $conexion;
+
+// 2. Interceptar Fatal Error: Si $conexion falló (y activó die() o no),
+// debemos interceptar la variable $mysqli antes de usarla en la línea 20.
+if ($mysqli->connect_error) {
+    // Si falla, devolvemos un JSON de error legible para n8n.
+    echo json_encode(['ok' => false, 'error' => 'ERROR FATAL: La conexión a la base de datos falló.']);
+    exit; // Detiene el script devolviendo JSON limpio.
+}
+// ----------------------------------------------------
 
 // --- Lectura del cuerpo JSON ---
 $input = file_get_contents('php://input');
@@ -16,8 +30,9 @@ if (empty($data['chat_id']) || empty($data['texto']) || empty($data['cliente']))
 }
 
 // --- Sanitización ---
+// Esta sección ahora es segura gracias a la validación anterior.
 $id_chat = intval($data['chat_id']);
-$texto = $mysqli->real_escape_string($data['texto']);
+$texto = $mysqli->real_escape_string($data['texto']); // Línea 20 (Ahora segura)
 $numero = $mysqli->real_escape_string($data['cliente']);
 $accion = isset($data['accion']) ? $mysqli->real_escape_string($data['accion']) : 'insertarMensaje';
 
