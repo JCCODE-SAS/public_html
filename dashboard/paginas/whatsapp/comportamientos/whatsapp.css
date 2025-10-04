@@ -1,3 +1,38 @@
+/* Badge para mensajes no leídos en la lista de chats */
+.wa-badge {
+    display: inline-block;
+    min-width: 20px;
+    padding: 2px 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #e53935;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Badge global para el menú (puedes ajustar el id si usas otro) */
+#wa-menu-badge {
+    display: none;
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    min-width: 20px;
+    padding: 2px 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: #e53935;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    z-index: 10;
+    text-align: center;
+    line-height: 1.3;
+}
 .wa-container {
     display: flex;
     width: 100%;

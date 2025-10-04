@@ -51,20 +51,32 @@ $mysqli->query("UPDATE chats SET estado = 'activo', pausado = 0 WHERE id_chat = 
 // --- Señal para frontend ---
 $logPath = __DIR__ . '/../cache/';
 if (!is_dir($logPath)) mkdir($logPath, 0777, true);
-$archivo = $logPath . 'señal_actualizacion.json';
+// Escribir archivo con ñ (existente) y también versión sin ñ para evitar problemas en URLs
+$archivo_con_ntilde = $logPath . 'señal_actualizacion.json';
+$archivo_sin_ntilde = $logPath . 'senal_actualizacion.json';
 
-$fp = fopen($archivo, 'w');
-if (flock($fp, LOCK_EX)) {
-    fwrite($fp, json_encode([
-        'chat_id' => $id_chat,
-        'texto' => $texto,
-        'cliente' => $numero,
-        'accion' => $accion,
-        'timestamp' => date('Y-m-d H:i:s')
-    ], JSON_PRETTY_PRINT));
-    flock($fp, LOCK_UN);
+$payload = json_encode([
+    'chat_id' => $id_chat,
+    'texto' => $texto,
+    'cliente' => $numero,
+    'accion' => $accion,
+    'timestamp' => date('Y-m-d H:i:s')
+], JSON_PRETTY_PRINT);
+
+// Intentamos escribir ambos archivos de forma segura
+foreach ([$archivo_con_ntilde, $archivo_sin_ntilde] as $archivo) {
+    $fp = fopen($archivo, 'w');
+    if ($fp) {
+        if (flock($fp, LOCK_EX)) {
+            fwrite($fp, $payload);
+            flock($fp, LOCK_UN);
+        } else {
+            // Si no se pudo bloquear, intentar escritura directa
+            fwrite($fp, $payload);
+        }
+        fclose($fp);
+    }
 }
-fclose($fp);
 
 // --- Respuesta final ---
 echo json_encode([

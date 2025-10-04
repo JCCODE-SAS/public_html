@@ -29,7 +29,7 @@ try {
     // --- Consulta principal: chats activos ---
     $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado
             FROM chats
-            WHERE mia_activa = 1
+            WHERE estado = 'activo'
             ORDER BY creado DESC";
     $result = $conexion->query($sql);
 
@@ -46,6 +46,15 @@ try {
             $stmt->fetch();
             $stmt->close();
 
+            // --- Subconsulta: mensajes no leídos ---
+            $subsql2 = "SELECT COUNT(*) FROM mensajes WHERE id_chat = ? AND remitente = 'cliente' AND leido = 0";
+            $stmt2 = $conexion->prepare($subsql2);
+            $stmt2->bind_param("i", $row['id_chat']);
+            $stmt2->execute();
+            $stmt2->bind_result($no_leidos);
+            $stmt2->fetch();
+            $stmt2->close();
+
             // --- Construcción del objeto chat ---
             $chats[] = [
                 'id' => $row['id_chat'],
@@ -53,7 +62,8 @@ try {
                 'numero' => $row['numero_cliente'],
                 'estado' => $row['estado'],
                 'ultimo_mensaje' => $ultimo_mensaje ?: '',
-                'creado' => $row['creado']
+                'creado' => $row['creado'],
+                'no_leidos' => (int)$no_leidos
             ];
         }
         $result->free();
