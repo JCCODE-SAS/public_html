@@ -181,8 +181,12 @@
     }
 
     function obtenerNumeroCliente(chatId) {
-        const chat = chatsCache.find(c => c.id === chatId);
-        return chat?.numero || '';
+        let chat = chatsCache.find(c => c.id === chatId);
+        if (chat && chat.numero) return chat.numero;
+        // Si no está en cache, intentar recargar y buscar de nuevo (sincrónico no es posible, así que advertir)
+        log('Número de cliente no encontrado en cache para chatId ' + chatId, 'warn');
+        // Opcional: podrías forzar recarga de chats aquí y reintentar, pero por ahora muestra error claro
+        return '';
     }
 
     function enviarMensaje(chatId, texto) {

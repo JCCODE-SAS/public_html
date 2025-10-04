@@ -812,3 +812,394 @@
 [04:03:17.917] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
 [04:03:19.350] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
 [04:03:21.309] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:26.325] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:33.865] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:36.895] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:36.895] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:36.920] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:36.920] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:03:36.951] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:03:37.427] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:03:37.430] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:37.430] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:03:37.918] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:37.919] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:03:38.164] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:38.164] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:03:38.335] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:38.427] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:03:38.712] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:38.753] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:38.754] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:03:38.881] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:39.078] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:03:39.525] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:03:39.778] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:39.779] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:03:39.934] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:40.228] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:40.407] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:03:40.499] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:40.681] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:40.868] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:03:40.957] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:41.098] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:03:41.387] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:41.470] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:41.549] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:03:42.727] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:42.948] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:43.106] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:44.497] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:45.195] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:45.245] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:03:45.463] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:45.606] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:45.941] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:03:46.713] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:48.448] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:50.481] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:50.742] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:51.840] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:52.117] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:52.168] [INFO   ] [contar_no_leidos.php] Total no leídos: 266
+[04:03:52.452] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:53.673] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:53.792] [INFO   ] [marcar_leido.php    ] Marcados como leídos 2 mensajes en chat 5
+[04:03:54.039] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:54.134] [INFO   ] [obtener_mensajes.php] Consultados 39 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:54.667] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:55.760] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:03:55.965] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:56.133] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:56.181] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:03:56.497] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:03:58.448] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:00.570] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:02.446] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:04.777] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:06.446] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:06.796] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:06.904] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[04:04:08.463] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:10.479] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:12.479] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:14.570] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:16.490] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:16.743] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:16.841] [INFO   ] [marcar_leido.php    ] Marcados como leídos 2 mensajes en chat 5
+[04:04:17.103] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:17.198] [INFO   ] [obtener_mensajes.php] Consultados 42 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:04:17.465] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:18.575] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:04:19.215] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:19.496] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:19.556] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:04:20.480] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:23.326] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:25.492] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:27.973] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:34.036] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:34.176] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:40.069] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:40.232] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:41.307] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:43.289] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:45.260] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:47.260] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:50.324] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:51.374] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:53.356] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:56.397] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:57.275] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:04:59.525] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:01.272] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:03.499] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:05.280] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:07.281] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:09.283] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:11.257] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:13.444] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:16.997] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:17.900] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:19.853] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:21.279] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:05:26.296] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:06:26.760] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:06:37.351] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:06:37.403] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:07:26.545] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:26.279] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:26.439] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:26.549] [INFO   ] [marcar_leido.php    ] Marcados como leídos 3 mensajes en chat 5
+[04:08:26.697] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:26.806] [INFO   ] [obtener_mensajes.php] Consultados 45 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:08:26.953] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:28.093] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:08:28.292] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:08:28.345] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:09:26.408] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:09:37.519] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:09:37.620] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:10:26.263] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:10:26.420] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:10:26.604] [INFO   ] [marcar_leido.php    ] Marcados como leídos 2 mensajes en chat 5
+[04:10:26.821] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:10:26.918] [INFO   ] [obtener_mensajes.php] Consultados 47 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:10:27.062] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:10:28.294] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:10:28.539] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:10:28.589] [INFO   ] [contar_no_leidos.php] Total no leídos: 264
+[04:11:26.249] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:12:26.266] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:12:37.281] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:12:37.338] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:13:26.485] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:13:26.642] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:13:27.851] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:13:28.446] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:13:28.501] [INFO   ] [contar_no_leidos.php] Total no leídos: 266
+[04:14:03.139] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:03.845] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:03.953] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[04:14:04.483] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:04.675] [INFO   ] [obtener_mensajes.php] Consultados 48 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:14:05.075] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:06.235] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:14:06.713] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:07.226] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:07.532] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:07.596] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:14:08.509] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:10.637] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:15.843] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:16.543] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:18.555] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:25.807] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:26.683] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:29.263] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:31.290] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:33.312] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:35.607] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:38.642] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:39.290] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:41.347] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:43.264] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:46.510] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:49.269] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:51.331] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:53.343] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:55.343] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:59.250] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:14:59.841] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:00.541] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:08.936] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:10.998] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:13.279] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:15.279] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:17.311] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:19.493] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:21.543] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:23.710] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:25.403] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:27.300] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:29.452] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:31.325] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:33.686] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:35.276] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:37.273] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:37.402] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:15:37.403] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:39.686] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:41.643] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:44.602] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:44.603] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:44.645] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:44.645] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:15:44.646] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:15:45.013] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:15:45.528] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:15:47.012] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:47.013] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:15:47.055] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:47.405] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:15:47.625] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:47.625] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:15:47.936] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:47.936] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:15:48.182] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:15:48.281] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:48.283] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Delia Milena Cardenas  Fuentes (rol=usuario, id=2)
+[04:15:48.829] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:48.830] [INFO   ] [usuarios.php        ] Filtros recibidos: search='', role='', status='', page=1, per_page=10
+[04:15:48.871] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:48.871] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:49.056] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:49.096] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:15:49.667] [INFO   ] [usuarios.php        ] Módulo usuarios v2.2 cargado. Total=2, Página=1, PerPage=10
+[04:15:49.937] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:50.170] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[04:15:50.277] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:15:50.604] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:50.764] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:51.997] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:15:52.504] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:52.587] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:15:53.109] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:53.351] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:53.452] [INFO   ] [marcar_leido.php    ] Marcados como leídos 0 mensajes en chat 5
+[04:15:53.655] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:53.745] [INFO   ] [obtener_mensajes.php] Consultados 48 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:15:53.955] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:55.075] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:15:55.355] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:55.620] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:55.670] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:15:55.918] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:56.133] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:57.288] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:15:57.615] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:57.898] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:15:58.144] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:58.583] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:58.671] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[04:15:58.876] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:15:58.933] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:15:59.137] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:00.665] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:02.748] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:05.288] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:07.313] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:12.100] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:15.116] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:18.697] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:21.376] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:22.643] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:24.639] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:26.620] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:28.638] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:30.689] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:32.670] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:33.339] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:33.447] [INFO   ] [marcar_leido.php    ] Marcados como leídos 2 mensajes en chat 5
+[04:16:33.732] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:33.830] [INFO   ] [obtener_mensajes.php] Consultados 51 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:16:34.059] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:35.342] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:16:35.700] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:35.998] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:36.050] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:16:36.721] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:39.305] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:41.281] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:44.251] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:45.361] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:48.452] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:51.510] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:51.686] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:53.614] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:54.827] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:57.433] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:16:59.290] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:01.694] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:03.291] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:05.839] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:07.359] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:09.280] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:11.668] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:13.610] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:16.387] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:17.294] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:19.473] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:22.204] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:23.561] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:25.276] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:27.315] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:29.281] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:31.267] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:33.560] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:35.448] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:17:37.645] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:18:26.778] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:18:44.258] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:18:44.309] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:19:26.274] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:03.423] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:04.146] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:04.252] [INFO   ] [marcar_leido.php    ] Marcados como leídos 2 mensajes en chat 5
+[04:20:04.647] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:04.747] [INFO   ] [obtener_mensajes.php] Consultados 53 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:20:05.154] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:06.248] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:20:06.755] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:07.109] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:07.168] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:20:07.483] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:09.322] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:11.396] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:13.394] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:15.295] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:17.377] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:19.312] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:22.595] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:23.293] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:25.338] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:27.433] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:29.339] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:31.301] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:33.512] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:35.275] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:37.289] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:39.277] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:41.295] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:43.292] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:45.425] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:47.258] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:49.405] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:51.430] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:53.322] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:55.435] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:57.439] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:20:59.290] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:01.423] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:03.892] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:05.300] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:07.298] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:26.873] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:44.297] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:21:44.370] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:22:26.466] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:23:26.470] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:24:26.277] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:24:44.640] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:24:44.705] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"2","unavailable":"1"}
+[04:25:21.435] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:22.214] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:22.322] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[04:25:22.845] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:22.953] [INFO   ] [obtener_mensajes.php] Consultados 54 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:25:23.478] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:24.703] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:25:25.037] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:25.463] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:25.901] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:25.954] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:25:26.782] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:28.657] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:30.914] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:31.366] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:31.483] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[04:25:31.864] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:31.969] [INFO   ] [obtener_mensajes.php] Consultados 55 mensajes para chat 5 por Delia Milena Cardenas  Fuentes (id=2)
+[04:25:32.416] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:33.698] [INFO   ] [obtener_chats.php   ] Consultados 5 chats por Delia Milena Cardenas  Fuentes (id=2)
+[04:25:34.096] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:34.635] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:34.720] [INFO   ] [contar_no_leidos.php] Total no leídos: 268
+[04:25:35.218] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:36.729] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:39.751] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:41.307] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:44.327] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:45.684] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[04:25:47.593] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
