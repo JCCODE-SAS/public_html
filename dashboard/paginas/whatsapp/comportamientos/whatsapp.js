@@ -147,6 +147,7 @@
         fetch(`/public_html/dashboard/paginas/whatsapp/api/obtener_mensajes.php?id_chat=${encodeURIComponent(chatId)}`, { credentials: 'include' })
             .then(r => r.json())
             .then(data => {
+                log('Mensajes recibidos:', data.mensajes);
                 if (!data.ok) {
                     cont.innerHTML = `<div style=\"color:#d33;text-align:center;margin-top:60px;\">${data.error || 'Error cargando mensajes'}</div>`;
                     log(data.error || 'Error cargando mensajes', 'error');
@@ -300,50 +301,71 @@
         _wa_signalPollId = setInterval(pollSignal, 2000);
     }
 
-    // Consulta el archivo de señal para detectar eventos generados por la API
-    function pollSignal() {
-        // Llamamos a un endpoint PHP que devuelve la señal (maneja permisos y filenames especiales)
-        const url = '/public_html/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
-        fetch(url, { credentials: 'include', cache: 'no-store' })
-            .then(r => {
-                if (!r.ok) throw new Error('No hay señal');
-                return r.json();
-            })
-            .then(data => {
-                if (!data || !data.timestamp) return;
-                // Si cambió la marca de tiempo, procesar la señal
-                if (data.timestamp !== _wa_lastSignalTimestamp) {
-                    log('Señal de actualización detectada: ' + JSON.stringify(data), 'info');
-                    _wa_lastSignalTimestamp = data.timestamp;
-                    handleSignal(data);
-                }
-            })
-            .catch(err => {
-                // No mostrar errores ruidosos por falta de archivo; solo log si DEBUG
-                log('pollSignal: ' + err.message, 'warn');
-            });
-    }
+    // Reemplaza la función pollSignal en whatsapp.js con esta versión con más logging
 
-    function handleSignal(signal) {
-        const id = Number(signal.chat_id) || null;
-        // Si el chat activo es el indicado, recargar mensajes; si no, recargar lista de chats
-        if (id && Number(chatSeleccionado) === id) {
-            cargarMensajes(id, true);
-            // Marcar como leídos automáticamente si el chat está abierto y llega un mensaje nuevo
-            fetch('/public_html/dashboard/paginas/whatsapp/api/marcar_leido.php', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'id_chat=' + encodeURIComponent(id)
-            }).then(() => {
-                cargarChats();
-            });
-            return;
-        }
-        // Si hay chat seleccionado distinto, refrescar lista y -si existe- destacar
-        cargarChats();
-    }
+function pollSignal() {
+    const url = '/public_html/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
+    
+    fetch(url, { credentials: 'include', cache: 'no-store' })
+        .then(r => {
+            console.log('🔍 [pollSignal] Status:', r.status, r.ok);
+            if (!r.ok) throw new Error('No hay señal');
+            return r.json();
+        })
+        .then(data => {
+            console.log('📡 [pollSignal] Señal recibida:', data);
+            
+            if (!data || !data.timestamp) {
+                console.log('⚠️ [pollSignal] Señal sin timestamp válido');
+                return;
+            }
+            
+            console.log('🕐 [pollSignal] Timestamp anterior:', _wa_lastSignalTimestamp);
+            console.log('🕐 [pollSignal] Timestamp nuevo:', data.timestamp);
+            
+            // Si cambió la marca de tiempo, procesar la señal
+            if (data.timestamp !== _wa_lastSignalTimestamp) {
+                console.log('✅ [pollSignal] SEÑAL NUEVA DETECTADA - Procesando...');
+                _wa_lastSignalTimestamp = data.timestamp;
+                handleSignal(data);
+            } else {
+                console.log('⏸️ [pollSignal] Sin cambios en timestamp');
+            }
+        })
+        .catch(err => {
+            console.log('❌ [pollSignal] Error:', err.message);
+        });
+}
 
+// También actualiza handleSignal para mejor logging
+function handleSignal(signal) {
+    console.log('🎯 [handleSignal] Procesando señal:', signal);
+    console.log('🎯 [handleSignal] Chat seleccionado:', chatSeleccionado);
+    
+    const id = Number(signal.chat_id) || null;
+    
+    // Siempre que el chat activo esté seleccionado, recargar mensajes
+    if (chatSeleccionado) {
+        console.log('🔄 [handleSignal] Recargando mensajes del chat', chatSeleccionado);
+        cargarMensajes(chatSeleccionado, true);
+        
+        // Marcar como leídos automáticamente si el chat está abierto y llega un mensaje nuevo
+        fetch('/public_html/dashboard/paginas/whatsapp/api/marcar_leido.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'id_chat=' + encodeURIComponent(chatSeleccionado)
+        }).then(() => {
+            console.log('✅ [handleSignal] Chat marcado como leído');
+            cargarChats();
+        });
+        return;
+    }
+    
+    // Si no hay chat seleccionado, solo refrescar lista
+    console.log('📋 [handleSignal] No hay chat seleccionado, refrescando lista');
+    cargarChats();
+}
     // Botón MIA debajo del input, solo para el chat seleccionado
     function renderBotonMiaChat(chat) {
         let cont = document.getElementById('wa-mia-chat-btn-wrap');

@@ -1,7 +1,1 @@
-{
-    "chat_id": 5,
-    "texto": "Alguna promoci\u00f3n",
-    "cliente": "573002765661",
-    "accion": "insertarMensaje",
-    "timestamp": "2025-10-06 19:07:22"
-}
+{"timestamp":1759779476.499222,"chat_id":5,"remitente":"mia","action":"nuevo_mensaje","mensaje_id":692}
