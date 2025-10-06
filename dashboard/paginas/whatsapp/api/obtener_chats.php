@@ -31,13 +31,13 @@ try {
     // Filtrar por operador asignado si no es admin
     $role = $_SESSION['role'] ?? '';
     if ($role === 'admin') {
-        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado
+        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado, mia_activa
             FROM chats
             WHERE estado = 'activo'
             ORDER BY creado DESC";
         $result = $conexion->query($sql);
     } else {
-        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado
+        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado, mia_activa
             FROM chats
             WHERE estado = 'activo' AND operador_asignado = ?
             ORDER BY creado DESC";
@@ -77,7 +77,8 @@ try {
                 'estado' => $row['estado'],
                 'ultimo_mensaje' => $ultimo_mensaje ?: '',
                 'creado' => $row['creado'],
-                'no_leidos' => (int)$no_leidos
+                'no_leidos' => (int)$no_leidos,
+                'mia_activa' => isset($row['mia_activa']) ? (int)$row['mia_activa'] : 1
             ];
         }
         $result->free();
