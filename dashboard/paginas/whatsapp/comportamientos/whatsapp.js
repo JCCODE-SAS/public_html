@@ -84,16 +84,19 @@
                         document.querySelectorAll('.wa-chat').forEach(c => c.classList.remove('selected'));
                         li.classList.add('selected');
                         chatSeleccionado = chat.id;
-                        // Marcar como leídos los mensajes de este chat
+                        // Limpiar cache y DOM antes de recargar mensajes
+                        const cont = document.getElementById('wa-messages');
+                        if (cont) cont.innerHTML = '';
+                        mensajesRenderizados[chat.id] = [];
+                        cargarMensajes(chat.id, true);
                         fetch('/public_html/dashboard/paginas/whatsapp/api/marcar_leido.php', {
                             method: 'POST',
                             credentials: 'include',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: 'id_chat=' + encodeURIComponent(chat.id)
                         }).then(() => {
-                            cargarChats();
+                            actualizarBadgeGlobal();
                         });
-                        cargarMensajes(chat.id, true);
                     });
                     lista.appendChild(li);
                 });

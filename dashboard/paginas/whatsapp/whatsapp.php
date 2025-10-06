@@ -18,6 +18,7 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Web - Módulo Operador</title>
     <link rel="stylesheet" href="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.css">
 </head>
@@ -25,14 +26,14 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
 <body>
     <div class="wa-container">
         <aside class="wa-chats">
-            <h2 style="padding:18px 15px 0 15px; margin:0 0 10px 0;">Chats activos</h2>
+            <h2>Chats activos</h2>
             <ul class="wa-chatlist" id="wa-chatlist">
                 <!-- Los chats se cargarán aquí vía JS -->
             </ul>
         </aside>
         <main class="wa-main">
             <section class="wa-messages" id="wa-messages">
-                <div style="color:#bbb;text-align:center;margin-top:60px;">
+                <div style="color:#8696a0;text-align:center;padding:60px 20px;">
                     Selecciona un chat para ver los mensajes
                 </div>
             </section>
@@ -49,7 +50,6 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
         id: <?= json_encode($user_id) ?>
     };
     </script>
-    <!-- Solo incluye el JS una vez -->
     <script id="wa-js" src="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </body>
 
