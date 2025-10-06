@@ -8,11 +8,16 @@
  * ===============================================================
  */
 session_start();
-// ¡CRUCIAL! Asegúrate que logger.php NO imprima NADA a la salida.
 require_once __DIR__ . "/../logs/logger.php";
 
-// Establece el encabezado JSON antes de cualquier salida
-header("Content-Type: application/json");
+// Detecta si es AJAX/fetch
+$isAjax = false;
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+    $isAjax = true;
+}
+if (isset($_SERVER['HTTP_ACCEPT']) && strpos(strtolower($_SERVER['HTTP_ACCEPT']), 'application/json') !== false) {
+    $isAjax = true;
+}
 
 try {
     $sessionWasActive = isset($_SESSION["user_id"]);
@@ -23,7 +28,6 @@ try {
     session_unset();
     session_destroy();
 
-    // Si la sesión estaba activa, loguea el cierre
     if ($sessionWasActive) {
         writeLog("destruir_sesion.php", "✅ Sesión cerrada: ID=$userId ($username, rol=$role)");
         $message = "Sesión cerrada correctamente.";
@@ -32,17 +36,29 @@ try {
         $message = "No había sesión activa, pero se cerró correctamente.";
     }
 
-    // Devuelve una respuesta JSON de éxito
-    echo json_encode([
-        "success" => true,
-        "message" => $message
-    ]);
+    if ($isAjax) {
+        header("Content-Type: application/json");
+        echo json_encode([
+            "success" => true,
+            "message" => $message
+        ]);
+    } else {
+        // Redirige al login si NO es AJAX
+        header("Location: /public_html/index.php");
+        exit;
+    }
 } catch (Exception $e) {
     writeLog("destruir_sesion.php", "❌ Error al cerrar sesión: " . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "message" => "Error interno del servidor al cerrar sesión."
-    ]);
+    if ($isAjax) {
+        http_response_code(500);
+        header("Content-Type: application/json");
+        echo json_encode([
+            "success" => false,
+            "message" => "Error interno del servidor al cerrar sesión."
+        ]);
+    } else {
+        header("Location: /public_html/index.php");
+        exit;
+    }
 }
 exit;

@@ -1,0 +1,671 @@
+[16:46:06.202] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:06.202] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[16:46:06.680] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[16:46:09.746] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:09.747] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:46:09.817] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:09.819] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:09.877] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:46:09.951] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:09.952] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:46:10.078] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[16:46:10.174] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:10.175] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:46:10.408] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:11.153] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:46:11.361] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:11.582] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:11.814] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:12.611] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:46:12.849] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:13.002] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:46:13.237] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:13.492] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:13.659] [INFO   ] [marcar_leido.php    ] Marcados como leídos 0 mensajes en chat 5
+[16:46:13.941] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:14.098] [INFO   ] [obtener_mensajes.php] Consultados 56 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:46:14.386] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:15.081] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:46:15.315] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:15.487] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:46:15.725] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:15.967] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:16.798] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:46:17.184] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:17.579] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:46:18.006] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:18.227] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:18.400] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:46:19.195] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:21.172] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:23.222] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:25.193] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:30.205] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:31.522] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:34.024] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:34.270] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:35.205] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:37.331] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:43.300] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:45.982] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:46.253] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:46.500] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:48.518] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:50.535] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:52.208] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:52.346] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:46:52.621] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:54.502] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:56.517] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:46:58.533] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:00.482] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:02.500] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:04.485] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:06.484] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:08.515] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:10.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:12.462] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:15.147] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:17.249] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:20.748] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:22.190] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:26.793] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:29.676] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:34.403] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:38.320] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:39.289] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:40.489] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:42.516] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:44.454] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:46.518] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:48.472] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:50.470] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:52.489] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:54.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:56.520] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:47:58.512] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:00.512] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:02.469] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:04.481] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:06.456] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:08.597] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:10.502] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:10.721] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:10.899] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:48:12.477] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:15.159] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:17.150] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:19.213] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:21.770] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:25.282] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:27.294] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:29.167] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:32.285] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:33.253] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:35.193] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:37.177] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:39.280] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:41.209] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:43.159] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:45.676] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:46.738] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:48.538] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:50.485] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:52.467] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:54.527] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:56.507] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:48:58.517] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:00.471] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:02.455] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:04.510] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:04.696] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:04.830] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:49:05.095] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:05.265] [INFO   ] [obtener_mensajes.php] Consultados 59 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:49:05.532] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:06.176] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:49:06.423] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:06.552] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:49:06.797] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:08.504] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:09.568] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:09.636] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:49:10.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:11.748] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:11.910] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:49:12.482] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:14.485] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:16.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:18.475] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:20.471] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:22.531] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:24.507] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:26.489] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:28.518] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:30.473] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:32.531] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:34.456] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:36.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:38.506] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:40.500] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:42.509] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:44.499] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:46.484] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:48.486] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:50.537] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:52.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:54.533] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:56.533] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:49:58.499] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:00.556] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:00.783] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:00.927] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:50:01.159] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:01.313] [INFO   ] [obtener_mensajes.php] Consultados 61 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:50:01.565] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:02.290] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:50:02.514] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:02.727] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:02.864] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:50:04.501] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:06.465] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:08.486] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:10.471] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:12.505] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:14.523] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:15.064] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:15.192] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:50:16.475] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:18.489] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:20.506] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:22.509] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:24.469] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:26.458] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:29.673] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:31.283] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:33.126] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:35.152] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:37.144] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:39.159] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:41.138] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:43.190] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:45.191] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:47.174] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:48.568] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:48.799] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:48.992] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:50:49.218] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:49.397] [INFO   ] [obtener_mensajes.php] Consultados 63 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:50:49.597] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:50.431] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:50:50.670] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:50.891] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:51.069] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:50:52.519] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:54.483] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:56.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:50:58.551] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:00.504] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:02.507] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:04.520] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:06.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:06.713] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:06.880] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:51:08.598] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:10.550] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:12.491] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:14.502] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:16.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:18.502] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:20.538] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:22.531] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:24.510] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:24.716] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:24.920] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:51:25.187] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:25.352] [INFO   ] [obtener_mensajes.php] Consultados 65 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:51:25.554] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:26.314] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:51:26.533] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:26.737] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:26.868] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:51:28.582] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:30.478] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:31.949] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:32.099] [INFO   ] [registrar_mensaje.php] 📩 Mensaje guardado en chat 5
+[16:51:32.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:34.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:36.504] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:38.516] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:40.470] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:42.481] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:44.458] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:46.477] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:48.449] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:50.490] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:52.502] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:52.721] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:52.851] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:51:53.067] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:53.225] [INFO   ] [obtener_mensajes.php] Consultados 67 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:51:53.473] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:54.255] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:51:54.466] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:54.659] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:51:54.879] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:56.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:58.476] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:58.782] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:58.920] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[16:51:59.149] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:51:59.331] [INFO   ] [obtener_mensajes.php] Consultados 68 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:51:59.548] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:00.452] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:52:00.668] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:00.899] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:01.057] [INFO   ] [contar_no_leidos.php] Total no leídos: 78
+[16:52:02.473] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:04.528] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:06.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:08.472] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:09.633] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:09.704] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:52:10.534] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:11.152] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:11.334] [INFO   ] [marcar_leido.php    ] Marcados como leídos 78 mensajes en chat 3
+[16:52:11.558] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:11.832] [INFO   ] [obtener_mensajes.php] Consultados 157 mensajes para chat 3 por Nicolas Manuel Villanueva Maturana (id=3)
+[16:52:12.134] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:12.846] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:52:13.069] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:13.314] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:13.481] [INFO   ] [contar_no_leidos.php] Total no leídos: 0
+[16:52:14.493] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:16.473] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:18.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:20.503] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:20.754] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:21.499] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:52:21.722] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:21.880] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:52:22.520] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:24.487] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:26.488] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:28.456] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:31.152] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:33.241] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:35.205] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:37.221] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:39.283] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:41.408] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:43.210] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:44.592] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:46.599] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:47.011] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:52:47.012] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[16:53:01.700] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:01.700] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[16:53:02.084] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[16:53:04.969] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:04.969] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:53:04.975] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:04.985] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:05.170] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:53:05.319] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:05.319] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:53:05.384] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[16:53:05.553] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:05.554] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:53:05.786] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:06.032] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:06.769] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:53:07.084] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:07.424] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:08.332] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:53:08.584] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:08.917] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:53:09.118] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:09.460] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:10.432] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:53:10.435] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:10.435] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[16:53:10.786] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:53:10.986] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:53:11.195] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:00.087] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:00.088] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[16:55:00.469] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[16:55:03.754] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:03.754] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:03.811] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:03.811] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:03.870] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:55:04.093] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:04.094] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:04.143] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[16:55:04.368] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:04.368] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:04.555] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:04.880] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:05.706] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:05.915] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:06.154] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:07.068] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:07.340] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:07.513] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:55:07.726] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:07.944] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:08.736] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:08.738] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:08.740] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[16:55:09.159] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:09.305] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:55:09.523] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:16.182] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:16.182] [INFO   ] [destruir_sesion.php ] Intento de logout sin sesión activa (OK).
+[16:55:49.731] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:49.732] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[16:55:50.230] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[16:55:52.755] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:52.755] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:52.809] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:52.812] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:52.868] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[16:55:53.012] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:53.012] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:53.281] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[16:55:53.688] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:53.688] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[16:55:54.050] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:54.818] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:55.037] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:55.277] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:55.520] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:56.296] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:56.561] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:56.735] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:55:56.968] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:57.768] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[16:55:58.006] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:58.164] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:55:58.379] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:58.620] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:55:58.753] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[16:55:59.192] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:56:00.178] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:56:02.188] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:56:03.091] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[16:56:03.092] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:00:07.812] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:07.813] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:00:08.249] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:00:11.538] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:11.538] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:00:11.545] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:11.629] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:11.696] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:00:11.889] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:11.889] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:00:11.965] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:00:12.084] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:12.084] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:00:12.320] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:12.660] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:13.492] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:00:13.725] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:13.948] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:14.938] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:00:15.198] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:15.381] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:00:15.639] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:16.014] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:16.773] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:00:17.019] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:17.244] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:00:17.246] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:17.246] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:00:18.086] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:00:18.086] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:42.928] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:42.928] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:01:43.317] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:01:46.259] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:46.260] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:01:46.266] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:46.380] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:46.471] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:01:46.524] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:46.524] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:01:46.613] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:01:46.758] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:46.758] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:01:46.970] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:47.209] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:48.001] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:01:48.240] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:48.522] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:49.426] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:01:49.670] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:49.850] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:01:50.065] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:50.347] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:51.252] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:01:51.440] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:51.564] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:01:51.566] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:51.567] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:01:52.481] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:01:52.483] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:50.527] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:50.528] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:03:51.063] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:03:54.380] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:54.380] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:54.380] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:03:54.466] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:54.523] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:03:54.587] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:54.587] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:03:54.654] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:03:54.815] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:54.816] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:03:55.086] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:55.312] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:56.301] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:03:56.609] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:56.846] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:57.752] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:03:57.995] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:58.160] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:03:58.392] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:58.396] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:58.396] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:03:59.020] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:03:59.971] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:04:00.212] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:04:00.372] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:09:14.337] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:14.337] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:09:14.853] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:09:17.892] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:17.892] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:09:17.979] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:17.981] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:18.067] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:09:18.168] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:18.169] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:09:18.319] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:09:18.371] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:18.372] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:09:18.620] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:18.850] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:19.772] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:09:19.971] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:20.205] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:20.362] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:09:20.745] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:21.489] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:09:21.836] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:21.838] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:21.838] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:09:22.550] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:23.466] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:09:23.708] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:09:23.856] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:24:21.705] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:21.706] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:24:22.060] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:24:25.133] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:25.134] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:25.135] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:24:25.198] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:25.245] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:24:25.346] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:25.346] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:24:25.457] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:24:25.559] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:25.559] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:24:25.832] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:26.039] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:26.693] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:24:26.902] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:27.087] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:28.165] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:24:28.422] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:28.574] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:24:28.742] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:28.949] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:29.729] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:24:29.884] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:30.008] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:24:30.014] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:30.015] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:24:30.698] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:24:30.706] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:08.059] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:08.060] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:28:08.575] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:28:11.728] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:11.728] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:11.728] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:11.750] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:11.839] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:28:11.947] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:11.947] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:12.027] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:28:12.214] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:12.214] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:12.441] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:12.778] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:13.562] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:13.790] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:13.983] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:14.107] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:28:14.286] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:15.217] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:15.441] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:15.714] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:15.828] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:28:16.009] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:16.670] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:16.899] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:17.198] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:17.350] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:28:17.880] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:17.881] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[17:28:22.008] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:22.008] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[17:28:22.426] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[17:28:25.070] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.071] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:25.073] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.089] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.142] [SUCCESS] [estadisticas_operarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":"3","available":"3","unavailable":"0"}
+[17:28:25.231] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.231] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:25.310] [SUCCESS] [estadisticas_usuarios.api] ✅ SUCCESS: Estadísticas obtenidas correctamente | Details: {"total":2,"active":2,"inactive":0,"admins":2}
+[17:28:25.422] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.423] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[17:28:25.605] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:25.854] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:26.484] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:26.694] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:26.923] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:27.482] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:27.630] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:27.753] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:28:27.980] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:28.550] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:28.791] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:28.982] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:29.106] [INFO   ] [contar_no_leidos.php] Total no leídos: 1
+[17:28:29.342] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:29.479] [INFO   ] [marcar_leido.php    ] Marcados como leídos 1 mensajes en chat 5
+[17:28:29.750] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:29.870] [INFO   ] [obtener_mensajes.php] Consultados 69 mensajes para chat 5 por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:30.149] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:30.250] [INFO   ] [contar_no_leidos.php] Total no leídos: 0
+[17:28:30.453] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:31.110] [INFO   ] [obtener_chats.php   ] Consultados 2 chats por Nicolas Manuel Villanueva Maturana (id=3)
+[17:28:31.368] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:31.650] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:31.824] [INFO   ] [contar_no_leidos.php] Total no leídos: 0
+[17:28:32.190] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:33.709] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:34.708] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[17:28:34.709] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
