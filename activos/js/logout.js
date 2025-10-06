@@ -114,7 +114,7 @@
       if (ok) {
         notifySuccess(data.message || "Sesión cerrada correctamente.");
         // Usa replace para evitar volver con el botón Atrás
-        setTimeout(() => location.replace(window.rutas.login), 500);
+        setTimeout(() => location.replace(window.rutas.login), 100);
       } else {
         notifyError(data.message || "No se pudo cerrar sesión.");
       }

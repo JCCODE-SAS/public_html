@@ -1,21 +1,6 @@
 <?php
-//===============================================================
-// USUARIOS.PHP - Gestión de Usuarios 
-//===============================================================
-//
-// NUEVAS MEJORAS 
-// • Selector de "Registros por página" (10,25,50,100,200)
-// • Botones Primera / Última página
-// • Campo "Ir a página"
-// • Reestructuración de paginación accesible (aria-label, aria-current)
-// • Prevención de páginas fuera de rango
-// • Base query helper para conservar filtros
-// • Preparado para actualización parcial vía AJAX
-//
-// DESARROLLADO POR: Diomedez98 (JCCODE-SAS)
-// FECHA ACTUALIZACIÓN: 2025-09-11 04:55:00 UTC
-//===============================================================
-
+$roles_permitidos = ['admin'];
+include_once __DIR__ . '/../../../sesiones/control_acceso.php';
 require_once __DIR__ . '/../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../logs/logger.php';
 
@@ -272,9 +257,9 @@ function base_query(array $extra = []): string
                     class="filter-select w-full px-4 py-3 rounded-xl border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
                     <option value="">Todos</option>
                     <?php foreach ($roles as $r): ?>
-                    <option value="<?= htmlspecialchars($r) ?>" <?= $role_filter === $r ? 'selected' : '' ?>>
-                        <?= ucfirst(htmlspecialchars($r)) ?>
-                    </option>
+                        <option value="<?= htmlspecialchars($r) ?>" <?= $role_filter === $r ? 'selected' : '' ?>>
+                            <?= ucfirst(htmlspecialchars($r)) ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -312,142 +297,142 @@ function base_query(array $extra = []): string
     <!-- TABLA -->
     <div class="table-glass rounded-2xl overflow-hidden shadow-2xl">
         <?php if ($result->num_rows === 0): ?>
-        <div class="empty-state p-12 text-center rounded-2xl">
-            <div
-                class="w-20 h-20 bg-gradient-to-br from-yellow-400/20 to-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="ri-alert-line text-yellow-600 text-3xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-2">
-                <?= ($search || $role_filter || $status_filter) ? 'No se encontraron usuarios con esos criterios' : 'No hay usuarios registrados' ?>
-            </h3>
-            <p class="text-gray-500 mb-6">
-                <?= ($search || $role_filter || $status_filter)
+            <div class="empty-state p-12 text-center rounded-2xl">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-yellow-400/20 to-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-alert-line text-yellow-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">
+                    <?= ($search || $role_filter || $status_filter) ? 'No se encontraron usuarios con esos criterios' : 'No hay usuarios registrados' ?>
+                </h3>
+                <p class="text-gray-500 mb-6">
+                    <?= ($search || $role_filter || $status_filter)
                         ? 'Ajusta los filtros e inténtalo de nuevo.'
                         : 'Agrega el primer usuario al sistema.' ?>
-            </p>
-            <div class="flex gap-3 justify-center flex-wrap">
-                <?php if ($search || $role_filter || $status_filter): ?>
-                <button onclick="limpiarTodosFiltros()" class="action-btn btn-edit">
-                    <i class="ri-filter-off-line"></i> Limpiar filtros
-                </button>
-                <?php endif; ?>
-                <button onclick="mostrarModalNuevoUsuario()" class="action-btn btn-add">
-                    <i class="ri-user-add-line"></i> Agregar Usuario
-                </button>
+                </p>
+                <div class="flex gap-3 justify-center flex-wrap">
+                    <?php if ($search || $role_filter || $status_filter): ?>
+                        <button onclick="limpiarTodosFiltros()" class="action-btn btn-edit">
+                            <i class="ri-filter-off-line"></i> Limpiar filtros
+                        </button>
+                    <?php endif; ?>
+                    <button onclick="mostrarModalNuevoUsuario()" class="action-btn btn-add">
+                        <i class="ri-user-add-line"></i> Agregar Usuario
+                    </button>
+                </div>
             </div>
-        </div>
         <?php else: ?>
-        <div class="overflow-x-auto">
-            <table class="min-w-full">
-                <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
-                    <tr>
-                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">ID
-                        </th>
-                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Usuario</th>
-                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Rol
-                        </th>
-                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Estado</th>
-                        <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Fecha</th>
-                        <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                            Acciones</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100 bg-white">
-                    <?php while ($u = $result->fetch_assoc()): ?>
-                    <tr data-user-id="<?= $u['id'] ?>"
-                        class="hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-300 group">
-                        <td class="px-6 py-4 text-sm text-gray-500 font-mono">
-                            #<?= str_pad($u['id'], 4, '0', STR_PAD_LEFT) ?></td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div
-                                    class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
-                                    <?= strtoupper(substr($u['name'], 0, 1)) ?>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900"><?= htmlspecialchars($u['name']) ?>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">ID
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                Usuario</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Rol
+                            </th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                Estado</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                Fecha</th>
+                            <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 bg-white">
+                        <?php while ($u = $result->fetch_assoc()): ?>
+                            <tr data-user-id="<?= $u['id'] ?>"
+                                class="hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-300 group">
+                                <td class="px-6 py-4 text-sm text-gray-500 font-mono">
+                                    #<?= str_pad($u['id'], 4, '0', STR_PAD_LEFT) ?></td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
+                                            <?= strtoupper(substr($u['name'], 0, 1)) ?>
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900"><?= htmlspecialchars($u['name']) ?>
+                                            </div>
+                                            <div class="text-xs text-gray-500"><?= htmlspecialchars($u['email']) ?></div>
+                                        </div>
                                     </div>
-                                    <div class="text-xs text-gray-500"><?= htmlspecialchars($u['email']) ?></div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                 <?= $u['role'] === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800' ?>">
-                                <i
-                                    class="<?= $u['role'] === 'admin' ? 'ri-shield-star-line' : 'ri-user-line' ?> mr-1"></i>
-                                <?= ucfirst(htmlspecialchars($u['role'])) ?>
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 user-status">
-                            <span
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                        <i
+                                            class="<?= $u['role'] === 'admin' ? 'ri-shield-star-line' : 'ri-user-line' ?> mr-1"></i>
+                                        <?= ucfirst(htmlspecialchars($u['role'])) ?>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 user-status">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
                                     <?= $u['status'] === 'activo' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' ?>">
-                                <span
-                                    class="w-1.5 h-1.5 mr-1.5 rounded-full <?= $u['status'] === 'activo' ? 'bg-green-600' : 'bg-red-600' ?>"></span>
-                                <?= ucfirst(htmlspecialchars($u['status'])) ?>
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            <div class="flex items-center">
-                                <i class="ri-calendar-2-line mr-2 text-gray-400"></i>
-                                <?= date('d/m/Y', strtotime($u['created_at'])) ?>
-                            </div>
-                            <div class="text-xs text-gray-400 mt-1">
-                                <?= date('H:i', strtotime($u['created_at'])) ?> hrs
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="acciones-btn-group flex items-center justify-center space-x-2">
-                                <button onclick="abrirModalVerUsuario(<?= $u['id'] ?>)"
-                                    class="action-btn btn-view text-xs" title="Ver">
-                                    <i class="ri-eye-line"></i> Ver
-                                </button>
-                                <button onclick="editarUsuario(<?= $u['id'] ?>)" class="action-btn btn-edit text-xs"
-                                    title="Editar">
-                                    <i class="ri-edit-line"></i> Editar
-                                </button>
-                                <button type="button" class="action-btn btn-toggle text-xs"
-                                    onclick="toggleEstado(<?= $u['id'] ?>, '<?= $u['status'] ?>', '<?= htmlspecialchars($u['name']) ?>')"
-                                    title="<?= $u['status'] === 'activo' ? 'Desactivar' : 'Activar' ?>">
-                                    <i
-                                        class="<?= $u['status'] === 'activo' ? 'ri-pause-circle-line' : 'ri-play-circle-line' ?>"></i>
-                                    <?= $u['status'] === 'activo' ? 'Desactivar' : 'Activar' ?>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        </div>
+                                        <span
+                                            class="w-1.5 h-1.5 mr-1.5 rounded-full <?= $u['status'] === 'activo' ? 'bg-green-600' : 'bg-red-600' ?>"></span>
+                                        <?= ucfirst(htmlspecialchars($u['status'])) ?>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">
+                                    <div class="flex items-center">
+                                        <i class="ri-calendar-2-line mr-2 text-gray-400"></i>
+                                        <?= date('d/m/Y', strtotime($u['created_at'])) ?>
+                                    </div>
+                                    <div class="text-xs text-gray-400 mt-1">
+                                        <?= date('H:i', strtotime($u['created_at'])) ?> hrs
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="acciones-btn-group flex items-center justify-center space-x-2">
+                                        <button onclick="abrirModalVerUsuario(<?= $u['id'] ?>)"
+                                            class="action-btn btn-view text-xs" title="Ver">
+                                            <i class="ri-eye-line"></i> Ver
+                                        </button>
+                                        <button onclick="editarUsuario(<?= $u['id'] ?>)" class="action-btn btn-edit text-xs"
+                                            title="Editar">
+                                            <i class="ri-edit-line"></i> Editar
+                                        </button>
+                                        <button type="button" class="action-btn btn-toggle text-xs"
+                                            onclick="toggleEstado(<?= $u['id'] ?>, '<?= $u['status'] ?>', '<?= htmlspecialchars($u['name']) ?>')"
+                                            title="<?= $u['status'] === 'activo' ? 'Desactivar' : 'Activar' ?>">
+                                            <i
+                                                class="<?= $u['status'] === 'activo' ? 'ri-pause-circle-line' : 'ri-play-circle-line' ?>"></i>
+                                            <?= $u['status'] === 'activo' ? 'Desactivar' : 'Activar' ?>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
 
     <!-- PAGINACIÓN MEJORADA -->
     <?php if ($total_pages > 1): ?>
-    <div class="mt-10 space-y-4" id="paginacion-usuarios">
+        <div class="mt-10 space-y-4" id="paginacion-usuarios">
 
-        <!-- Barra superior: info + selector per_page -->
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div class="text-sm text-gray-600 flex flex-wrap items-center gap-x-2">
-                <i class="ri-file-list-line text-gray-500"></i>
-                Mostrando
-                <span class="font-semibold">
-                    <?= $total_records === 0 ? 0 : ($offset + 1) ?> -
-                    <?= min($offset + $records_per_page, $total_records) ?>
-                </span>
-                de
-                <span class="font-semibold"><?= $total_records ?></span>
-                usuarios
-            </div>
+            <!-- Barra superior: info + selector per_page -->
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div class="text-sm text-gray-600 flex flex-wrap items-center gap-x-2">
+                    <i class="ri-file-list-line text-gray-500"></i>
+                    Mostrando
+                    <span class="font-semibold">
+                        <?= $total_records === 0 ? 0 : ($offset + 1) ?> -
+                        <?= min($offset + $records_per_page, $total_records) ?>
+                    </span>
+                    de
+                    <span class="font-semibold"><?= $total_records ?></span>
+                    usuarios
+                </div>
 
-            <form method="GET" class="flex items-center gap-2 text-sm" id="formPerPage">
-                <?php
+                <form method="GET" class="flex items-center gap-2 text-sm" id="formPerPage">
+                    <?php
                     foreach ($_GET as $k => $v) {
                         if (in_array($k, ['per_page', 'page'])) continue;
                         if (is_array($v)) {
@@ -459,35 +444,35 @@ function base_query(array $extra = []): string
                         }
                     }
                     ?>
-                <label class="text-gray-600">Registros:</label>
-                <select name="per_page"
-                    class="border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white per-page-select">
-                    <?php foreach ($allowed_page_sizes as $size): ?>
-                    <option value="<?= $size ?>" <?= $size === $records_per_page ? 'selected' : '' ?>><?= $size ?>
-                    </option>
-                    <?php endforeach; ?>
-                </select>
-                <noscript><button class="px-3 py-2 bg-blue-600 text-white rounded-lg">Aplicar</button></noscript>
-            </form>
-        </div>
+                    <label class="text-gray-600">Registros:</label>
+                    <select name="per_page"
+                        class="border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white per-page-select">
+                        <?php foreach ($allowed_page_sizes as $size): ?>
+                            <option value="<?= $size ?>" <?= $size === $records_per_page ? 'selected' : '' ?>><?= $size ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <noscript><button class="px-3 py-2 bg-blue-600 text-white rounded-lg">Aplicar</button></noscript>
+                </form>
+            </div>
 
-        <!-- Navegación -->
-        <nav class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
-            aria-label="Paginación de usuarios">
+            <!-- Navegación -->
+            <nav class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+                aria-label="Paginación de usuarios">
 
-            <!-- Controles -->
-            <div class="flex flex-wrap items-center gap-2">
-                <!-- Primera -->
-                <a href="<?= base_query(['page' => 1]) ?>"
-                    class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
-                    aria-label="Primera página">«</a>
+                <!-- Controles -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <!-- Primera -->
+                    <a href="<?= base_query(['page' => 1]) ?>"
+                        class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
+                        aria-label="Primera página">«</a>
 
-                <!-- Anterior -->
-                <a href="<?= base_query(['page' => max(1, $page - 1)]) ?>"
-                    class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
-                    aria-label="Página anterior">‹</a>
+                    <!-- Anterior -->
+                    <a href="<?= base_query(['page' => max(1, $page - 1)]) ?>"
+                        class="pagination-btn <?= $page === 1 ? 'opacity-40 pointer-events-none' : '' ?>"
+                        aria-label="Página anterior">‹</a>
 
-                <?php
+                    <?php
                     $window = 2;
                     $start_page = max(1, $page - $window);
                     $end_page   = min($total_pages, $page + $window);
@@ -513,21 +498,21 @@ function base_query(array $extra = []): string
                     }
                     ?>
 
-                <!-- Siguiente -->
-                <a href="<?= base_query(['page' => min($total_pages, $page + 1)]) ?>"
-                    class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
-                    aria-label="Página siguiente">›</a>
+                    <!-- Siguiente -->
+                    <a href="<?= base_query(['page' => min($total_pages, $page + 1)]) ?>"
+                        class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
+                        aria-label="Página siguiente">›</a>
 
-                <!-- Última -->
-                <a href="<?= base_query(['page' => $total_pages]) ?>"
-                    class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
-                    aria-label="Última página">»</a>
-            </div>
+                    <!-- Última -->
+                    <a href="<?= base_query(['page' => $total_pages]) ?>"
+                        class="pagination-btn <?= $page === $total_pages ? 'opacity-40 pointer-events-none' : '' ?>"
+                        aria-label="Última página">»</a>
+                </div>
 
-            <!-- Ir a página -->
-            <form method="GET" class="flex items-center gap-2 text-sm" id="formGoTo"
-                onsubmit="if (this.querySelector('[name=page]').value > <?= $total_pages ?>) { this.querySelector('[name=page]').value = <?= $total_pages ?> }">
-                <?php
+                <!-- Ir a página -->
+                <form method="GET" class="flex items-center gap-2 text-sm" id="formGoTo"
+                    onsubmit="if (this.querySelector('[name=page]').value > <?= $total_pages ?>) { this.querySelector('[name=page]').value = <?= $total_pages ?> }">
+                    <?php
                     foreach ($_GET as $k => $v) {
                         if ($k === 'page') continue;
                         if (is_array($v)) {
@@ -539,16 +524,16 @@ function base_query(array $extra = []): string
                         }
                     }
                     ?>
-                <label for="go_to_page" class="text-gray-600">Ir a:</label>
-                <input type="number" min="1" max="<?= $total_pages ?>" name="page" id="go_to_page"
-                    class="w-20 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white pagination-go"
-                    value="<?= $page ?>">
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
-                    Ir
-                </button>
-            </form>
-        </nav>
-    </div>
+                    <label for="go_to_page" class="text-gray-600">Ir a:</label>
+                    <input type="number" min="1" max="<?= $total_pages ?>" name="page" id="go_to_page"
+                        class="w-20 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white pagination-go"
+                        value="<?= $page ?>">
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                        Ir
+                    </button>
+                </form>
+            </nav>
+        </div>
     <?php endif; ?>
 
 </div>
@@ -565,12 +550,12 @@ if (file_exists($script_editar)) {
 ?>
 
 <script>
-// Inicialización complementaria específica de v2.2
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof window.inicializarUsuarios === 'function') {
-        window.inicializarUsuarios();
-    }
-});
+    // Inicialización complementaria específica de v2.2
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.inicializarUsuarios === 'function') {
+            window.inicializarUsuarios();
+        }
+    });
 </script>
 <?php
 $result->free();

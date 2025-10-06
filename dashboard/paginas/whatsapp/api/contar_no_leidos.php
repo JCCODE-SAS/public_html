@@ -11,9 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
-    // Cuenta todos los mensajes de cliente no leídos en todos los chats activos
-    $sql = "SELECT COUNT(*) as total FROM mensajes m INNER JOIN chats c ON m.id_chat = c.id_chat WHERE m.remitente = 'cliente' AND m.leido = 0 AND c.estado = 'activo'";
-    $result = $conexion->query($sql);
+    $role = $_SESSION['role'] ?? '';
+    if ($role === 'admin') {
+        $sql = "SELECT COUNT(*) as total FROM mensajes m INNER JOIN chats c ON m.id_chat = c.id_chat WHERE m.remitente = 'cliente' AND m.leido = 0 AND c.estado = 'activo'";
+        $result = $conexion->query($sql);
+    } else {
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT COUNT(*) as total FROM mensajes m INNER JOIN chats c ON m.id_chat = c.id_chat WHERE m.remitente = 'cliente' AND m.leido = 0 AND c.estado = 'activo' AND c.operador_asignado = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    }
     $row = $result ? $result->fetch_assoc() : ['total' => 0];
     $total = (int)($row['total'] ?? 0);
     echo json_encode(['ok' => true, 'total_no_leidos' => $total]);

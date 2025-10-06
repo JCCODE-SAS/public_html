@@ -27,11 +27,25 @@ $user_id = $_SESSION['user_id'];
 
 try {
     // --- Consulta principal: chats activos ---
-    $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado
+
+    // Filtrar por operador asignado si no es admin
+    $role = $_SESSION['role'] ?? '';
+    if ($role === 'admin') {
+        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado
             FROM chats
             WHERE estado = 'activo'
             ORDER BY creado DESC";
-    $result = $conexion->query($sql);
+        $result = $conexion->query($sql);
+    } else {
+        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado
+            FROM chats
+            WHERE estado = 'activo' AND operador_asignado = ?
+            ORDER BY creado DESC";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    }
 
     $chats = [];
 

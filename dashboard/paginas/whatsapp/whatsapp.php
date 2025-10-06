@@ -1,5 +1,6 @@
 <?php
-session_start();
+$roles_permitidos = ['admin', 'operador'];
+include_once __DIR__ . '/../../../sesiones/control_acceso.php';
 require_once __DIR__ . '/../../../configuracion/bd.php';
 try {
     require_once __DIR__ . '/../../../logs/logger.php';
@@ -7,16 +8,8 @@ try {
     error_log("No se pudo cargar logger.php: " . $e->getMessage());
 }
 
-// Validación de usuario autenticado
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
-    if (function_exists('writeLog')) writeLog("whatsapp.php", "❌ Acceso denegado: usuario no autenticado");
-    http_response_code(401);
-    echo "<div style='padding:40px;color:red;'>Acceso denegado. Debe iniciar sesión.</div>";
-    exit;
-}
-
 $user_name = $_SESSION['user_name'];
-$user_role = $_SESSION['user_role'] ?? 'usuario';
+$user_role = $_SESSION['role'] ?? 'usuario';
 $user_id   = $_SESSION['user_id'];
 if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp cargado por usuario: $user_name (rol=$user_role, id=$user_id)");
 ?>

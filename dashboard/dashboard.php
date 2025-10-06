@@ -52,6 +52,8 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="nav-group">
                     <h3 class="nav-group-title">Gestión</h3>
                     <ul class="nav-menu">
+                        <?php $role = $_SESSION['user_role'] ?? $_SESSION['role'] ?? 'usuario'; ?>
+                        <?php if ($role === 'admin'): ?>
                         <li class="nav-item">
                             <button class="nav-link" data-section="usuariosSection">
                                 <i class="nav-icon ri-user-settings-line"></i>
@@ -64,6 +66,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <span class="nav-text">Operarios</span>
                             </button>
                         </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <button class="nav-link" data-section="whatsappSection">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -112,8 +115,11 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </header>
             <main class="main-content">
+                <?php $role = $_SESSION['user_role'] ?? $_SESSION['role'] ?? 'usuario'; ?>
+                <?php if ($role === 'admin'): ?>
                 <section id="usuariosSection" class="content-section"></section>
                 <section id="operariosSection" class="content-section"></section>
+                <?php endif; ?>
                 <section id="whatsappSection" class="content-section active"></section>
                 <section id="perfilSection" class="content-section"></section>
                 <section id="configuracionSection" class="content-section"></section>
