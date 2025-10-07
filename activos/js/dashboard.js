@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!window.rutas) {
     window.rutas = {
-      usuarios: '/public_html/dashboard/paginas/usuarios/usuarios.php',
-      operarios: '/public_html/dashboard/paginas/operarios/operarios.php',
-      whatsapp: '/public_html/dashboard/paginas/whatsapp/whatsapp.php',
-      perfil: '/public_html/dashboard/paginas/perfil/perfil.php',
-      configuracion: '/public_html/dashboard/paginas/configuracion/configuracion.php',
-      logout: '/public_html/sesiones/destruir_sesion.php',
+      usuarios: '/dashboard/paginas/usuarios/usuarios.php',
+      operarios: '/dashboard/paginas/operarios/operarios.php',
+      whatsapp: '/dashboard/paginas/whatsapp/whatsapp.php',
+      perfil: '/dashboard/paginas/perfil/perfil.php',
+      configuracion: '/dashboard/paginas/configuracion/configuracion.php',
+      logout: '/sesiones/destruir_sesion.php',
       login: '/index.php'
     };
   }
