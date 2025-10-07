@@ -79,6 +79,7 @@
                     }
                     // Solo nombre y badge, sin botón MIA
                     li.innerHTML = `<div><strong>${chat.cliente}</strong> ${badge}</div><div>${chat.estado}</div>`;
+                    
                     li.addEventListener('click', (e) => {
                         if (chatSeleccionado === chat.id) return;
                         document.querySelectorAll('.wa-chat').forEach(c => c.classList.remove('selected'));
