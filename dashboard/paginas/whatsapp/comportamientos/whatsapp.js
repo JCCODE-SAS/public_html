@@ -87,6 +87,10 @@
                         // Limpiar cache y DOM antes de recargar mensajes
                         const cont = document.getElementById('wa-messages');
                         if (cont) cont.innerHTML = '';
+                         // 🌀 Mostrar loader mientras se cargan los mensajes
+                        if (cont) {
+                           cont.innerHTML = '<div class="wa-loader"></div>';
+                         }
                         mensajesRenderizados[chat.id] = [];
                         cargarMensajes(chat.id, true);
                         fetch('/dashboard/paginas/whatsapp/api/marcar_leido.php', {
