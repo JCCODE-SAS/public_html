@@ -13,6 +13,8 @@
     "use strict";
     let operarioVisualizando = null;
 
+    console.log('%c[ver_operarios.js] Script cargado', 'color: #0ea5e9; font-weight: bold; font-size: 16px');
+
     // FUNCIÓN GLOBAL PARA ABRIR EL MODAL DE VER OPERARIO
     window.abrirModalVerOperario = function(id) {
         // Diagnóstico: log del ID recibido

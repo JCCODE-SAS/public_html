@@ -381,6 +381,7 @@
         }
     }
 
+    console.log('%c[editar_operarios.js] Script cargado', 'color: #f59e42; font-weight: bold; font-size: 16px');
     console.log("Módulo editar_operario.js cargado - COPFLOW");
 
 })();

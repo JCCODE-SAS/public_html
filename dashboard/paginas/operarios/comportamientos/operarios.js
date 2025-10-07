@@ -17,6 +17,8 @@
 (function() {
     "use strict";
 
+    console.log('%c[operarios.js] Script cargado', 'color: #22c55e; font-weight: bold; font-size: 16px');
+
     let searchTimeout = null;
     let filterTimeout = null;
     let filtroFormListenersIniciados = false;
