@@ -388,7 +388,7 @@ function handleSignal(signal) {
         const btn = document.createElement('button');
         btn.className = 'wa-mia-btn-chat';
         btn.type = 'button';
-        btn.style = `background:${activa ? '#22c55e' : '#64748b'};color:#fff;padding:6px 18px 6px 10px;border:none;border-radius:7px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:background 0.2s;font-size:15px;`;
+        btn.style = `background:${activa ? '#c52222ff' : '#64748b'};color:#fff;padding:6px 18px 6px 10px;border:none;border-radius:7px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:background 0.2s;font-size:15px;`;
         btn.innerHTML = `${iaSVG}${activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA'}`;
         btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
         btn.onclick = function() {
