@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Rutas centralizadas: debe ir primero -->
     <script src="../activos/js/ubicacion_paginas.js"></script>
     <!-- WhatsApp JS GLOBAL para integración SPA (carga solo una vez) -->
-    <script src="/paginas/whatsapp/comportamientos/whatsapp.js"></script>
+    <script src="/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </head>
 
 <body class="font-inter antialiased">
