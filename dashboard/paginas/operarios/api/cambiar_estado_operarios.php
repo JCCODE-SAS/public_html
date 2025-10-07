@@ -64,5 +64,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     writeLog("cambiar_estado_operarios.php", "Método no permitido: " . $_SERVER['REQUEST_METHOD']);
     die("❌ Método no permitido.");
 }
-
-// Eliminar el cierre PHP y cualquier espacio/línea en blanco al final para evitar salida extra
