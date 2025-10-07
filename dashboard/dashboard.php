@@ -304,10 +304,10 @@ if (!isset($_SESSION['user_id'])) {
 
                 // Elimina scripts previos de comportamientos de operarios
                 const scriptsToRemove = [
-                    '/paginas/operarios/comportamientos/operarios.js',
-                    '/paginas/operarios/comportamientos/ver_operarios.js',
-                    '/paginas/operarios/comportamientos/crear_operarios.js',
-                    '/paginas/operarios/comportamientos/editar_operarios.js'
+                    '/dashboard/paginas/operarios/comportamientos/operarios.js',
+                    '/dashboard/paginas/operarios/comportamientos/ver_operarios.js',
+                    '/dashboard/paginas/operarios/comportamientos/crear_operarios.js',
+                    '/dashboard/paginas/operarios/comportamientos/editar_operarios.js'
                 ];
                 document.querySelectorAll('script').forEach(s => {
                     if (s.src && scriptsToRemove.some(src => s.src.includes(src))) {
@@ -327,30 +327,32 @@ if (!isset($_SESSION['user_id'])) {
                 }
 
                 // Cargar scripts de comportamientos de operarios en orden
-                cargarScript('/paginas/operarios/comportamientos/operarios.js', function() {
-                    cargarScript('/paginas/operarios/comportamientos/ver_operarios.js', function() {
-                        cargarScript('/paginas/operarios/comportamientos/crear_operarios.js',
-                            function() {
-                                cargarScript(
-                                    '/paginas/operarios/comportamientos/editar_operarios.js',
-                                    function() {
-                                        // Inicializar módulo después de cargar todos los scripts
-                                        if (typeof window.inicializarOperarios ===
-                                            'function') {
-                                            setTimeout(() => {
-                                                window.inicializarOperarios();
-                                            }, 100);
-                                        }
-                                        document.dispatchEvent(new CustomEvent(
-                                            'tablaOperariosActualizada', {
-                                                detail: {
-                                                    method: 'seccionCompleta',
-                                                    timestamp: new Date()
-                                                }
-                                            }));
-                                    });
-                            });
-                    });
+                cargarScript('/dashboard/paginas/operarios/comportamientos/operarios.js', function() {
+                    cargarScript('/dashboard/paginas/operarios/comportamientos/ver_operarios.js',
+                        function() {
+                            cargarScript(
+                                '/dashboard/paginas/operarios/comportamientos/crear_operarios.js',
+                                function() {
+                                    cargarScript(
+                                        '/dashboard/paginas/operarios/comportamientos/editar_operarios.js',
+                                        function() {
+                                            // Inicializar módulo después de cargar todos los scripts
+                                            if (typeof window.inicializarOperarios ===
+                                                'function') {
+                                                setTimeout(() => {
+                                                    window.inicializarOperarios();
+                                                }, 100);
+                                            }
+                                            document.dispatchEvent(new CustomEvent(
+                                                'tablaOperariosActualizada', {
+                                                    detail: {
+                                                        method: 'seccionCompleta',
+                                                        timestamp: new Date()
+                                                    }
+                                                }));
+                                        });
+                                });
+                        });
                 });
             })
             .catch(error => {
