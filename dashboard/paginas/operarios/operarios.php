@@ -493,7 +493,7 @@ $scripts_operarios = [
     'crear_operarios.js',
     'editar_operarios.js'
 ];
-$base_operarios = '/paginas/operarios/comportamientos/';
+$base_operarios = '/dashboard/paginas/operarios/comportamientos/';
 foreach ($scripts_operarios as $fichero) {
     $ruta = $_SERVER['DOCUMENT_ROOT'] . $base_operarios . $fichero;
     if (file_exists($ruta)) {

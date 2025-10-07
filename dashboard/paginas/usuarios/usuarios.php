@@ -142,7 +142,7 @@ function base_query(array $extra = []): string
                 </h1>
                 <p class="text-blue-100 text-lg">Administra y controla los usuarios del sistema de manera eficiente</p>
                 <div class="flex flex-wrap items-center mt-3 text-blue-200 text-sm gap-x-2">
-                    <i class="ri-user-line"></i>
+                    $base = '/dashboard/paginas/usuarios/comportamientos/';
                     <span><?= $total_records ?> usuarios</span>
                     <span class="text-blue-300">•</span>
                     <span>Página <?= $page ?> / <?= $total_pages ?></span>
