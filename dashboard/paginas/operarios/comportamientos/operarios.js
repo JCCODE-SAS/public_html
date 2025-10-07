@@ -342,6 +342,31 @@
             if (window.inicializarOperarios) window.inicializarOperarios();
         }, 100);
     }
+        document.addEventListener('DOMContentLoaded', function() {
+            // ...existing code...
+
+            // Delegación de eventos para acciones dinámicas
+            document.body.addEventListener('click', function(e) {
+                // Ver operario
+                if (e.target.closest('.btn-ver-operario')) {
+                    const id = e.target.closest('.btn-ver-operario').dataset.id;
+                    if (window.abrirModalVerOperario) window.abrirModalVerOperario(id);
+                }
+                // Editar operario
+                if (e.target.closest('.btn-editar-operario')) {
+                    const id = e.target.closest('.btn-editar-operario').dataset.id;
+                    if (window.editarOperario) window.editarOperario(id);
+                }
+                // Toggle disponibilidad
+                if (e.target.closest('.btn-toggle-disponibilidad')) {
+                    const btn = e.target.closest('.btn-toggle-disponibilidad');
+                    const id = btn.dataset.id;
+                    const disponible = btn.dataset.disponible;
+                    const nombre = btn.dataset.nombre;
+                    if (window.toggleDisponibilidad) window.toggleDisponibilidad(id, disponible, nombre);
+                }
+            });
+        });
 
     // EXPORTACIÓN DE FUNCIONES GLOBALES
     window.verOperario                   = verOperario;
