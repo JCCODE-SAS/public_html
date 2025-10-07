@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../logs/logger.php';
 
 ?>
-<link rel="stylesheet" href="/public_html/dashboard/paginas/operarios/comportamientos/operarios.css">
+<link rel="stylesheet" href="/paginas/operarios/comportamientos/operarios.css">
 <?php
 
 //===============================================================
@@ -493,7 +493,7 @@ $scripts_operarios = [
     'crear_operarios.js',
     'editar_operarios.js'
 ];
-$base_operarios = '/public_html/dashboard/paginas/operarios/comportamientos/';
+$base_operarios = '/paginas/operarios/comportamientos/';
 foreach ($scripts_operarios as $fichero) {
     $ruta = $_SERVER['DOCUMENT_ROOT'] . $base_operarios . $fichero;
     if (file_exists($ruta)) {

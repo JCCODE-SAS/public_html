@@ -20,7 +20,7 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Web - Módulo Operador</title>
-    <link rel="stylesheet" href="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.css">
+    <link rel="stylesheet" href="/paginas/whatsapp/comportamientos/whatsapp.css">
 </head>
 
 <body>
@@ -50,7 +50,7 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
         id: <?= json_encode($user_id) ?>
     };
     </script>
-    <script id="wa-js" src="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
+    <script id="wa-js" src="/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </body>
 
 </html>

@@ -1,34 +1,33 @@
 /**
  * ===============================================================
- * 📄 ubicacion_paginas.js
+ * ?? ubicacion_paginas.js
  * ---------------------------------------------------------------
- * Centraliza las rutas de backend y frontend para ambiente local y producción.
+ * Centraliza las rutas de backend y frontend para ambiente local y producci�n.
  * ===============================================================
  */
 
+
 // Detecta si estamos en localhost o en un dominio real
 const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
-
-// Ajusta la base según el entorno
 const baseURL = isLocalhost
-    ? `${window.location.origin}/public_html/`   // Si accedes por http://localhost/public_html/
-    : `${window.location.origin}/`;              // Si el vhost apunta directo a public_html
+    ? `${window.location.origin}/public_html/`
+    : `${window.location.origin}/`;
 
-// Listado de rutas absolutas
+// Listado de rutas absolutas (ajustadas para producci�n y local)
 window.rutas = {
-    // Páginas principales
+    // P�ginas principales
     login:            baseURL + "index.php",
     validarLogin:     baseURL + "sesiones/validar_login.php",
     verificarSesion:  baseURL + "sesiones/verificar_sesion.php",
     logout:           baseURL + "sesiones/destruir_sesion.php",
-    dashboard:        baseURL + "dashboard/dashboard.php",
+    dashboard:        baseURL + "dashboard.php",
 
     // Secciones del dashboard
-    usuarios:         baseURL + "dashboard/paginas/usuarios/usuarios.php",
-    operarios:        baseURL + "dashboard/paginas/operarios/operarios.php",
-    whatsapp:         baseURL + "dashboard/paginas/whatsapp/whatsapp.php",
-    perfil:           baseURL + "dashboard/paginas/perfil/perfil.php",
-    configuracion:    baseURL + "dashboard/paginas/configuracion/configuracion.php",
+    usuarios:         baseURL + "paginas/usuarios/usuarios.php",
+    operarios:        baseURL + "paginas/operarios/operarios.php",
+    whatsapp:         baseURL + "paginas/whatsapp/whatsapp.php",
+    perfil:           baseURL + "paginas/perfil/perfil.php",
+    configuracion:    baseURL + "paginas/configuracion/configuracion.php",
 
     // Scripts JS
     indexJS:          baseURL + "activos/js/index.js",
@@ -36,9 +35,9 @@ window.rutas = {
     permisosJS:       baseURL + "activos/js/permisos.js",
     ubicacionPaginasJS: baseURL + "activos/js/ubicacion_paginas.js",
 
-    // WhatsApp módulo
-    whatsappJS:       baseURL + "dashboard/paginas/whatsapp/comportamientos/whatsapp.js",
-    whatsappApi:      baseURL + "dashboard/paginas/whatsapp/api/",
+    // WhatsApp m�dulo
+    whatsappJS:       baseURL + "paginas/whatsapp/comportamientos/whatsapp.js",
+    whatsappApi:      baseURL + "paginas/whatsapp/api/",
 
     // CSS
     cssOutput:        baseURL + "activos/css/output.css",
@@ -47,7 +46,7 @@ window.rutas = {
 };
 
 // Debug en consola (opcional)
-console.log("🌐 Rutas cargadas:", window.rutas);
+console.log("?? Rutas cargadas:", window.rutas);
 
-// Marca que las rutas están listas
+// Marca que las rutas est�n listas
 window.__RUTAS_LOADED__ = true;

@@ -27,7 +27,7 @@
         btn.onclick = function() {
             btn.disabled = true;
             btn.textContent = 'Procesando...';
-            fetch('/public_html/dashboard/paginas/whatsapp/api/apagar_mia_global.php', {
+            fetch('/paginas/whatsapp/api/apagar_mia_global.php', {
                 method: 'POST',
                 credentials: 'include'
             })
@@ -48,7 +48,7 @@
     }
 
     function cargarChats() {
-        fetch('/public_html/dashboard/paginas/whatsapp/api/obtener_chats.php', { credentials: 'include' })
+        fetch('/paginas/whatsapp/api/obtener_chats.php', { credentials: 'include' })
             .then(resp => resp.json())
             .then(data => {
                 const lista = document.getElementById('wa-chatlist');
@@ -89,7 +89,7 @@
                         if (cont) cont.innerHTML = '';
                         mensajesRenderizados[chat.id] = [];
                         cargarMensajes(chat.id, true);
-                        fetch('/public_html/dashboard/paginas/whatsapp/api/marcar_leido.php', {
+                        fetch('/paginas/whatsapp/api/marcar_leido.php', {
                             method: 'POST',
                             credentials: 'include',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -115,7 +115,7 @@
 
     // Consulta el total global de mensajes no leídos y lo muestra en el menú
     function actualizarBadgeGlobal() {
-        fetch('/public_html/dashboard/paginas/whatsapp/api/contar_no_leidos.php', { credentials: 'include' })
+        fetch('/paginas/whatsapp/api/contar_no_leidos.php', { credentials: 'include' })
             .then(r => r.json())
             .then (data => {
                 const badge = document.getElementById('wa-menu-badge');
@@ -147,7 +147,7 @@
             cont.innerHTML = '<div style="color:#bbb;text-align:center;margin-top:60px;">Cargando mensajes...</div>';
         }
 
-        fetch(`/public_html/dashboard/paginas/whatsapp/api/obtener_mensajes.php?id_chat=${encodeURIComponent(chatId)}`, { credentials: 'include' })
+        fetch(`/paginas/whatsapp/api/obtener_mensajes.php?id_chat=${encodeURIComponent(chatId)}`, { credentials: 'include' })
             .then(r => r.json())
             .then(data => {
                 log('Mensajes recibidos:', data.mensajes);
@@ -253,7 +253,7 @@
         .then(r => r.json())
         .then(data => {
             if (data.ok || data.message === 'Workflow was started') {
-                fetch('/public_html/dashboard/paginas/whatsapp/api/registrar_mensaje.php', {
+                fetch('/paginas/whatsapp/api/registrar_mensaje.php', {
                     method: 'POST',
                     credentials: 'include',
                     headers: { 'Content-Type': 'application/json' },
@@ -307,7 +307,7 @@
     // Reemplaza la función pollSignal en whatsapp.js con esta versión con más logging
 
 function pollSignal() {
-    const url = '/public_html/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
+    const url = '/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
     
     fetch(url, { credentials: 'include', cache: 'no-store' })
         .then(r => {
@@ -353,7 +353,7 @@ function handleSignal(signal) {
         cargarMensajes(chatSeleccionado, true);
         
         // Marcar como leídos automáticamente si el chat está abierto y llega un mensaje nuevo
-        fetch('/public_html/dashboard/paginas/whatsapp/api/marcar_leido.php', {
+        fetch('/paginas/whatsapp/api/marcar_leido.php', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -393,7 +393,7 @@ function handleSignal(signal) {
         btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
         btn.onclick = function() {
             btn.disabled = true;
-            fetch(`/public_html/dashboard/paginas/whatsapp/api/${activa ? 'apagar_mia' : 'activar_mia'}.php`, {
+            fetch(`/paginas/whatsapp/api/${activa ? 'apagar_mia' : 'activar_mia'}.php`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

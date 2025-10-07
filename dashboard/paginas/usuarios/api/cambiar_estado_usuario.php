@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($data) {
                 send_json(true, 'Estado actualizado correctamente.');
             } else {
-                header("Location: /public_html/dashboard/dashboard.php#usuarios");
+                header("Location: /dashboard.php#usuarios");
                 exit;
             }
         } else {

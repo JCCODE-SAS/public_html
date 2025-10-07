@@ -1,0 +1,92 @@
+[01:11:04.630] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:11:04.631] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:11:04.639] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:11:04.639] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:11:04.641] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:11:04.641] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:12:22.326] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:12:22.326] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:12:54.645] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:12:54.645] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:12:54.706] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:13:00.231] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:13:00.231] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:13:00.239] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:13:00.239] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:13:00.240] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:13:00.240] [INFO   ] [whatsapp.php        ] Módulo WhatsApp cargado por usuario: Nicolas Manuel Villanueva Maturana (rol=operador, id=3)
+[01:21:04.812] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:21:04.812] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:21:18.311] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:21:18.311] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:21:18.372] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:25:31.595] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:25:31.595] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:27:30.617] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:27:30.617] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:27:30.680] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:27:42.853] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:27:42.853] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:29:08.885] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:29:08.885] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:29:08.948] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:29:18.216] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:29:18.216] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:30:13.204] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:30:13.204] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:30:13.266] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:30:22.766] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:30:22.767] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:30:30.378] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:30:30.378] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:30:30.440] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:32:06.764] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:32:06.764] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:32:09.406] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:32:09.406] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:32:09.467] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva
+[01:33:46.283] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:33:46.283] [INFO   ] [destruir_sesion.php ] ✅ Sesión cerrada: ID=3 (Nicolas Manuel Villanueva Maturana, rol=operador)
+[01:33:52.972] [SYSTEM ] [logger.system       ] 🚀 Sistema de logging CopFlow v3.0 inicializado - by Diomedez98
+[01:33:52.972] [INFO   ] [validar_login.php   ] POST recibido: Array
+(
+    [email] => NicolasVillanueva
+    [password] => clave789
+)
+
+[01:33:53.034] [INFO   ] [validar_login.php   ] ✅ Login exitoso en operadores: NicolasVillanueva

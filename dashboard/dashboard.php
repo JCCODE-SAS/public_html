@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Rutas centralizadas: debe ir primero -->
     <script src="../activos/js/ubicacion_paginas.js"></script>
     <!-- WhatsApp JS GLOBAL para integración SPA (carga solo una vez) -->
-    <script src="/public_html/dashboard/paginas/whatsapp/comportamientos/whatsapp.js"></script>
+    <script src="/paginas/whatsapp/comportamientos/whatsapp.js"></script>
 </head>
 
 <body class="font-inter antialiased">
@@ -189,7 +189,7 @@ if (!isset($_SESSION['user_id'])) {
         'crear_usuario.js',
         'editar_usuario.js'
     ];
-    $base = '/public_html/dashboard/paginas/usuarios/comportamientos/';
+    $base = '/paginas/usuarios/comportamientos/';
     foreach ($scripts as $fichero) {
         $ruta = $_SERVER['DOCUMENT_ROOT'] . $base . $fichero;
         if (file_exists($ruta)) {
@@ -206,7 +206,7 @@ if (!isset($_SESSION['user_id'])) {
         'crear_operarios.js',
         'editar_operarios.js'
     ];
-    $base_operarios = '/public_html/dashboard/paginas/operarios/comportamientos/';
+    $base_operarios = '/paginas/operarios/comportamientos/';
     foreach ($scripts_operarios as $fichero) {
         $ruta = $_SERVER['DOCUMENT_ROOT'] . $base_operarios . $fichero;
         if (file_exists($ruta)) {

@@ -89,7 +89,7 @@ try {
         echo json_encode([
             "success"  => true,
             "role"     => "operador",
-            "redirect" => "dashboard/dashboard.php"
+            "redirect" => "/dashboard.php"
         ]);
         exit;
     }

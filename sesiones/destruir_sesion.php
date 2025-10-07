@@ -44,7 +44,7 @@ try {
         ]);
     } else {
         // Redirige al login si NO es AJAX
-        header("Location: /public_html/index.php");
+        header("Location: /index.php");
         exit;
     }
 } catch (Exception $e) {
@@ -57,7 +57,7 @@ try {
             "message" => "Error interno del servidor al cerrar sesión."
         ]);
     } else {
-        header("Location: /public_html/index.php");
+        header("Location: /index.php");
         exit;
     }
 }

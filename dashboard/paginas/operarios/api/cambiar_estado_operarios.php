@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($data) {
                 send_json(true, 'Disponibilidad actualizada correctamente.');
             } else {
-                header("Location: /public_html/dashboard/dashboard.php#operarios");
+                header("Location: /dashboard.php#operarios");
                 exit;
             }
         } else {

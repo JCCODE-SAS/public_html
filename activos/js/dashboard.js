@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       perfil: '/public_html/dashboard/paginas/perfil/perfil.php',
       configuracion: '/public_html/dashboard/paginas/configuracion/configuracion.php',
       logout: '/public_html/sesiones/destruir_sesion.php',
-      login: '/public_html/index.php'
+      login: '/index.php'
     };
   }
 
