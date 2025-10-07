@@ -307,7 +307,7 @@
     // Reemplaza la función pollSignal en whatsapp.js con esta versión con más logging
 
 function pollSignal() {
-    const url = '/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
+    const url = '/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
     
     fetch(url, { credentials: 'include', cache: 'no-store' })
         .then(r => {
