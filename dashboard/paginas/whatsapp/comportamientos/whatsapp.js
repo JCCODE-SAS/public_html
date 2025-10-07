@@ -78,8 +78,16 @@
                         badge = `<span class=\"wa-badge\">${chat.no_leidos}</span>`;
                     }
                     // Solo nombre y badge, sin botón MIA
-                    li.innerHTML = `<div><strong>${chat.cliente}</strong> ${badge}</div><div>${chat.estado}</div>`;
-                    
+                    li.innerHTML = `
+                      <div style="display:flex;align-items:center;gap:12px;">
+                      <div class="wa-avatar">${chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?'}</div>
+                       <div style="flex:1;">
+                    <strong>${chat.cliente}</strong> ${badge}
+                    <div class="status">${chat.estado || 'Activo'}</div>
+                   </div>
+                      </div>
+                              `;
+
                     li.addEventListener('click', (e) => {
                         if (chatSeleccionado === chat.id) return;
                         document.querySelectorAll('.wa-chat').forEach(c => c.classList.remove('selected'));
