@@ -140,11 +140,13 @@
                     "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
                     (nuevoEstado === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800");
             }
-            const btn = fila.querySelector("button[onclick*='toggleDisponibilidad']");
+            const btn = fila.querySelector(".btn-toggle-disponibilidad");
             if (btn) {
                 btn.innerHTML = `<i class="${nuevoEstado === 1 ? "ri-pause-circle-line" : "ri-play-circle-line"}"></i> ${nuevoEstado === 1 ? 'Deshabilitar' : 'Habilitar'}`;
-                btn.setAttribute("onclick", `toggleDisponibilidad(${operarioId}, ${nuevoEstado}, '${nombre}')`);
-                btn.title = `${nuevoEstado === 1 ? "Deshabilitar" : "Habilitar"} operario`;
+                btn.setAttribute("data-id", operarioId);
+                btn.setAttribute("data-disponible", nuevoEstado);
+                btn.setAttribute("data-nombre", nombre);
+                btn.title = nuevoEstado === 1 ? "Deshabilitar" : "Habilitar";
             }
             log(`Fila actualizada para operario ${operarioId}`, 'success');
         } catch (error) {

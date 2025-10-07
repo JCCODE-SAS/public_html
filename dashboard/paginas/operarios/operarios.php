@@ -335,14 +335,17 @@ function base_query(array $extra = []): string
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="acciones-btn-group flex items-center justify-center space-x-2">
-                                        <button class="action-btn btn-view text-xs btn-ver-operario" data-id="<?= $o['id'] ?>" title="Ver">
+                                        <button class="action-btn btn-view text-xs btn-ver-operario" data-id="<?= $o['id'] ?>"
+                                            title="Ver">
                                             <i class="ri-eye-line"></i> Ver
                                         </button>
-                                        <button class="action-btn btn-edit text-xs btn-editar-operario" data-id="<?= $o['id'] ?>" title="Editar">
+                                        <button class="action-btn btn-edit text-xs btn-editar-operario"
+                                            data-id="<?= $o['id'] ?>" title="Editar">
                                             <i class="ri-edit-line"></i> Editar
                                         </button>
                                         <button type="button" class="action-btn btn-toggle text-xs btn-toggle-disponibilidad"
-                                            data-id="<?= $o['id'] ?>" data-disponible="<?= $o['disponible'] ?>" data-nombre="<?= htmlspecialchars($o['nombre']) ?>"
+                                            data-id="<?= $o['id'] ?>" data-disponible="<?= $o['disponible'] ?>"
+                                            data-nombre="<?= htmlspecialchars($o['nombre']) ?>"
                                             title="<?= $o['disponible'] ? 'Deshabilitar' : 'Habilitar' ?>">
                                             <i
                                                 class="<?= $o['disponible'] ? 'ri-pause-circle-line' : 'ri-play-circle-line' ?>"></i>
