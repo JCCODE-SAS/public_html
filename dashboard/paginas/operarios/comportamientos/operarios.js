@@ -51,7 +51,7 @@
             window.abrirModalVerOperario(id);
         } else {
             log("Modal de visualización no disponible, usando fallback", 'warn');
-            fetch("/public_html/dashboard/paginas/operarios/api/obtener_operarios.php", {
+            fetch("/dashboard/paginas/operarios/api/obtener_operarios.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })
@@ -98,7 +98,7 @@
             `¿${accion.charAt(0).toUpperCase() + accion.slice(1)} operario?`,
             `¿Estás seguro de que deseas ${accion} al operario "${nombre}"?`,
             function() {
-                fetch("/public_html/dashboard/paginas/operarios/api/cambiar_estado_operarios.php", {
+                fetch("/dashboard/paginas/operarios/api/cambiar_estado_operarios.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id, nuevo_estado: String(nuevoEstado) })
@@ -172,7 +172,7 @@
 
     function actualizarEstadisticasOperarios() {
         log("Actualizando estadísticas de operarios");
-        fetch("/public_html/dashboard/paginas/operarios/api/estadisticas_operarios.php")
+    fetch("/dashboard/paginas/operarios/api/estadisticas_operarios.php")
         .then(res => res.text())
         .then(text => {
             try {
@@ -207,7 +207,7 @@
             if (extraParams) {
                 Object.entries(extraParams).forEach(([k, v]) => params.set(k, v));
             }
-            fetch("/public_html/dashboard/paginas/operarios/operarios.php?" + params.toString(), {
+            fetch("/dashboard/paginas/operarios/operarios.php?" + params.toString(), {
                 method: "GET",
                 headers: { "X-Requested-With": "XMLHttpRequest" }
             })

@@ -56,7 +56,7 @@
             return;
         }
 
-        fetch("/public_html/dashboard/paginas/operarios/api/obtener_operarios.php", {
+    fetch("/dashboard/paginas/operarios/api/obtener_operarios.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: operarioId })

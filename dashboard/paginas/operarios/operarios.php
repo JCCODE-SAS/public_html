@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../logs/logger.php';
 
 ?>
-<link rel="stylesheet" href="/paginas/operarios/comportamientos/operarios.css">
+<link rel="stylesheet" href="/dashboard/paginas/operarios/comportamientos/operarios.css">
 <?php
 
 //===============================================================

@@ -429,7 +429,7 @@
      * @param {string} email - Email a verificar
      */
     function verificarDisponibilidadEmail(email) {
-        fetch('/public_html/dashboard/paginas/usuarios/api/verificar_email.php', {
+    fetch('/dashboard/paginas/usuarios/api/verificar_email.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -928,7 +928,7 @@
             log(`Enviando datos del usuario: ${datosUsuario.nombre} (${datosUsuario.email})`);
             
             // Enviar datos al servidor
-            fetch('/public_html/dashboard/paginas/usuarios/api/crear_usuario.php', {
+            fetch('/dashboard/paginas/usuarios/api/crear_usuario.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -987,7 +987,7 @@
                             log("Intentando recarga manual de sección");
                             const usuariosSection = document.getElementById('usuariosSection');
                             if (usuariosSection) {
-                                fetch('/public_html/dashboard/paginas/usuarios/usuarios.php')
+                                fetch('/dashboard/paginas/usuarios/usuarios.php')
                                 .then(response => response.text())
                                 .then(html => {
                                     usuariosSection.innerHTML = html;

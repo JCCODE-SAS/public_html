@@ -384,7 +384,7 @@
     // Igual que en usuarios.js, busca los elementos por ID
     //===============================================================
     window.actualizarEstadisticasOperarios = function() {
-        fetch('/public_html/dashboard/paginas/operarios/api/estadisticas_operarios.php')
+    fetch('/dashboard/paginas/operarios/api/estadisticas_operarios.php')
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -411,7 +411,7 @@
             password: document.getElementById('passwordOperario').value,
             disponible: 1
         };
-        fetch('/public_html/dashboard/paginas/operarios/api/crear_operarios.php', {
+    fetch('/dashboard/paginas/operarios/api/crear_operarios.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosOperario)

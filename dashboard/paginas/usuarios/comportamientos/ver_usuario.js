@@ -83,7 +83,7 @@
     function cargarDatosUsuarioVer(userId) {
         console.log("📡 Cargando datos del usuario ID:", userId);
 
-        fetch("/public_html/dashboard/paginas/usuarios/api/obtener_usuario.php", {
+    fetch("/dashboard/paginas/usuarios/api/obtener_usuario.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

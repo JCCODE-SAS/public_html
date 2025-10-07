@@ -130,7 +130,7 @@
     function cargarDatosUsuario(userId) {
         console.log("Cargando datos del usuario ID:", userId);
 
-        fetch("/public_html/dashboard/paginas/usuarios/api/obtener_usuario.php", {
+    fetch("/dashboard/paginas/usuarios/api/obtener_usuario.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -241,7 +241,7 @@
         // Mostrar estado de carga en el botón
         mostrarCargandoBoton(true);
 
-        fetch("/public_html/dashboard/paginas/usuarios/api/actualizar_usuario.php", {
+    fetch("/dashboard/paginas/usuarios/api/actualizar_usuario.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

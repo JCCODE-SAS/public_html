@@ -89,7 +89,7 @@
             log("Modal de visualización no disponible, usando fallback", 'warn');
             
             // Fallback: Modal básico con fetch directo
-            fetch("/public_html/dashboard/paginas/usuarios/api/obtener_usuario.php", {
+            fetch("/dashboard/paginas/usuarios/api/obtener_usuario.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })
@@ -147,7 +147,7 @@
             function() {
                 log(`Cambiando estado de usuario ${id}: ${estadoActual} → ${nuevoEstado}`);
                 
-                fetch("/public_html/dashboard/paginas/usuarios/api/cambiar_estado_usuario.php", {
+                fetch("/dashboard/paginas/usuarios/api/cambiar_estado_usuario.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: id, nuevo_estado: nuevoEstado })
@@ -405,7 +405,7 @@
             log(`Ejecutando filtro AJAX: ${params.toString()}`);
             
             // Ejecutar petición AJAX
-            fetch("/public_html/dashboard/paginas/usuarios/usuarios.php?" + params.toString(), {
+            fetch("/dashboard/paginas/usuarios/usuarios.php?" + params.toString(), {
                 method: "GET",
                 headers: { "X-Requested-With": "XMLHttpRequest" }
             })
@@ -504,7 +504,7 @@
         }
         
         // Cargar vista sin filtros
-        fetch("/public_html/dashboard/paginas/usuarios/usuarios.php", {
+    fetch("/dashboard/paginas/usuarios/usuarios.php", {
             method: "GET",
             headers: { "X-Requested-With": "XMLHttpRequest" }
         })
@@ -733,7 +733,7 @@ window.recargarTablaUsuarios = function() {
         // Añadir timestamp para evitar cache
         params.set('_t', Date.now());
         
-        fetch('/public_html/dashboard/paginas/usuarios/usuarios.php?' + params.toString(), {
+    fetch('/dashboard/paginas/usuarios/usuarios.php?' + params.toString(), {
             method: 'GET',
             headers: { 
                 'X-Requested-With': 'XMLHttpRequest',

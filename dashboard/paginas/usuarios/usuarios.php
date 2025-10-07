@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../../configuracion/bd.php';
 require_once __DIR__ . '/../../../logs/logger.php';
 
 ?>
-<link rel="stylesheet" href="/public_html/dashboard/paginas/usuarios/comportamientos/usuarios.css">
+<link rel="stylesheet" href="/dashboard/paginas/usuarios/comportamientos/usuarios.css">
 <?php
 
 //===============================================================
@@ -539,13 +539,13 @@ function base_query(array $extra = []): string
 </div>
 
 <!-- SCRIPTS -->
-<script src="/public_html/dashboard/paginas/usuarios/comportamientos/usuarios.js"></script>
-<script src="/public_html/dashboard/paginas/usuarios/comportamientos/ver_usuario.js"></script>
-<script src="/public_html/dashboard/paginas/usuarios/comportamientos/crear_usuario.js"></script>
+<script src="/dashboard/paginas/usuarios/comportamientos/usuarios.js"></script>
+<script src="/dashboard/paginas/usuarios/comportamientos/ver_usuario.js"></script>
+<script src="/dashboard/paginas/usuarios/comportamientos/crear_usuario.js"></script>
 <?php
 $script_editar = __DIR__ . '/comportamientos/editar_usuario.js';
 if (file_exists($script_editar)) {
-    echo '<script src="/public_html/dashboard/paginas/usuarios/comportamientos/editar_usuario.js"></script>';
+    echo '<script src="/dashboard/paginas/usuarios/comportamientos/editar_usuario.js"></script>';
 }
 ?>
 

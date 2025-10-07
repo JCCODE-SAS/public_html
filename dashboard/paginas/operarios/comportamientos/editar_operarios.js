@@ -69,7 +69,7 @@
 
     // Cargar datos del operario desde la API
     function cargarDatosOperario(operarioId) {
-        fetch("/public_html/dashboard/paginas/operarios/api/obtener_operarios.php", {
+    fetch("/dashboard/paginas/operarios/api/obtener_operarios.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: operarioId })
@@ -106,7 +106,7 @@
         const datosOperario = obtenerDatosFormulario();
         mostrarCargandoBoton(true);
 
-        fetch("/public_html/dashboard/paginas/operarios/api/actualizar_operarios.php", {
+    fetch("/dashboard/paginas/operarios/api/actualizar_operarios.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datosOperario)
