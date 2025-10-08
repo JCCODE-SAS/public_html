@@ -274,7 +274,7 @@
 }
 
 .wa-bubble.mia {
-    align-self: center;
+    align-self: flex-end; 
     background: #eae6ff;
     color: #3c2ca3;
     font-style: italic;
