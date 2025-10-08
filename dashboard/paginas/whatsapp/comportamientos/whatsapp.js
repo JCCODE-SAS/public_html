@@ -407,7 +407,7 @@ function handleSignal(signal) {
         const iaSVG = `<svg width='18' height='18' viewBox='0 0 20 20' fill='none' style='vertical-align:middle;margin-right:4px;' xmlns='http://www.w3.org/2000/svg'><circle cx='10' cy='10' r='8' stroke='#2563eb' stroke-width='2' fill='#e0e7ef'/><rect x='7' y='7' width='6' height='6' rx='2' fill='#2563eb'/></svg>`;
         const activa = chat.mia_activa === 1;
         const btn = document.createElement('button');
-        btn.className = 'wa-mia-btn-chat';
+        btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
         btn.type = 'button';
         btn.style = `background:${activa ? '#c52222ff' : '#64748b'};color:#fff;padding:6px 18px 6px 10px;border:none;border-radius:7px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:background 0.2s;font-size:15px;`;
         btn.innerHTML = `${iaSVG}${activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA'}`;
