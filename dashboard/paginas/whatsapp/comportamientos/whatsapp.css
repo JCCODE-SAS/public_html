@@ -152,6 +152,51 @@
     display: block;
 }
 
+/* Cabecera del chat seleccionado */
+.wa-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1.5px solid #f1f1f1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.wa-header-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+}
+
+.wa-header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wa-header-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+
+.wa-header-status {
+    font-size: 13px;
+    color: #888;
+}
+
+
 /* Estado (activo/inactivo) debajo del nombre */
 .wa-chat .status {
     font-size: 13px;

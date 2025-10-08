@@ -93,6 +93,18 @@
                         document.querySelectorAll('.wa-chat').forEach(c => c.classList.remove('selected'));
                         li.classList.add('selected');
                         chatSeleccionado = chat.id;
+
+                        // Actualizar cabecera con datos del cliente
+                       const header = document.getElementById('wa-header');
+                       if (header) {
+                        header.style.display = 'flex';
+                        const avatar = header.querySelector('.wa-header-avatar');
+                        const name = header.querySelector('.wa-header-name');
+                        const status = header.querySelector('.wa-header-status');
+                        avatar.textContent = chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?';
+                        name.textContent = chat.cliente || 'Cliente';
+                        status.textContent = chat.estado || 'Activo';
+                         }
                         // Limpiar cache y DOM antes de recargar mensajes
                         const cont = document.getElementById('wa-messages');
                         if (cont) cont.innerHTML = '';
