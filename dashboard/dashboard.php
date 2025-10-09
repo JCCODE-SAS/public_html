@@ -107,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
             </button>
             <header class="main-header">
                 <div class="header-content">
-                    <h1 class="page-title">Dashboard de Gestión COPFLOW</h1>
+                    <h1 class="page-title">Dashboard COPFLOW</h1>
                     <div class="header-info">
                         <span class="version-badge"></span>
                         <span class="user-role"><?= ucfirst($_SESSION['user_role'] ?? 'usuario') ?></span>
