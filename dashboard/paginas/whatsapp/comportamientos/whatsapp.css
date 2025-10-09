@@ -377,7 +377,6 @@
 .wa-inputbox {
     display: flex;
     margin: 0;
-    background: #f3f4f6;
     border-top: 1px solid #e5e7eb;
     padding: 10px 14px;
     align-items: center;
@@ -537,11 +536,6 @@
   background: #ffffff;
   box-shadow: 0 0 20px rgba(0,0,0,0.03);
   border-radius: 12px;
-}
-
-.chat-container {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  border-radius: 16px;
 }
 
 
