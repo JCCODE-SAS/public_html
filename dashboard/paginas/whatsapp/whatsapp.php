@@ -50,9 +50,13 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
 
             
             <section class="wa-messages" id="wa-messages">
-                <div style="color:#8696a0;text-align:center;padding:60px 20px;">
-                    Selecciona un chat para ver los mensajes
-                </div>
+                  <section class="wa-empty">
+                       <div class="wa-empty-content">
+                       <img src="/dashboard/paginas/whatsapp/assets/empty-chat.svg" alt="Sin chat seleccionado" class="wa-empty-img">
+                       <h3>Selecciona un chat</h3>
+                      <p>Selecciona un chat para ver los mensajes.</p>
+                    </div>
+             </section>
             </section>
             <form class="wa-inputbox" id="wa-form" style="display:none;">
                 <input type="text" id="wa-input" placeholder="Escribe un mensaje..." autocomplete="off" />
