@@ -392,54 +392,70 @@ function handleSignal(signal) {
 }
    
     // Botón MIA dentro del header del chat , solo para el chat seleccionado
+// === NUEVO renderBotonMiaChat con switch moderno ===
 function renderBotonMiaChat(chat) {
-    let cont = document.getElementById('wa-mia-chat-btn-wrap');
-    if (!cont) {
-        cont = document.createElement('div');
-        cont.id = 'wa-mia-chat-btn-wrap';
-        cont.style = 'margin-left:auto;';
-        const header = document.getElementById('wa-header');
-        if (header) {
-            header.appendChild(cont);
-            header.style.display = 'flex';
-            header.style.alignItems = 'center';
-            header.style.justifyContent = 'space-between';
-        }
+  let cont = document.getElementById("wa-mia-chat-btn-wrap");
+  if (!cont) {
+    cont = document.createElement("div");
+    cont.id = "wa-mia-chat-btn-wrap";
+    cont.style = "margin-left:auto;";
+    const header = document.getElementById("wa-header");
+    if (header) {
+      header.appendChild(cont);
+      header.style.display = "flex";
+      header.style.alignItems = "center";
+      header.style.justifyContent = "space-between";
     }
+  }
 
-    cont.innerHTML = '';
-    if (!chat) return;
+  cont.innerHTML = "";
+  if (!chat) return;
 
-    const activa = chat.mia_activa === 1;
-    const btn = document.createElement('button');
-    btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
-    btn.type = 'button';
-    btn.textContent = activa ? 'MIA ON' : 'MIA OFF';
-    btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
+  const activa = chat.mia_activa === 1;
 
-    // Evento click
-    btn.onclick = function () {
-        btn.disabled = true;
-        fetch(`/dashboard/paginas/whatsapp/api/${activa ? 'apagar_mia' : 'activar_mia'}.php`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'id_chat=' + encodeURIComponent(chat.id)
-        })
-        .then(r => r.json())
-        .then(() => {
-            cargarMensajes(chat.id, false);
-            cargarChats();
-            btn.disabled = false;
-        })
-        .catch(() => {
-            alert('Error de red');
-            btn.disabled = false;
-        });
-    };
+  // Crear el switch visual
+  const wrapper = document.createElement("div");
+  wrapper.className = "wa-mia-toggle-container";
 
-    cont.appendChild(btn);
+  wrapper.innerHTML = `
+    <label class="wa-mia-switch">
+      <input type="checkbox" id="mia-toggle" ${activa ? "checked" : ""}>
+      <span class="wa-mia-slider">
+        <span class="wa-mia-icon"></span>
+      </span>
+    </label>
+    <span class="wa-mia-label">MIA</span>
+  `;
+
+  // Evento cambio
+  const input = wrapper.querySelector("#mia-toggle");
+  input.addEventListener("change", () => {
+    input.disabled = true;
+    const endpoint = input.checked ? "activar_mia" : "apagar_mia";
+
+    fetch(`/dashboard/paginas/whatsapp/api/${endpoint}.php`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "id_chat=" + encodeURIComponent(chat.id)
+    })
+      .then((r) => r.json())
+      .then(() => {
+        cargarMensajes(chat.id, false);
+        cargarChats();
+        input.disabled = false;
+      })
+      .catch(() => {
+        alert("Error de red");
+        input.disabled = false;
+        // revertir estado si falla
+        input.checked = !input.checked;
+      });
+  });
+
+  cont.appendChild(wrapper);
 }
+
 
 
     window.inicializarWhatsapp = inicializarWhatsapp;

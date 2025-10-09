@@ -437,3 +437,93 @@
     .wa-container { border-radius: 0; }
     .wa-main, .wa-chats { padding: 0 !important; }
 }
+
+
+/* === SWITCH MIA (tipo toggle moderno) === */
+.wa-mia-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 12px 18px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* Texto al lado del switch */
+.wa-mia-label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Switch contenedor */
+.wa-mia-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+/* Checkbox invisible */
+.wa-mia-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Fondo del switch */
+.wa-mia-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Circulito interno */
+.wa-mia-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* Check oculto dentro del switch */
+.wa-mia-icon {
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  background: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>') no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Estado activo */
+.wa-mia-switch input:checked + .wa-mia-slider {
+  background-color: #5831e2;
+  box-shadow: 0 0 6px rgba(88,49,226,0.4);
+}
+
+/* Mueve el círculo a la derecha */
+.wa-mia-switch input:checked + .wa-mia-slider::before {
+  transform: translateX(22px);
+}
+
+/* Muestra el check cuando está activo */
+.wa-mia-switch input:checked + .wa-mia-slider .wa-mia-icon {
+  opacity: 1;
+}

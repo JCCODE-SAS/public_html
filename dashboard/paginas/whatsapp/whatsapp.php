@@ -32,6 +32,21 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
             </ul>
         </aside>
         <main class="wa-main">
+
+        <main class="wa-main">
+
+    <!--  Nuevo botón MIA tipo switch -->
+    <div class="wa-mia-toggle-container">
+        <label class="wa-mia-switch">
+            <input type="checkbox" id="mia-toggle">
+            <span class="wa-mia-slider">
+                <span class="wa-mia-icon"></span>
+            </span>
+        </label>
+        <span class="wa-mia-label">MIA</span>
+    </div>
+    <!-- Fin botón MIA -->
+
          <div id="wa-header" class="wa-header" style="display:none;">
                 <div class="wa-header-avatar"></div>
                  <div class="wa-header-info">
