@@ -121,29 +121,8 @@
                     });
                     lista.appendChild(li);
                 });
-
-
- 
-
-              // ==========================
-              // 🔍 Inicializar buscador global
-              // ==========================
-
-               function inicializarBuscadorChats() {
-               const searchInput = document.getElementById('wa-search-input');
-               const chatList = document.getElementById('wa-chatlist');
-               if (!searchInput || !chatList) return;
-
-               searchInput.addEventListener('input', function() {
-               const filter = this.value.toLowerCase().trim();
-               const chats = chatList.querySelectorAll('li');
-               chats.forEach(chat => {
-               const name = chat.textContent.toLowerCase();
-               chat.style.display = name.includes(filter) ? '' : 'none';
-              });
-            });
-        }
-
+              
+            
                 
                 // Actualizar badge global del menú
                 actualizarBadgeGlobal();
@@ -156,6 +135,24 @@
                 log(`Error de red al cargar chats: ${err.message}`, 'error');
             });
     }
+
+
+          /*🔍 Inicializar buscador global */
+
+              function inicializarBuscadorChats() {
+              const searchInput = document.getElementById('wa-search-input');
+              const chatList = document.getElementById('wa-chatlist');
+             if (!searchInput || !chatList) return;
+
+              searchInput.addEventListener('input', function() {
+               const filter = this.value.toLowerCase().trim();
+               const chats = chatList.querySelectorAll('li');
+                chats.forEach(chat => {
+               const name = chat.textContent.toLowerCase();
+               chat.style.display = name.includes(filter) ? '' : 'none';
+               });
+          });
+        }
 
     // Consulta el total global de mensajes no leídos y lo muestra en el menú
     function actualizarBadgeGlobal() {
