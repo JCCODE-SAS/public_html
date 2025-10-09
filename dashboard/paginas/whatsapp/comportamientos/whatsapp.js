@@ -390,52 +390,57 @@ function handleSignal(signal) {
     console.log('📋 [handleSignal] No hay chat seleccionado, refrescando lista');
     cargarChats();
 }
-    // Botón MIA debajo del input, solo para el chat seleccionado
-    function renderBotonMiaChat(chat) {
-        let cont = document.getElementById('wa-mia-chat-btn-wrap');
-        if (!cont) {
+   
+    // Botón MIA dentro del header del chat , solo para el chat seleccionado
+function renderBotonMiaChat(chat) {
+    let cont = document.getElementById('wa-mia-chat-btn-wrap');
+    if (!cont) {
         cont = document.createElement('div');
         cont.id = 'wa-mia-chat-btn-wrap';
-        cont.style = 'margin-left:auto;'; // se alinea a la derecha dentro del header
+        cont.style = 'margin-left:auto;';
         const header = document.getElementById('wa-header');
         if (header) {
-        header.appendChild(cont); // ahora el botón vive dentro del header
-        header.style.display = 'flex';
-        header.style.alignItems = 'center';
-        header.style.justifyContent = 'space-between';
+            header.appendChild(cont);
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+            header.style.justifyContent = 'space-between';
+        }
     }
-              }  
 
-        
-        cont.innerHTML = '';
-        if (!chat) return;
-        const activa = chat.mia_activa === 1;
-        const btn = document.createElement('button');
-        btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
-        btn.type = 'button';
-        btn.textContent = activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA';
-        btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
-        btn.onclick = function() {
-            btn.disabled = true;
-            fetch(`/dashboard/paginas/whatsapp/api/${activa ? 'apagar_mia' : 'activar_mia'}.php`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'id_chat=' + encodeURIComponent(chat.id)
-            })
-            .then(r => r.json())
-            .then(data => {
-                cargarMensajes(chat.id, false);
-                cargarChats();
-                btn.disabled = false;
-            })
-            .catch(() => {
-                alert('Error de red');
-                btn.disabled = false;
-            });
-        };
-        cont.appendChild(btn);
-    }
+    cont.innerHTML = '';
+    if (!chat) return;
+
+    const activa = chat.mia_activa === 1;
+    const btn = document.createElement('button');
+    btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
+    btn.type = 'button';
+    btn.textContent = activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA';
+    btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
+
+    // Evento click
+    btn.onclick = function () {
+        btn.disabled = true;
+        fetch(`/dashboard/paginas/whatsapp/api/${activa ? 'apagar_mia' : 'activar_mia'}.php`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'id_chat=' + encodeURIComponent(chat.id)
+        })
+        .then(r => r.json())
+        .then(() => {
+            cargarMensajes(chat.id, false);
+            cargarChats();
+            btn.disabled = false;
+        })
+        .catch(() => {
+            alert('Error de red');
+            btn.disabled = false;
+        });
+    };
+
+    cont.appendChild(btn);
+}
+
 
     window.inicializarWhatsapp = inicializarWhatsapp;
 })();
