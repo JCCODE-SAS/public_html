@@ -32,9 +32,6 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
             </ul>
         </aside>
         <main class="wa-main">
-
-        <main class="wa-main">
-
     <!--  Nuevo botón MIA tipo switch -->
     <div class="wa-mia-toggle-container">
         <label class="wa-mia-switch">
