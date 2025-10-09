@@ -27,6 +27,8 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
     <div class="wa-container">
         <aside class="wa-chats">
             <h2>Chats activos</h2>
+            <p class="sidebar-section-title">Chats activos</p>
+
 
               
                <!-- 🔍 Buscador -->

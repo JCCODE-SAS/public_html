@@ -482,6 +482,7 @@
 /* Selecionar chat para ver los mensajes */
 
 .wa-empty {
+  background: linear-gradient(180deg, #fafaff, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -513,4 +514,36 @@
   font-size: 14px;
   color: #888;
 }
+
+.chat-header {
+  background: #f8f7ff;
+  border-bottom: 1px solid #eee;
+  padding: 10px 15px;
+}
+
+.sidebar-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #999;
+  margin: 10px 15px;
+}
+
+
+.sidebar, .chat-list {
+  background: #f9fafb; /* Gris muy claro */
+  border-right: 1px solid #eee;
+}
+
+.chat-area {
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.03);
+  border-radius: 12px;
+}
+
+.chat-container {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-radius: 16px;
+}
+
+
 
