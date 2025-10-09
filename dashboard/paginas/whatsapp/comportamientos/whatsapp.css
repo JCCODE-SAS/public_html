@@ -496,9 +496,10 @@
 }
 
 .wa-empty-img {
-  width: 120px;
-  opacity: 0.7;
+  width: 100px;
+  opacity: 0.8;
   margin-bottom: 20px;
+  filter: grayscale(100%);
 }
 
 .wa-empty h3 {
