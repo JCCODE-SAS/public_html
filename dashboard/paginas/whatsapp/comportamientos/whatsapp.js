@@ -409,12 +409,11 @@ function handleSignal(signal) {
         
         cont.innerHTML = '';
         if (!chat) return;
-        const iaSVG = `<svg width='18' height='18' viewBox='0 0 20 20' fill='none' style='vertical-align:middle;margin-right:4px;' xmlns='http://www.w3.org/2000/svg'><circle cx='10' cy='10' r='8' stroke='#2563eb' stroke-width='2' fill='#e0e7ef'/><rect x='7' y='7' width='6' height='6' rx='2' fill='#2563eb'/></svg>`;
         const activa = chat.mia_activa === 1;
         const btn = document.createElement('button');
         btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
         btn.type = 'button';
-        btn.innerHTML = `${iaSVG}${activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA'}`;
+        btn.textContent = activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA';
         btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
         btn.onclick = function() {
             btn.disabled = true;
