@@ -482,7 +482,6 @@
 /* Selecionar chat para ver los mensajes */
 
 .wa-empty {
-  background: linear-gradient(180deg, #fafaff, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -516,8 +515,8 @@
 }
 
 .chat-header {
-  background: #f8f7ff;
-  border-bottom: 1px solid #eee;
+  background: #4631ca;
+  border-bottom: 1px solid #7c899b;
   padding: 10px 15px;
 }
 
