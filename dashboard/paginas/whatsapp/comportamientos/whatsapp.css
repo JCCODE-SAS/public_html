@@ -299,7 +299,7 @@
 
 /* Estado cuando MIA está activa */
 .wa-mia-btn-chat.mia-activa {
-  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  background: linear-gradient(135deg, #86e439, #66be3d);
   color: #fff;
 }
 
