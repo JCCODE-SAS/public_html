@@ -427,3 +427,34 @@
     .wa-container { border-radius: 0; }
     .wa-main, .wa-chats { padding: 0 !important; }
 }
+
+/* === Corrección: evita que un mensaje ancho rompa el layout === */
+.wa-messages {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.wa-bubble {
+  max-width: 85%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap; /* mantiene saltos de línea, pero permite ajuste */
+  display: inline-block;
+}
+
+.wa-bubble.mia,
+.wa-bubble.operador,
+.wa-bubble.cliente {
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+/* opcional: si usas flex, evita que burbujas crezcan de más */
+.wa-messages > div {
+  flex-shrink: 1;
+  flex-grow: 0;
+}
