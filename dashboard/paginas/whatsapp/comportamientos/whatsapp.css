@@ -376,6 +376,7 @@
 
 .wa-inputbox {
     display: flex;
+    background: #fbfcff;
     margin: 0;
     border-top: 1px solid #e5e7eb;
     padding: 10px 14px;
