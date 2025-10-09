@@ -397,10 +397,11 @@ function handleSignal(signal) {
             cont = document.createElement('div');
             cont.id = 'wa-mia-chat-btn-wrap';
             cont.style = 'display:flex;justify-content:flex-end;padding:10px 0 0 0;';
-            const form = document.getElementById('wa-form');
-            if (form && form.parentNode) {
-                form.parentNode.insertBefore(cont, form.nextSibling);
+            const header = document.getElementById('wa-header');
+            if (header && header.parentNode) {
+            header.parentNode.insertBefore(cont, header.nextSibling);
             }
+
         }
         cont.innerHTML = '';
         if (!chat) return;
