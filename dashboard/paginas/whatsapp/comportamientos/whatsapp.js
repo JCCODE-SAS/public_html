@@ -414,7 +414,7 @@ function renderBotonMiaChat(chat) {
     const btn = document.createElement('button');
     btn.className = `wa-mia-btn-chat ${activa ? 'mia-activa' : 'mia-inactiva'}`;
     btn.type = 'button';
-    btn.textContent = activa ? 'MIA ACTIVA' : 'MIA DESACTIVADA';
+    btn.textContent = activa ? 'MIA ON' : 'MIA OFF';
     btn.title = activa ? 'Desactivar MIA para este chat' : 'Activar MIA para este chat';
 
     // Evento click
