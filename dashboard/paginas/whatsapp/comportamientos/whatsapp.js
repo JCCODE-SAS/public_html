@@ -393,14 +393,19 @@ function handleSignal(signal) {
     // Botón MIA debajo del input, solo para el chat seleccionado
     function renderBotonMiaChat(chat) {
         let cont = document.getElementById('wa-mia-chat-btn-wrap');
-        if (!cont) {
-            cont = document.createElement('div');
-            cont.id = 'wa-mia-chat-btn-wrap';
-            cont.style = 'display:flex;justify-content:flex-end;padding:10px 0 0 0;';
-            const header = document.getElementById('wa-header');
-            if (header && header.parentNode) {
-            header.parentNode.insertBefore(cont, header.nextSibling);
-            }
+       if (!cont) {
+        cont = document.createElement('div');
+        cont.id = 'wa-mia-chat-btn-wrap';
+        cont.style = 'margin-left:auto;'; // se alinea a la derecha dentro del header
+        const header = document.getElementById('wa-header');
+        if (header) {
+        header.appendChild(cont); // ahora el botón vive dentro del header
+        header.style.display = 'flex';
+        header.style.alignItems = 'center';
+        header.style.justifyContent = 'space-between';
+    }
+}
+
 
         }
         cont.innerHTML = '';
