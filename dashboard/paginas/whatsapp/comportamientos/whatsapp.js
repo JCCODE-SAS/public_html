@@ -439,3 +439,4 @@ function handleSignal(signal) {
 
     window.inicializarWhatsapp = inicializarWhatsapp;
 })();
+
