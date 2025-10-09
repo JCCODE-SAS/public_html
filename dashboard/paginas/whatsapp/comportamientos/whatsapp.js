@@ -393,7 +393,7 @@ function handleSignal(signal) {
     // Botón MIA debajo del input, solo para el chat seleccionado
     function renderBotonMiaChat(chat) {
         let cont = document.getElementById('wa-mia-chat-btn-wrap');
-       if (!cont) {
+        if (!cont) {
         cont = document.createElement('div');
         cont.id = 'wa-mia-chat-btn-wrap';
         cont.style = 'margin-left:auto;'; // se alinea a la derecha dentro del header
