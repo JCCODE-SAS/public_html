@@ -329,7 +329,7 @@
 
 /* Estado cuando MIA está activa */
 .wa-mia-btn-chat.mia-activa {
-  color: #80d22e; /* Verde suave */
+  color: #d7e9c5; /* Verde suave */
   background: #ffffff;
   box-shadow:
     inset 0 2px 3px rgba(255,255,255,0.8),
@@ -338,7 +338,7 @@
 }
 
 .wa-mia-btn-chat.mia-activa::before {
-  background: linear-gradient(90deg, #80d22e, #34d399);
+  background: linear-gradient(90deg, #d1e6bd, #34d399);
 }
 
 /* Estado cuando MIA está desactivada */
