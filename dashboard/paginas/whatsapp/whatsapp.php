@@ -31,39 +31,43 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
                 <!-- Los chats se cargarán aquí vía JS -->
             </ul>
         </aside>
-        <main class="wa-main">
-    <!--  Nuevo botón MIA tipo switch -->
-    <div class="wa-mia-toggle-container">
-        <label class="wa-mia-switch">
-            <input type="checkbox" id="mia-toggle">
-            <span class="wa-mia-slider">
-                <span class="wa-mia-icon"></span>
-            </span>
-        </label>
-        <span class="wa-mia-label">MIA</span>
-    </div>
-    <!-- Fin botón MIA -->
 
-         <div id="wa-header" class="wa-header" style="display:none;">
-                <div class="wa-header-avatar"></div>
-                 <div class="wa-header-info">
-                     <div class="wa-header-name"></div>
-                            <div class="wa-header-status"></div>
-                            </div>
-                        </div>
+   <main class="wa-main">
+    <div id="wa-header" class="wa-header" style="display:none;">
+        <div class="wa-header-avatar"></div>
+        <div class="wa-header-info">
+            <div class="wa-header-top">
+                <div class="wa-header-name"></div>
 
-
-            
-            <section class="wa-messages" id="wa-messages">
-                <div style="color:#8696a0;text-align:center;padding:60px 20px;">
-                    Selecciona un chat para ver los mensajes
+                <!--  Aquí va el botón MIA, dentro del encabezado -->
+                <div class="wa-mia-toggle-container">
+                    <label class="wa-mia-switch">
+                        <input type="checkbox" id="mia-toggle">
+                        <span class="wa-mia-slider">
+                            <span class="wa-mia-icon"></span>
+                        </span>
+                    </label>
+                    <span class="wa-mia-label">MIA</span>
                 </div>
-            </section>
-            <form class="wa-inputbox" id="wa-form" style="display:none;">
-                <input type="text" id="wa-input" placeholder="Escribe un mensaje..." autocomplete="off" />
-                <button type="submit">Enviar</button>
-            </form>
-        </main>
+            </div>
+
+            <div class="wa-header-status"></div>
+        </div>
+    </div>
+
+    <section class="wa-messages" id="wa-messages">
+        <div style="color:#8696a0;text-align:center;padding:60px 20px;">
+            Selecciona un chat para ver los mensajes
+        </div>
+    </section>
+
+    <form class="wa-inputbox" id="wa-form" style="display:none;">
+        <input type="text" id="wa-input" placeholder="Escribe un mensaje..." autocomplete="off" />
+        <button type="submit">Enviar</button>
+    </form>
+</main>
+
+
     </div>
     <script>
         window.WA_USER = {
