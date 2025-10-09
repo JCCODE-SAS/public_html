@@ -299,13 +299,13 @@
 
 /* Estado cuando MIA está activa */
 .wa-mia-btn-chat.mia-activa {
-  background: linear-gradient(135deg, #86e439, #66be3d);
+  background: linear-gradient(135deg,  #80d22e, #b91c1c);
   color: #fff;
 }
 
 /* Estado cuando MIA está desactivada */
 .wa-mia-btn-chat.mia-inactiva {
-  background: linear-gradient(135deg, #524e4ee7, #837b7b);
+  background: linear-gradient(135deg,  #445fef, #b91c1c );
   color: #fff;
   box-shadow: 0 2px 6px rgba(92, 99, 82, 0.4);
 }
