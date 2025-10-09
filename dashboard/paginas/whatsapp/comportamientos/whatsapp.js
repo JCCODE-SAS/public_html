@@ -361,12 +361,15 @@ function pollSignal() {
         });
 }
 
+
+
 // También actualiza handleSignal para mejor logging
 function handleSignal(signal) {
     console.log('🎯 [handleSignal] Procesando señal:', signal);
     console.log('🎯 [handleSignal] Chat seleccionado:', chatSeleccionado);
     
     const id = Number(signal.chat_id) || null;
+
     
     // Siempre que el chat activo esté seleccionado, recargar mensajes
     if (chatSeleccionado) {
@@ -390,6 +393,8 @@ function handleSignal(signal) {
     console.log('📋 [handleSignal] No hay chat seleccionado, refrescando lista');
     cargarChats();
 }
+
+
    
     // Botón MIA dentro del header del chat , solo para el chat seleccionado
 function renderBotonMiaChat(chat) {
@@ -406,6 +411,19 @@ function renderBotonMiaChat(chat) {
             header.style.justifyContent = 'space-between';
         }
     }
+
+
+    // Filtro de búsqueda
+document.getElementById('wa-search-input').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const chats = document.querySelectorAll('#wa-chatlist li');
+
+  chats.forEach(chat => {
+    const name = chat.textContent.toLowerCase();
+    chat.style.display = name.includes(filter) ? '' : 'none';
+  });
+});
+
 
     cont.innerHTML = '';
     if (!chat) return;

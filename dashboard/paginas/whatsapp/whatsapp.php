@@ -27,6 +27,13 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
     <div class="wa-container">
         <aside class="wa-chats">
             <h2>Chats activos</h2>
+
+              
+               <!-- 🔍 Buscador -->
+             <div class="wa-search">
+             <input type="text" id="wa-search-input" placeholder="Buscar chat..." />
+             </div>
+
             <ul class="wa-chatlist" id="wa-chatlist">
                 <!-- Los chats se cargarán aquí vía JS -->
             </ul>

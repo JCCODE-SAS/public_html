@@ -458,3 +458,23 @@
   flex-shrink: 1;
   flex-grow: 0;
 }
+
+
+.wa-search {
+  padding: 0 15px 10px;
+}
+
+.wa-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.wa-search input:focus {
+  border-color: #8a2be2;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+  outline: none;
+}
