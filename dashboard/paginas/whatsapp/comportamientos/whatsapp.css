@@ -154,13 +154,49 @@
 
 /* Cabecera del chat seleccionado */
 .wa-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 20px;
-    background: #fff;
-    border-bottom: 1.5px solid #f1f1f1;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
+  }
+
+.wa-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.mia-status {
+  background-color: #7f56d9;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(127, 86, 217, 0.3);
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+
+.mia-status:hover {
+  background-color: #6b46d1;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
 }
 
 .wa-header-avatar {

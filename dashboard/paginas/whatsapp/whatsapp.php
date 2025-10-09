@@ -33,12 +33,18 @@ if (function_exists('writeLog')) writeLog("whatsapp.php", "Módulo WhatsApp carg
         </aside>
         <main class="wa-main">
            <div id="wa-header" class="wa-header" style="display:none;">
-           <div class="wa-header-avatar"></div>
-           <div class="wa-header-info">
-           <div class="wa-header-name"></div>
-           <div class="wa-header-status"></div>
-             </div>
-             </div>
+    <div class="wa-header-left">
+        <div class="wa-header-avatar"></div>
+        <div class="wa-header-info">
+            <div class="wa-header-name"></div>
+            <div class="wa-header-status"></div>
+        </div>
+    </div>
+    <div class="mia-status">
+        <span class="status-dot"></span> MIA ACTIVA
+    </div>
+</div>
+
             
             <section class="wa-messages" id="wa-messages">
                 <div style="color:#8696a0;text-align:center;padding:60px 20px;">
