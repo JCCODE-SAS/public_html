@@ -305,9 +305,9 @@
 
 /* Estado cuando MIA está desactivada */
 .wa-mia-btn-chat.mia-inactiva {
-  background: linear-gradient(135deg, #756e6e, #837b7b);
+  background: linear-gradient(135deg, #524e4ee7, #837b7b);
   color: #fff;
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 2px 6px rgba(92, 99, 82, 0.4);
 }
 
 /* Hover: resalta el botón */
