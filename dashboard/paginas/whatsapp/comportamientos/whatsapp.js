@@ -122,6 +122,29 @@
                     lista.appendChild(li);
                 });
 
+
+ 
+
+              // ==========================
+              // 🔍 Inicializar buscador global
+              // ==========================
+
+               function inicializarBuscadorChats() {
+               const searchInput = document.getElementById('wa-search-input');
+               const chatList = document.getElementById('wa-chatlist');
+               if (!searchInput || !chatList) return;
+
+               searchInput.addEventListener('input', function() {
+               const filter = this.value.toLowerCase().trim();
+               const chats = chatList.querySelectorAll('li');
+               chats.forEach(chat => {
+               const name = chat.textContent.toLowerCase();
+               chat.style.display = name.includes(filter) ? '' : 'none';
+              });
+            });
+        }
+
+                
                 // Actualizar badge global del menú
                 actualizarBadgeGlobal();
 
@@ -317,6 +340,7 @@
         log('Inicializando módulo WhatsApp...', 'success');
         chatSeleccionado = null;
         cargarChats();
+        inicializarBuscadorChats(); //  activar buscador desde el inicio
         // Iniciar polling de la señal de actualización (archivo JSON escrito por la API)
         // Si ya hay un poll activo, limpiarlo (evita duplicados cuando se llama varias veces)
         if (_wa_signalPollId) clearInterval(_wa_signalPollId);
@@ -411,20 +435,6 @@ function renderBotonMiaChat(chat) {
             header.style.justifyContent = 'space-between';
         }
     }
-
-
-    // Filtro de búsqueda
-document.getElementById('wa-search-input').addEventListener('input', function() {
-  const filter = this.value.toLowerCase();
-  const chats = document.querySelectorAll('#wa-chatlist li');
-
-  chats.forEach(chat => {
-    const name = chat.textContent.toLowerCase();
-    chat.style.display = name.includes(filter) ? '' : 'none';
-  });
-});
-
-
     cont.innerHTML = '';
     if (!chat) return;
 
@@ -460,4 +470,5 @@ document.getElementById('wa-search-input').addEventListener('input', function() 
 }
 
     window.inicializarWhatsapp = inicializarWhatsapp;
+
 })();
