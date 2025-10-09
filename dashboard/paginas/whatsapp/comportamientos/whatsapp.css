@@ -285,53 +285,43 @@
 
 /* === BLOQUE 3: Botón MIA ACTIVA/DESACTIVADA === */
 .wa-mia-btn-chat {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px 30px;
-  font-size: 15px;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
   font-weight: 600;
   border: none;
-  border-radius: 50px;
   cursor: pointer;
-  color: #5a2dde;
-  background: linear-gradient(145deg, #ffffff, #f0f0f3);
-  box-shadow: inset 2px 2px 5px rgba(255,255,255,0.9),
-              inset -2px -2px 5px rgba(0,0,0,0.05),
-              5px 5px 12px rgba(0,0,0,0.15),
-              -5px -5px 12px rgba(255,255,255,0.8);
-  transition: all 0.25s ease-in-out;
-  user-select: none;
+  font-size: 13px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
 /* Estado cuando MIA está activa */
 .wa-mia-btn-chat.mia-activa {
-  color: #3d00c9;
-  background: linear-gradient(145deg, #ebe4ff, #f9f6ff);
-  box-shadow: inset 3px 3px 6px rgba(0,0,0,0.1),
-              inset -3px -3px 6px rgba(255,255,255,0.7),
-              3px 3px 10px rgba(0,0,0,0.15);
+ background-color: #25D366; /* Verde WhatsApp */
+  color: white;
 }
 
 /* Estado cuando MIA está desactivada */
 .wa-mia-btn-chat.mia-inactiva {
 
-  color: #bec924;
-  background: linear-gradient(145deg, #fff1f1, #fff7f7);
-  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05),
-              inset -2px -2px 5px rgba(255,255,255,0.9),
-              3px 3px 8px rgba(0,0,0,0.1);
+   background-color: #e0e0e0;
+  color: #555;
 
 }
 
 /* Hover: resalta el botón */
 .wa-mia-btn-chat:hover {
-  background: linear-gradient(145deg, #f3f3ff, #e9e9ff);
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.2),
-              -4px -4px 10px rgba(255,255,255,0.9);
-  transform: translateY(-2px);
+ transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
 
+/* Icono visual */
+.wa-mia-btn-chat::before {
+  content: '🤖';
+  font-size: 15px;
 }
 
 /* === Botón MIA dentro del header === */
