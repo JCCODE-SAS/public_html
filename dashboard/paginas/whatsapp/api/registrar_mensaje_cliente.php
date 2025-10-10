@@ -3,8 +3,8 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
 
-require_once _DIR_ . '/../../../../configuracion/bd.php';  // tu conexión a BD
-require_once _DIR_ . '/../../../../logs/logger.php';      // para logs
+require_once __DIR__ . '/../../../../configuracion/bd.php';  // tu conexión a BD
+require_once __DIR__ . '/../../../../logs/logger.php';      // para logs
 
 writeLog("registrar_mensaje_cliente.php", " INICIO - Request recibido");
 
