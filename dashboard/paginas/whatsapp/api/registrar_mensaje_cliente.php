@@ -3,27 +3,26 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
 
-require_once __DIR__ . '/../../../../configuracion/bd.php';  // tu conexión a BD
-require_once __DIR__ . '/../../../../logs/logger.php';      // para logs
+require_once __DIR__ . '/../../../../configuracion/bd.php';
+require_once __DIR__ . '/../../../../logs/logger.php';
 
 writeLog("registrar_mensaje_cliente.php", " INICIO - Request recibido");
 
+// --- Leer body JSON ---
 $data = json_decode(file_get_contents('php://input'), true);
-
-// Variables principales
 $numero = trim($data['numero'] ?? '');
 $nombre = trim($data['nombre_cliente'] ?? '');
 $texto  = trim($data['texto'] ?? '');
 $id_chat = intval($data['id_chat'] ?? 0);
 
 if (!$numero || !$texto) {
-    writeLog("registrar_mensaje_cliente.php", " Datos incompletos");
+    writeLog("registrar_mensaje_cliente.php", " Datos incompletos: número o texto faltante");
     echo json_encode(['ok' => false, 'error' => 'Faltan datos']);
     exit;
 }
 
 try {
-    //  Verificar si el cliente ya existe
+    //  Verificar o crear cliente
     $sql_check = "SELECT id FROM clientes WHERE numero = ?";
     $stmt = $conexion->prepare($sql_check);
     $stmt->bind_param("s", $numero);
@@ -31,7 +30,6 @@ try {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        //  Insertar nuevo cliente
         $sql_insert = "INSERT INTO clientes (numero, nombre_cliente, saludo, catalogo)
                        VALUES (?, ?, 0, 0)";
         $stmt_ins = $conexion->prepare($sql_insert);
@@ -47,33 +45,57 @@ try {
     }
     $stmt->close();
 
-    // Registrar mensaje
-    $sql_mensaje = "INSERT INTO mensajes (id_chat, remitente, leido, texto)
-                    VALUES (?, 'cliente', 1, ?)";
-    $stmt_msg = $conexion->prepare($sql_mensaje);
+    //  Buscar operador disponible
+    $sql_operador = "SELECT id_operador FROM operadores WHERE disponible = 1 LIMIT 1";
+    $result_op = $conexion->query($sql_operador);
+    $id_operador = null;
+
+    if ($result_op->num_rows > 0) {
+        $row_op = $result_op->fetch_assoc();
+        $id_operador = $row_op['id_operador'];
+        writeLog("registrar_mensaje_cliente.php", " Operador disponible ID=$id_operador");
+
+        // 3️⃣ Asignar operador
+        $sql_asignar = "INSERT INTO asignacion_operador (id_cliente, id_operador)
+                        VALUES (?, ?)";
+        $stmt_asg = $conexion->prepare($sql_asignar);
+        $stmt_asg->bind_param("ii", $id_cliente, $id_operador);
+        $stmt_asg->execute();
+        $stmt_asg->close();
+    }
+
+    //  Crear chat activo
+    if ($id_chat === 0) {
+        $sql_chat = "INSERT INTO chats (id_cliente, id_operador, estado, pausado)
+                     VALUES (?, ?, 'activo', 0)";
+        $stmt_chat = $conexion->prepare($sql_chat);
+        $stmt_chat->bind_param("ii", $id_cliente, $id_operador);
+        $stmt_chat->execute();
+        $id_chat = $stmt_chat->insert_id;
+        $stmt_chat->close();
+    }
+
+    //  Registrar mensaje del cliente
+    $sql_msg = "INSERT INTO mensajes (id_chat, remitente, leido, texto)
+                VALUES (?, 'cliente', 1, ?)";
+    $stmt_msg = $conexion->prepare($sql_msg);
     $stmt_msg->bind_param("is", $id_chat, $texto);
     $stmt_msg->execute();
     $mensaje_id = $stmt_msg->insert_id;
     $stmt_msg->close();
-    writeLog("registrar_mensaje_cliente.php", " Mensaje registrado ID=$mensaje_id");
 
-    //  Actualizar saludo y catálogo en clientes
-    $sql_update = "UPDATE clientes SET saludo = 1, catalogo = 1 WHERE id = ?";
-    $stmt_upd = $conexion->prepare($sql_update);
-    $stmt_upd->bind_param("i", $id_cliente);
-    $stmt_upd->execute();
-    $stmt_upd->close();
-    writeLog("registrar_mensaje_cliente.php", " Estados actualizados en cliente ID=$id_cliente");
+    writeLog("registrar_mensaje_cliente.php", " Mensaje cliente registrado ID=$mensaje_id");
 
-    //  Respuesta final
+    //  Respuesta
     echo json_encode([
         'ok' => true,
-        'mensaje_id' => $mensaje_id,
-        'cliente_id' => $id_cliente
+        'cliente_id' => $id_cliente,
+        'operador_id' => $id_operador,
+        'chat_id' => $id_chat,
+        'mensaje_id' => $mensaje_id
     ]);
 
-    writeLog("registrar_mensaje_cliente.php", " COMPLETADO - Todo correcto");
-
+    writeLog("registrar_mensaje_cliente.php", " COMPLETADO - Registro inicial correcto");
 } catch (Exception $e) {
     writeLog("registrar_mensaje_cliente.php", " ERROR: " . $e->getMessage());
     http_response_code(500);
