@@ -11,8 +11,8 @@ writeLog("registrar_mensaje_cliente.php", " INICIO - Request recibido");
 // --- Leer body JSON ---
 $data = json_decode(file_get_contents('php://input'), true);
 $numero = trim($data['numero'] ?? '');
-$nombre = trim($data['nombre_cliente'] ?? '');
-$texto  = trim($data['texto'] ?? '');
+$nombre  = trim($data['nombre_cliente'] ?? '');
+$texto   = trim($data['texto'] ?? '');
 $id_chat = intval($data['id_chat'] ?? 0);
 
 if (!$numero || !$texto) {
@@ -46,36 +46,36 @@ try {
     $stmt->close();
 
     //  Buscar operador disponible
-    $sql_operador = "SELECT id_operador FROM operadores WHERE disponible = 1 LIMIT 1";
+    $sql_operador = "SELECT id FROM operadores WHERE disponible = 1 LIMIT 1";
     $result_op = $conexion->query($sql_operador);
     $id_operador = null;
 
     if ($result_op->num_rows > 0) {
         $row_op = $result_op->fetch_assoc();
-        $id_operador = $row_op['id_operador'];
-        writeLog("registrar_mensaje_cliente.php", " Operador disponible ID=$id_operador");
+        $id_operador = $row_op['id'];
+        writeLog("registrar_mensaje_cliente.php", "Operador disponible ID=$id_operador");
 
-        // 3️⃣ Asignar operador
-        $sql_asignar = "INSERT INTO asignacion_operador (id_cliente, id_operador)
-                        VALUES (?, ?)";
-        $stmt_asg = $conexion->prepare($sql_asignar);
-        $stmt_asg->bind_param("ii", $id_cliente, $id_operador);
+        //  Asignar operador (tabla existente)
+        // Aquí usamos un INSERT simple con fecha
+        $sql_asg = "INSERT INTO asignacion_operador (ultimo_id) VALUES (?)";
+        $stmt_asg = $conexion->prepare($sql_asg);
+        $stmt_asg->bind_param("i", $id_operador); // guardamos solo el operador asignado
         $stmt_asg->execute();
         $stmt_asg->close();
     }
 
     //  Crear chat activo
     if ($id_chat === 0) {
-        $sql_chat = "INSERT INTO chats (id_cliente, id_operador, estado, pausado)
-                     VALUES (?, ?, 'activo', 0)";
+        $sql_chat = "INSERT INTO chats (numero_cliente, operador_asignado, estado, pausado, nombre_cliente)
+                     VALUES (?, ?, 'activo', 0, ?)";
         $stmt_chat = $conexion->prepare($sql_chat);
-        $stmt_chat->bind_param("ii", $id_cliente, $id_operador);
+        $stmt_chat->bind_param("sis", $numero, $id_operador, $nombre);
         $stmt_chat->execute();
         $id_chat = $stmt_chat->insert_id;
         $stmt_chat->close();
     }
 
-    //  Registrar mensaje del cliente
+    // 5️⃣ Registrar mensaje del cliente
     $sql_msg = "INSERT INTO mensajes (id_chat, remitente, leido, texto)
                 VALUES (?, 'cliente', 1, ?)";
     $stmt_msg = $conexion->prepare($sql_msg);
@@ -96,6 +96,7 @@ try {
     ]);
 
     writeLog("registrar_mensaje_cliente.php", " COMPLETADO - Registro inicial correcto");
+
 } catch (Exception $e) {
     writeLog("registrar_mensaje_cliente.php", " ERROR: " . $e->getMessage());
     http_response_code(500);
