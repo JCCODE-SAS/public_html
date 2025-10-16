@@ -75,7 +75,7 @@ try {
         $stmt_chat->close();
     }
 
-    // 5️⃣ Registrar mensaje del cliente
+    //  Registrar mensaje del cliente
     $sql_msg = "INSERT INTO mensajes (id_chat, remitente, leido, texto)
                 VALUES (?, 'cliente', 1, ?)";
     $stmt_msg = $conexion->prepare($sql_msg);
