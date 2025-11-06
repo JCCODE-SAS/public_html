@@ -1,7 +1,7 @@
 {
-    "chat_id": 5,
-    "texto": "Hola buenas tardes",
-    "cliente": "573002765661",
+    "chat_id": 7,
+    "texto": "Hola",
+    "cliente": "573045800669",
     "accion": "insertarMensaje",
-    "timestamp": "2025-10-06 22:35:41"
+    "timestamp": "2025-11-04 18:32:40"
 }
