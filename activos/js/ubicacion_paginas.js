@@ -18,7 +18,7 @@ const baseURL = isLocalhost
 window.rutas = {
     // Páginas principales
     login:            isLocalhost ? baseURL + "index.php" : window.location.origin + "/index.php",
-    validarLogin:     isLocalhost ? baseURL + "sesiones/gin.php" : window.location.origin + "/sesiones/gin.php",
+    validarLogin:     isLocalhost ? baseURL + "sesiones/validar_login.php" : window.location.origin + "/sesiones/validar_login.php",
     verificarSesion:  isLocalhost ? baseURL + "sesiones/verificar_sesion.php" : window.location.origin + "/sesiones/verificar_sesion.php",
     logout:           isLocalhost ? baseURL + "sesiones/destruir_sesion.php" : window.location.origin + "/sesiones/destruir_sesion.php",
     dashboard:        isLocalhost ? baseURL + "dashboard.php" : window.location.origin + "/dashboard.php",
