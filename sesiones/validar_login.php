@@ -14,6 +14,7 @@
 
 session_start();
 require_once __DIR__ . "/../configuracion/bd.php";
+require_once __DIR__ . "/../logs/logger.php";
 
 header("Content-Type: application/json");
 
