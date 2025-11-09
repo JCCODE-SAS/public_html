@@ -1,1 +1,7 @@
-{"timestamp":1762281162.826699,"chat_id":7,"remitente":"mia","action":"nuevo_mensaje","mensaje_id":812}
+{
+    "chat_id": 5,
+    "texto": "que bien",
+    "cliente": "573002765661",
+    "accion": "insertarMensaje",
+    "timestamp": "2025-11-09 12:26:43"
+}

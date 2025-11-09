@@ -29,9 +29,29 @@ try {
     $stmt->execute();
     $stmt->close();
 
-    echo json_encode(['ok' => true]);
+    $mensaje_id = $stmt->insert_id;
+
+    // ? ESCRIBIR ARCHIVO DE SEÑAL PARA ACTUALIZACIÓN EN TIEMPO REAL
+    $cache_dir = __DIR__ . '/../cache';
+
+    if (!is_dir($cache_dir)) {
+        mkdir($cache_dir, 0755, true);
+    }
+
+    $archivo_senal = $cache_dir . '/senal_actualizacion.json';
+    $signal_data = [
+        'timestamp' => microtime(true),
+        'chat_id' => $id_chat,
+        'remitente' => 'operador',
+        'action' => 'nuevo_mensaje',
+        'mensaje_id' => $mensaje_id
+    ];
+
+    file_put_contents($archivo_senal, json_encode($signal_data));
+
+    echo json_encode(['ok' => true, 'mensaje_id' => $mensaje_id]);
     if (function_exists('writeLog')) {
-        writeLog("registrar_mensaje.php", "ðŸ“© Mensaje guardado en chat $id_chat");
+        writeLog("registrar_mensaje.php", "?? Mensaje guardado en chat $id_chat (señal escrita)");
     }
 } catch (Exception $e) {
     if (function_exists('writeLog')) {

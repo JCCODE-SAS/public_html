@@ -116,6 +116,7 @@
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: 'id_chat=' + encodeURIComponent(chat.id)
                         }).then(() => {
+                            cargarChats(); //  Recarga lista completa para actualizar badges;
                             actualizarBadgeGlobal();
                         });
                     });
