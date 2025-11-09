@@ -25,10 +25,18 @@ if ($id_chat < 1) {
 }
 
 try {
-    $sql = "SELECT id_mensaje, texto, remitente, DATE(timestamp) as fecha, TIME(timestamp) as hora
-            FROM mensajes
-            WHERE id_chat = ?
-            ORDER BY timestamp ASC";
+    $sql = "SELECT 
+                m.id_mensaje, 
+                m.texto, 
+                m.remitente, 
+                DATE(m.timestamp) as fecha, 
+                TIME(m.timestamp) as hora,
+                m.id_usuario,
+                u.nombre_usuario
+            FROM mensajes m
+            LEFT JOIN usuarios u ON m.id_usuario = u.id_usuario
+            WHERE m.id_chat = ?
+            ORDER BY m.timestamp ASC";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("i", $id_chat);
     $stmt->execute();
@@ -36,10 +44,17 @@ try {
 
     $mensajes = [];
     while ($row = $result->fetch_assoc()) {
+        // Determinar el nombre a mostrar según el tipo de remitente
+        $nombre_emisor = $row['remitente'];
+        if ($row['remitente'] === 'operador' && !empty($row['nombre_usuario'])) {
+            $nombre_emisor = $row['nombre_usuario'];
+        }
+
         $mensajes[] = [
             'id' => $row['id_mensaje'],
             'texto' => $row['texto'],
             'enviado_por' => $row['remitente'],
+            'nombre_emisor' => $nombre_emisor,
             'fecha' => $row['fecha'],
             'hora' => substr($row['hora'], 0, 5)
         ];

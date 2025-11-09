@@ -12,7 +12,7 @@
     function log(msg, type = 'info') {
         if (!CONFIG.DEBUG_MODE) return;
         const prefix = `[${new Date().toLocaleTimeString()}] [WHATSAPP.JS]`;
-        const icons = { error: 'âŒ', warn: 'âš ï¸', success: 'âœ…', info: 'ðŸ”„' };
+        const icons = { error: '?', warn: '??', success: '?', info: '??' };
         console[type === 'error' ? 'error' : type === 'warn' ? 'warn' : 'log'](`${prefix} ${icons[type] || icons.info}`, msg);
     }
 
@@ -72,18 +72,22 @@
                     const li = document.createElement('li');
                     li.className = 'wa-chat';
                     li.dataset.chatId = chat.id;
-                    // Badge de no leÃ­dos
+                    // Badge de no leídos
                     let badge = '';
                     if (chat.no_leidos && chat.no_leidos > 0) {
                         badge = `<span class=\"wa-badge\">${chat.no_leidos}</span>`;
                     }
-                    // Solo nombre y badge, sin botÃ³n MIA
+                    // Solo nombre y badge, con información de operadores
                     li.innerHTML = `
                       <div style="display:flex;align-items:center;gap:12px;">
                       <div class="wa-avatar">${chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?'}</div>
                        <div style="flex:1;">
                     <strong>${chat.cliente}</strong> ${badge}
                     <div class="status">${chat.estado || 'Activo'}</div>
+                    <div style="font-size:10px;color:#666;margin-top:2px;line-height:1.3;">
+                        <div>Asignado: ${chat.operador_asignado || 'Sin asignar'}</div>
+                        <div>Último mensaje: ${chat.operador_ultimo_mensaje || 'N/A'}</div>
+                    </div>
                    </div>
                       </div>
                               `;
@@ -116,7 +120,7 @@
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: 'id_chat=' + encodeURIComponent(chat.id)
                         }).then(() => {
-                            cargarChats(); //  Recarga lista completa para actualizar badges;
+                            cargarChats(); //  Recarga lista completa para actualizar badges
                             actualizarBadgeGlobal();
                         });
                     });
@@ -125,7 +129,7 @@
               
             
                 
-                // Actualizar badge global del menÃº
+                // Actualizar badge global del menú
                 actualizarBadgeGlobal();
 
                 log(`Chats activos cargados (${data.chats.length})`, 'success');
@@ -138,7 +142,7 @@
     }
 
 
-          /*ðŸ” Inicializar buscador global */
+          /*?? Inicializar buscador global */
 
               function inicializarBuscadorChats() {
               const searchInput = document.getElementById('wa-search-input');
@@ -155,7 +159,7 @@
           });
         }
 
-    // Consulta el total global de mensajes no leÃ­dos y lo muestra en el menÃº
+    // Consulta el total global de mensajes no leídos y lo muestra en el menú
     function actualizarBadgeGlobal() {
     fetch('/dashboard/paginas/whatsapp/api/contar_no_leidos.php', { credentials: 'include' })
             .then(r => r.json())
@@ -212,6 +216,9 @@
                         mensajesRenderizados[chatId] = data.mensajes.map(m => m.id);
                         if (scrollToEnd !== false) cont.scrollTop = cont.scrollHeight;
                     } else {
+                        // Eliminar mensajes temporales antes de agregar los reales
+                        const tempMessages = cont.querySelectorAll('.wa-sending');
+                        tempMessages.forEach(temp => temp.remove());
                         // Solo agregar los mensajes nuevos (sin limpiar el DOM)
                         let nuevos = 0;
                         data.mensajes.forEach(msg => {
@@ -239,18 +246,22 @@
 
     function renderMensaje(msg, cont) {
         const div = document.createElement('div');
-        let tipo = 'mia';
+        let tipo = 'mia';  // ? Por defecto morado claro para todos
         let quien = 'MIA';
+        
         if (msg.enviado_por === 'cliente') {
             tipo = 'cliente';
             quien = 'User';
-        } else if (msg.enviado_por === 'operador') {
-            tipo = 'operador';
-            quien = msg.nombre_operador || 'Operador';
-        } else if (msg.enviado_por === 'mia') {
+        } else {
+            // ? TODOS los mensajes que no sean del cliente serán morado claro
             tipo = 'mia';
-            quien = 'MIA';
+            if (msg.enviado_por === 'operador') {
+                quien = msg.nombre_emisor || 'Operador';
+            } else {
+                quien = 'MIA';
+            }
         }
+        
         div.className = 'wa-bubble ' + tipo;
         div.innerHTML = `<div>${msg.texto}</div><div class=\"wa-msg-meta\">${msg.fecha} ${msg.hora} <span class='wa-quien'>${quien}</span></div>`;
         cont.appendChild(div);
@@ -265,6 +276,15 @@
             const inp = document.getElementById('wa-input');
             const txt = inp.value.trim();
             if (!txt) return;
+            
+            // Mostrar feedback temporal de envío
+            const cont = document.getElementById('wa-messages');
+            const tempMsg = document.createElement('div');
+            tempMsg.className = 'wa-bubble mia wa-sending';
+            tempMsg.innerHTML = `<div>${txt}</div><div class="wa-msg-meta">Enviando... ?</div>`;
+            cont.appendChild(tempMsg);
+            cont.scrollTop = cont.scrollHeight;
+            
             enviarMensaje(chatId, txt);
             inp.value = '';
         };
@@ -273,17 +293,17 @@
     function obtenerNumeroCliente(chatId) {
         let chat = chatsCache.find(c => c.id === chatId);
         if (chat && chat.numero) return chat.numero;
-        // Si no estÃ¡ en cache, intentar recargar y buscar de nuevo (sincrÃ³nico no es posible, asÃ­ que advertir)
-        log('NÃºmero de cliente no encontrado en cache para chatId ' + chatId, 'warn');
-        // Opcional: podrÃ­as forzar recarga de chats aquÃ­ y reintentar, pero por ahora muestra error claro
+        // Si no está en cache, intentar recargar y buscar de nuevo (sincrónico no es posible, así que advertir)
+        log('Número de cliente no encontrado en cache para chatId ' + chatId, 'warn');
+        // Opcional: podrías forzar recarga de chats aquí y reintentar, pero por ahora muestra error claro
         return '';
     }
 
     function enviarMensaje(chatId, texto) {
         const numero = obtenerNumeroCliente(chatId);
         if (!numero) {
-            alert('NÃºmero de cliente no disponible');
-            log('âŒ NÃºmero vacÃ­o para chatId ' + chatId, 'error');
+            alert('Número de cliente no disponible');
+            log('? Número vacío para chatId ' + chatId, 'error');
             return;
         }
 
@@ -302,11 +322,11 @@
                     body: JSON.stringify({ id_chat: chatId, texto })
                 })
                 .then(() => {
-                    insertarMensaje(chatId, texto);
                     log('Mensaje enviado y registrado en BD', 'success');
+                    log('? Esperando señal de actualización...', 'info');
                 })
                 .catch(err => {
-                    log('âš ï¸ Error al registrar mensaje en BD: ' + err.message, 'warn');
+                    log('?? Error al registrar mensaje en BD: ' + err.message, 'warn');
                 });
             } else {
                 alert('No se pudo enviar el mensaje');
@@ -335,90 +355,90 @@
     }
 
     function inicializarWhatsapp() {
-        log('Inicializando mÃ³dulo WhatsApp...', 'success');
+        log('Inicializando módulo WhatsApp...', 'success');
         chatSeleccionado = null;
         cargarChats();
         inicializarBuscadorChats(); //  activar buscador desde el inicio
-        // Iniciar polling de la seÃ±al de actualizaciÃ³n (archivo JSON escrito por la API)
+        // Iniciar polling de la señal de actualización (archivo JSON escrito por la API)
         // Si ya hay un poll activo, limpiarlo (evita duplicados cuando se llama varias veces)
         if (_wa_signalPollId) clearInterval(_wa_signalPollId);
-        // Ejecutar una primera comprobaciÃ³n inmediata y luego cada 2s
+        // Ejecutar una primera comprobación inmediata y luego cada 2s
         pollSignal();
         _wa_signalPollId = setInterval(pollSignal, 2000);
     }
 
-    // Reemplaza la funciÃ³n pollSignal en whatsapp.js con esta versiÃ³n con mÃ¡s logging
+    // Reemplaza la función pollSignal en whatsapp.js con esta versión con más logging
 
 function pollSignal() {
     const url = '/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
     
     fetch(url, { credentials: 'include', cache: 'no-store' })
         .then(r => {
-            console.log('ðŸ” [pollSignal] Status:', r.status, r.ok);
-            if (!r.ok) throw new Error('No hay seÃ±al');
+            console.log('?? [pollSignal] Status:', r.status, r.ok);
+            if (!r.ok) throw new Error('No hay señal');
             return r.json();
         })
         .then(data => {
-            console.log('ðŸ“¡ [pollSignal] SeÃ±al recibida:', data);
+            console.log('?? [pollSignal] Señal recibida:', data);
             
             if (!data || !data.timestamp) {
-                console.log('âš ï¸ [pollSignal] SeÃ±al sin timestamp vÃ¡lido');
+                console.log('?? [pollSignal] Señal sin timestamp válido');
                 return;
             }
             
-            console.log('ðŸ• [pollSignal] Timestamp anterior:', _wa_lastSignalTimestamp);
-            console.log('ðŸ• [pollSignal] Timestamp nuevo:', data.timestamp);
+            console.log('?? [pollSignal] Timestamp anterior:', _wa_lastSignalTimestamp);
+            console.log('?? [pollSignal] Timestamp nuevo:', data.timestamp);
             
-            // Si cambiÃ³ la marca de tiempo, procesar la seÃ±al
+            // Si cambió la marca de tiempo, procesar la señal
             if (data.timestamp !== _wa_lastSignalTimestamp) {
-                console.log('âœ… [pollSignal] SEÃ‘AL NUEVA DETECTADA - Procesando...');
+                console.log('? [pollSignal] SEÑAL NUEVA DETECTADA - Procesando...');
                 _wa_lastSignalTimestamp = data.timestamp;
                 handleSignal(data);
             } else {
-                console.log('â¸ï¸ [pollSignal] Sin cambios en timestamp');
+                console.log('?? [pollSignal] Sin cambios en timestamp');
             }
         })
         .catch(err => {
-            console.log('âŒ [pollSignal] Error:', err.message);
+            console.log('? [pollSignal] Error:', err.message);
         });
 }
 
 
 
-// TambiÃ©n actualiza handleSignal para mejor logging
+// También actualiza handleSignal para mejor logging
 function handleSignal(signal) {
-    console.log('ðŸŽ¯ [handleSignal] Procesando seÃ±al:', signal);
-    console.log('ðŸŽ¯ [handleSignal] Chat seleccionado:', chatSeleccionado);
+    console.log('?? [handleSignal] Procesando señal:', signal);
+    console.log('?? [handleSignal] Chat seleccionado:', chatSeleccionado);
     
     const id = Number(signal.chat_id) || null;
 
     
-    // Siempre que el chat activo estÃ© seleccionado, recargar mensajes
+    // Siempre que el chat activo esté seleccionado, recargar mensajes
     if (chatSeleccionado) {
-        console.log('ðŸ”„ [handleSignal] Recargando mensajes del chat', chatSeleccionado);
+        console.log('?? [handleSignal] Recargando mensajes del chat', chatSeleccionado);
         cargarMensajes(chatSeleccionado, true);
         
-        // Marcar como leÃ­dos automÃ¡ticamente si el chat estÃ¡ abierto y llega un mensaje nuevo
+        // Marcar como leídos automáticamente si el chat está abierto y llega un mensaje nuevo
     fetch('/dashboard/paginas/whatsapp/api/marcar_leido.php', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'id_chat=' + encodeURIComponent(chatSeleccionado)
         }).then(() => {
-            console.log('âœ… [handleSignal] Chat marcado como leÃ­do');
+            console.log('? [handleSignal] Chat marcado como leído');
             cargarChats();
         });
         return;
     }
     
     // Si no hay chat seleccionado, solo refrescar lista
-    console.log('ðŸ“‹ [handleSignal] No hay chat seleccionado, refrescando lista');
+    console.log('?? [handleSignal] No hay chat seleccionado, refrescando lista');
     cargarChats();
 }
 
 
    
-    // BotÃ³n MIA dentro del header del chat , solo para el chat seleccionado
+    // Botón MIA dentro del header del chat , solo para el chat seleccionado
 function renderBotonMiaChat(chat) {
     let cont = document.getElementById('wa-mia-chat-btn-wrap');
     if (!cont) {

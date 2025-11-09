@@ -23,7 +23,7 @@ if (!$id_chat || !$texto) {
 }
 
 try {
-    $sql = "INSERT INTO mensajes (id_chat, remitente, texto) VALUES (?, 'mia', ?)";
+    $sql = "INSERT INTO mensajes (id_chat, remitente, texto) VALUES (?, 'operador', ?)";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("is", $id_chat, $texto);
     $stmt->execute();
