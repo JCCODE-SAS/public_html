@@ -77,17 +77,13 @@
                     if (chat.no_leidos && chat.no_leidos > 0) {
                         badge = `<span class=\"wa-badge\">${chat.no_leidos}</span>`;
                     }
-                    // Solo nombre y badge, con información de operadores
+                    // Solo nombre y badge, sin botón MIA
                     li.innerHTML = `
                       <div style="display:flex;align-items:center;gap:12px;">
                       <div class="wa-avatar">${chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?'}</div>
                        <div style="flex:1;">
                     <strong>${chat.cliente}</strong> ${badge}
                     <div class="status">${chat.estado || 'Activo'}</div>
-                    <div style="font-size:10px;color:#666;margin-top:2px;line-height:1.3;">
-                        <div>Asignado: ${chat.operador_asignado || 'Sin asignar'}</div>
-                        <div>Último mensaje: ${chat.operador_ultimo_mensaje || 'N/A'}</div>
-                    </div>
                    </div>
                       </div>
                               `;
@@ -256,7 +252,7 @@
             // ? TODOS los mensajes que no sean del cliente serán morado claro
             tipo = 'mia';
             if (msg.enviado_por === 'operador') {
-                quien = msg.nombre_emisor || 'Operador';
+                quien = msg.nombre_operador || 'Operador';
             } else {
                 quien = 'MIA';
             }
