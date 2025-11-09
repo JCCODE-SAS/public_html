@@ -30,17 +30,26 @@ try {
 
     // Filtrar por operador asignado si no es admin
     $role = $_SESSION['role'] ?? '';
+    $baseSelect = "SELECT c.id_chat,
+                  c.nombre_cliente,
+                  c.numero_cliente,
+                  c.estado,
+                  c.creado,
+                  c.operador_asignado,
+                  c.mia_activa,
+                  o.usuario AS operador_usuario,
+                  o.nombre  AS operador_nombre,
+                  u.name    AS user_nombre
+              FROM chats c
+              LEFT JOIN operadores o ON o.id = c.operador_asignado
+              LEFT JOIN users u ON u.id = c.operador_asignado
+              WHERE c.estado = 'activo'";
+
     if ($role === 'admin') {
-        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado, mia_activa
-            FROM chats
-            WHERE estado = 'activo'
-            ORDER BY creado DESC";
+        $sql = $baseSelect . " ORDER BY c.creado DESC";
         $result = $conexion->query($sql);
     } else {
-        $sql = "SELECT id_chat, nombre_cliente, numero_cliente, estado, creado, operador_asignado, mia_activa
-            FROM chats
-            WHERE estado = 'activo' AND operador_asignado = ?
-            ORDER BY creado DESC";
+        $sql = $baseSelect . " AND c.operador_asignado = ? ORDER BY c.creado DESC";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -70,11 +79,17 @@ try {
             $stmt2->close();
 
             // --- Construcción del objeto chat ---
+            $operadorUsuario = $row['operador_usuario'] ?: ($row['user_nombre'] ?? null);
+            $operadorNombre = $row['operador_nombre'] ?: ($row['user_nombre'] ?? null);
+
             $chats[] = [
                 'id' => $row['id_chat'],
                 'cliente' => $row['nombre_cliente'],
                 'numero' => $row['numero_cliente'],
                 'estado' => $row['estado'],
+                'operador' => $operadorUsuario ?: null,
+                'operador_nombre' => $operadorNombre ?: null,
+                'operador_id' => $row['operador_asignado'] ? (int)$row['operador_asignado'] : null,
                 'ultimo_mensaje' => $ultimo_mensaje ?: '',
                 'creado' => $row['creado'],
                 'no_leidos' => (int)$no_leidos,

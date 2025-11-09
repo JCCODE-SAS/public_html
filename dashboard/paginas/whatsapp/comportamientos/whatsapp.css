@@ -1,4 +1,4 @@
-/* Badge para mensajes no leÃ­dos en la lista de chats */
+/* Badge para mensajes no leídos en la lista de chats */
 .wa-badge {
     display: inline-block;
     min-width: 20px;
@@ -15,7 +15,7 @@
     line-height: 1.3;
 }
 
-/* Badge global para el menÃº (puedes ajustar el id si usas otro) */
+/* Badge global para el menú (puedes ajustar el id si usas otro) */
 #wa-menu-badge {
     display: none;
     position: absolute;
@@ -40,16 +40,16 @@
     height: 76vh;
     min-height: 420px;
 
-    /* Fondo mÃ¡s limpio y moderno */
+    /* Fondo más limpio y moderno */
     background: linear-gradient(135deg, #faf9ff 0%, #f4f3ff 100%);
 
-    /* Bordes mÃ¡s redondeados para un look moderno */
+    /* Bordes más redondeados para un look moderno */
     border-radius: 18px;
 
     /* Sombra suave con toque morado */
     box-shadow: 0 6px 20px rgba(88, 49, 226, 0.08);
 
-    /* TransiciÃ³n fluida en hover (para futuro si deseas animar) */
+    /* Transición fluida en hover (para futuro si deseas animar) */
     transition: box-shadow 0.3s ease, background 0.3s ease;
 
     overflow: hidden;
@@ -65,7 +65,8 @@
     border-right: 2px solid rgba(88, 49, 226, 0.1);
 
     /* Scroll interno suave */
-    overflow-y: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
 
     display: flex;
     flex-direction: column;
@@ -78,8 +79,15 @@
     /* Transiciones suaves al interactuar */
     transition: background 0.2s ease, border-color 0.3s ease;
 
-    /* Ligera sombra interna (para destacar separaciÃ³n visual) */
+    /* Ligera sombra interna (para destacar separación visual) */
     box-shadow: inset -1px 0 3px rgba(0, 0, 0, 0.03);
+}
+.wa-chats::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.wa-chats {
+  -ms-overflow-style: none;
 }
 
 .wa-chats h2 {
@@ -89,25 +97,25 @@
     letter-spacing: -0.3px;
     padding: 20px 18px 12px 18px;
 
-    /* LÃ­nea decorativa morada bajo el tÃ­tulo */
+    /* Línea decorativa morada bajo el título */
     border-bottom: 2px solid rgba(88, 49, 226, 0.1);
     margin-bottom: 8px;
 }
 
-/* === PANEL DERECHO (ÃREA DE CHAT PRINCIPAL) === */
+/* === PANEL DERECHO (ÁREA DE CHAT PRINCIPAL) === */
 .wa-main {
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
 
-    /* Fondo claro, pero con toque cÃ¡lido y limpio */
+    /* Fondo claro, pero con toque cálido y limpio */
     background: #fbfaff;
 
     position: relative;
     min-width: 0;
     height: 100%;
 
-    /* TransiciÃ³n visual si cambias el tema mÃ¡s adelante */
+    /* Transición visual si cambias el tema más adelante */
     transition: background 0.3s ease;
 }
 
@@ -132,7 +140,58 @@
     background: #fff;
     margin: 4px 8px;
 }
-/* Cuando el chat estÃ¡ seleccionado */
+.wa-chat-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.wa-chat-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wa-chat-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wa-chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #707070;
+}
+.wa-operator {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 2px 5px;
+  border-radius: 6px;
+  background: #f7f7ff;
+  color: #4c1d95;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.15px;
+}
+.wa-operator__label {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #8a8ac7;
+}
+.wa-operator__name {
+  font-size: 10px;
+  font-weight: 600;
+  color: #312e81;
+}
+.wa-operator--sin {
+  background: #fdf2f8;
+  color: #9d174d;
+}
+/* Cuando el chat está seleccionado */
 .wa-chat.selected {
     background: #ede9ff;
     border-left: 4px solid #5831e2;
@@ -204,7 +263,7 @@
     color: #888;
 }
 
-/* Avatar (cÃ­rculo inicial o imagen si luego lo agregas) */
+/* Avatar (círculo inicial o imagen si luego lo agregas) */
 .wa-avatar {
     width: 38px;
     height: 38px;
@@ -283,7 +342,7 @@
 
 }
 
-/* === BLOQUE 3: BotÃ³n MIA ACTIVA/DESACTIVADA === */
+/* === BLOQUE 3: Botón MIA ACTIVA/DESACTIVADA === */
 .wa-mia-btn-chat {
   display: flex;
   align-items: center;
@@ -298,13 +357,13 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
-/* Estado cuando MIA estÃ¡ activa */
+/* Estado cuando MIA está activa */
 .wa-mia-btn-chat.mia-activa {
  background-color: #25D366; /* Verde WhatsApp */
   color: white;
 }
 
-/* Estado cuando MIA estÃ¡ desactivada */
+/* Estado cuando MIA está desactivada */
 .wa-mia-btn-chat.mia-inactiva {
 
    background-color: #e0e0e0;
@@ -312,7 +371,7 @@
 
 }
 
-/* Hover: resalta el botÃ³n */
+/* Hover: resalta el botón */
 .wa-mia-btn-chat:hover {
  transform: translateY(-1px);
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
@@ -320,11 +379,11 @@
 
 /* Icono visual */
 .wa-mia-btn-chat::before {
-  content: 'ðŸš€';
+  content: '??';
   font-size: 15px;
 }
 
-/* === BotÃ³n MIA dentro del header === */
+/* === Botón MIA dentro del header === */
 .wa-mia-container {
     display: flex;
     justify-content: flex-end;
@@ -359,7 +418,7 @@
 
 
 
-/* AnimaciÃ³n suave */
+/* Animación suave */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
@@ -428,7 +487,7 @@
     .wa-main, .wa-chats { padding: 0 !important; }
 }
 
-/* === CorrecciÃ³n: evita que un mensaje ancho rompa el layout === */
+/* === Corrección: evita que un mensaje ancho rompa el layout === */
 .wa-messages {
   max-width: 100%;
   overflow-wrap: break-word;
@@ -440,7 +499,7 @@
   max-width: 85%;
   overflow-wrap: break-word;
   word-break: break-word;
-  white-space: pre-wrap; /* mantiene saltos de lÃ­nea, pero permite ajuste */
+  white-space: pre-wrap; /* mantiene saltos de línea, pero permite ajuste */
   display: inline-block;
 }
 
@@ -453,7 +512,7 @@
   line-height: 1.4;
 }
 
-/* opcional: si usas flex, evita que burbujas crezcan de mÃ¡s */
+/* opcional: si usas flex, evita que burbujas crezcan de más */
 .wa-messages > div {
   flex-shrink: 1;
   flex-grow: 0;

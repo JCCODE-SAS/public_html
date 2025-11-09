@@ -72,21 +72,30 @@
                     const li = document.createElement('li');
                     li.className = 'wa-chat';
                     li.dataset.chatId = chat.id;
-                    // Badge de no leídos
+                    // Badge de no le?dos
                     let badge = '';
                     if (chat.no_leidos && chat.no_leidos > 0) {
                         badge = `<span class=\"wa-badge\">${chat.no_leidos}</span>`;
                     }
-                    // Solo nombre y badge, sin botón MIA
-                    li.innerHTML = `
-                      <div style="display:flex;align-items:center;gap:12px;">
-                      <div class="wa-avatar">${chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?'}</div>
-                       <div style="flex:1;">
-                    <strong>${chat.cliente}</strong> ${badge}
-                    <div class="status">${chat.estado || 'Activo'}</div>
-                   </div>
-                      </div>
-                              `;
+                                        const operadorLabel = chat.operador
+                                            ? `<span class="wa-operator"><span class="wa-operator__label">Asignado:</span> <span class="wa-operator__name">${chat.operador}</span></span>`
+                                            : '<span class="wa-operator wa-operator--sin"><span class="wa-operator__label">Asignado:</span> <span class="wa-operator__name">Sin asignar</span></span>';
+                                        // Solo nombre, badge y operador asignado
+                                        li.innerHTML = `
+                                            <div class="wa-chat-main">
+                                                <div class="wa-avatar">${chat.cliente ? chat.cliente.charAt(0).toUpperCase() : '?'}</div>
+                                                <div class="wa-chat-info">
+                                                    <div class="wa-chat-top">
+                                                        <strong>${chat.cliente || 'Cliente'}</strong>
+                                                        ${badge}
+                                                    </div>
+                                                    <div class="wa-chat-meta">
+                                                        <span class="status">${chat.estado || 'Activo'}</span>
+                                                        ${operadorLabel}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `;
 
                     li.addEventListener('click', (e) => {
                         if (chatSeleccionado === chat.id) return;
@@ -125,7 +134,7 @@
               
             
                 
-                // Actualizar badge global del menú
+                // Actualizar badge global del men?
                 actualizarBadgeGlobal();
 
                 log(`Chats activos cargados (${data.chats.length})`, 'success');
@@ -155,7 +164,7 @@
           });
         }
 
-    // Consulta el total global de mensajes no leídos y lo muestra en el menú
+    // Consulta el total global de mensajes no le?dos y lo muestra en el men?
     function actualizarBadgeGlobal() {
     fetch('/dashboard/paginas/whatsapp/api/contar_no_leidos.php', { credentials: 'include' })
             .then(r => r.json())
@@ -244,15 +253,17 @@
         const div = document.createElement('div');
         let tipo = 'mia';  // ? Por defecto morado claro para todos
         let quien = 'MIA';
+        const fallbackOperador = (window.WA_USER && window.WA_USER.name) ? window.WA_USER.name : 'Operador';
         
         if (msg.enviado_por === 'cliente') {
             tipo = 'cliente';
             quien = 'User';
         } else {
-            // ? TODOS los mensajes que no sean del cliente serán morado claro
+            // ? TODOS los mensajes que no sean del cliente ser?n morado claro
             tipo = 'mia';
             if (msg.enviado_por === 'operador') {
-                quien = msg.nombre_operador || 'Operador';
+                const nombre = msg.nombre_operador || msg.operador_nombre || fallbackOperador;
+                quien = nombre.trim() || fallbackOperador;
             } else {
                 quien = 'MIA';
             }
@@ -273,11 +284,12 @@
             const txt = inp.value.trim();
             if (!txt) return;
             
-            // Mostrar feedback temporal de envío
+            // Mostrar feedback temporal de env?o
             const cont = document.getElementById('wa-messages');
             const tempMsg = document.createElement('div');
             tempMsg.className = 'wa-bubble mia wa-sending';
-            tempMsg.innerHTML = `<div>${txt}</div><div class="wa-msg-meta">Enviando... ?</div>`;
+            const autor = (window.WA_USER && window.WA_USER.name) ? window.WA_USER.name : 'Operador';
+            tempMsg.innerHTML = `<div>${txt}</div><div class="wa-msg-meta">Enviando... <span class='wa-quien'>${autor}</span></div>`;
             cont.appendChild(tempMsg);
             cont.scrollTop = cont.scrollHeight;
             
@@ -289,17 +301,17 @@
     function obtenerNumeroCliente(chatId) {
         let chat = chatsCache.find(c => c.id === chatId);
         if (chat && chat.numero) return chat.numero;
-        // Si no está en cache, intentar recargar y buscar de nuevo (sincrónico no es posible, así que advertir)
-        log('Número de cliente no encontrado en cache para chatId ' + chatId, 'warn');
-        // Opcional: podrías forzar recarga de chats aquí y reintentar, pero por ahora muestra error claro
+        // Si no est? en cache, intentar recargar y buscar de nuevo (sincr?nico no es posible, as? que advertir)
+        log('N?mero de cliente no encontrado en cache para chatId ' + chatId, 'warn');
+        // Opcional: podr?as forzar recarga de chats aqu? y reintentar, pero por ahora muestra error claro
         return '';
     }
 
     function enviarMensaje(chatId, texto) {
         const numero = obtenerNumeroCliente(chatId);
         if (!numero) {
-            alert('Número de cliente no disponible');
-            log('? Número vacío para chatId ' + chatId, 'error');
+            alert('N?mero de cliente no disponible');
+            log('? N?mero vac?o para chatId ' + chatId, 'error');
             return;
         }
 
@@ -319,7 +331,7 @@
                 })
                 .then(() => {
                     log('Mensaje enviado y registrado en BD', 'success');
-                    log('? Esperando señal de actualización...', 'info');
+                    log('? Esperando se?al de actualizaci?n...', 'info');
                 })
                 .catch(err => {
                     log('?? Error al registrar mensaje en BD: ' + err.message, 'warn');
@@ -341,7 +353,8 @@
 
         const nuevo = document.createElement('div');
         nuevo.className = 'wa-bubble mia';
-        nuevo.innerHTML = `<div>${texto}</div><div class="wa-msg-meta">${formatearHora(new Date())}</div>`;
+        const autor = (window.WA_USER && window.WA_USER.name) ? window.WA_USER.name : 'Operador';
+        nuevo.innerHTML = `<div>${texto}</div><div class="wa-msg-meta">${formatearHora(new Date())} <span class='wa-quien'>${autor}</span></div>`;
         cont.appendChild(nuevo);
         cont.scrollTop = cont.scrollHeight;
     }
@@ -351,19 +364,19 @@
     }
 
     function inicializarWhatsapp() {
-        log('Inicializando módulo WhatsApp...', 'success');
+        log('Inicializando m?dulo WhatsApp...', 'success');
         chatSeleccionado = null;
         cargarChats();
         inicializarBuscadorChats(); //  activar buscador desde el inicio
-        // Iniciar polling de la señal de actualización (archivo JSON escrito por la API)
+        // Iniciar polling de la se?al de actualizaci?n (archivo JSON escrito por la API)
         // Si ya hay un poll activo, limpiarlo (evita duplicados cuando se llama varias veces)
         if (_wa_signalPollId) clearInterval(_wa_signalPollId);
-        // Ejecutar una primera comprobación inmediata y luego cada 2s
+        // Ejecutar una primera comprobaci?n inmediata y luego cada 2s
         pollSignal();
         _wa_signalPollId = setInterval(pollSignal, 2000);
     }
 
-    // Reemplaza la función pollSignal en whatsapp.js con esta versión con más logging
+    // Reemplaza la funci?n pollSignal en whatsapp.js con esta versi?n con m?s logging
 
 function pollSignal() {
     const url = '/dashboard/paginas/whatsapp/api/leer_senal.php?ts=' + Date.now();
@@ -371,23 +384,23 @@ function pollSignal() {
     fetch(url, { credentials: 'include', cache: 'no-store' })
         .then(r => {
             console.log('?? [pollSignal] Status:', r.status, r.ok);
-            if (!r.ok) throw new Error('No hay señal');
+            if (!r.ok) throw new Error('No hay se?al');
             return r.json();
         })
         .then(data => {
-            console.log('?? [pollSignal] Señal recibida:', data);
+            console.log('?? [pollSignal] Se?al recibida:', data);
             
             if (!data || !data.timestamp) {
-                console.log('?? [pollSignal] Señal sin timestamp válido');
+                console.log('?? [pollSignal] Se?al sin timestamp v?lido');
                 return;
             }
             
             console.log('?? [pollSignal] Timestamp anterior:', _wa_lastSignalTimestamp);
             console.log('?? [pollSignal] Timestamp nuevo:', data.timestamp);
             
-            // Si cambió la marca de tiempo, procesar la señal
+            // Si cambi? la marca de tiempo, procesar la se?al
             if (data.timestamp !== _wa_lastSignalTimestamp) {
-                console.log('? [pollSignal] SEÑAL NUEVA DETECTADA - Procesando...');
+                console.log('? [pollSignal] SE?AL NUEVA DETECTADA - Procesando...');
                 _wa_lastSignalTimestamp = data.timestamp;
                 handleSignal(data);
             } else {
@@ -401,27 +414,27 @@ function pollSignal() {
 
 
 
-// También actualiza handleSignal para mejor logging
+// Tambi?n actualiza handleSignal para mejor logging
 function handleSignal(signal) {
-    console.log('?? [handleSignal] Procesando señal:', signal);
+    console.log('?? [handleSignal] Procesando se?al:', signal);
     console.log('?? [handleSignal] Chat seleccionado:', chatSeleccionado);
     
     const id = Number(signal.chat_id) || null;
 
     
-    // Siempre que el chat activo esté seleccionado, recargar mensajes
+    // Siempre que el chat activo est? seleccionado, recargar mensajes
     if (chatSeleccionado) {
         console.log('?? [handleSignal] Recargando mensajes del chat', chatSeleccionado);
         cargarMensajes(chatSeleccionado, true);
         
-        // Marcar como leídos automáticamente si el chat está abierto y llega un mensaje nuevo
+        // Marcar como le?dos autom?ticamente si el chat est? abierto y llega un mensaje nuevo
     fetch('/dashboard/paginas/whatsapp/api/marcar_leido.php', {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'id_chat=' + encodeURIComponent(chatSeleccionado)
         }).then(() => {
-            console.log('? [handleSignal] Chat marcado como leído');
+            console.log('? [handleSignal] Chat marcado como le?do');
             cargarChats();
         });
         return;
@@ -434,7 +447,7 @@ function handleSignal(signal) {
 
 
    
-    // Botón MIA dentro del header del chat , solo para el chat seleccionado
+    // Bot?n MIA dentro del header del chat , solo para el chat seleccionado
 function renderBotonMiaChat(chat) {
     let cont = document.getElementById('wa-mia-chat-btn-wrap');
     if (!cont) {

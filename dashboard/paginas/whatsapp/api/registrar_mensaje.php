@@ -31,7 +31,7 @@ try {
 
     $mensaje_id = $stmt->insert_id;
 
-    // ? ESCRIBIR ARCHIVO DE SEÑAL PARA ACTUALIZACIÓN EN TIEMPO REAL
+    // ? ESCRIBIR ARCHIVO DE SE?AL PARA ACTUALIZACI?N EN TIEMPO REAL
     $cache_dir = __DIR__ . '/../cache';
 
     if (!is_dir($cache_dir)) {
@@ -51,7 +51,7 @@ try {
 
     echo json_encode(['ok' => true, 'mensaje_id' => $mensaje_id]);
     if (function_exists('writeLog')) {
-        writeLog("registrar_mensaje.php", "?? Mensaje guardado en chat $id_chat (señal escrita)");
+        writeLog("registrar_mensaje.php", "?? Mensaje guardado en chat $id_chat (se?al escrita)");
     }
 } catch (Exception $e) {
     if (function_exists('writeLog')) {
